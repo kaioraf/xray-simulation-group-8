@@ -1,0 +1,2632 @@
+camera	set mode	HW1SW1High		ACK
+camera	set exposure	100		ACK
+camera	set ROI	32 8 1943 1527		ACK
+tube	xrayoff			ACK
+scanner	pause	3000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\darkfield		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayoff			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\darkfield\scan_19.tif		ACK
+tube	xrayon			ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	30		ACK
+tube	set power	20		ACK
+scanner	pause	20000.000000		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	30		ACK
+tube	set power	10		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\10W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	30		ACK
+tube	set power	20		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\20W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	30		ACK
+tube	set power	30		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\30W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	30		ACK
+tube	set power	40		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\30kV\40W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	45		ACK
+tube	set power	20		ACK
+scanner	pause	20000.000000		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	45		ACK
+tube	set power	10		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\10W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	45		ACK
+tube	set power	20		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\20W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	45		ACK
+tube	set power	30		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\30W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	45		ACK
+tube	set power	40		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\45kV\40W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	60		ACK
+tube	set power	20		ACK
+scanner	pause	20000.000000		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	60		ACK
+tube	set power	10		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\10W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	60		ACK
+tube	set power	20		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\20W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	60		ACK
+tube	set power	30		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\30W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	60		ACK
+tube	set power	40		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\60kV\40W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	75		ACK
+tube	set power	20		ACK
+scanner	pause	20000.000000		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	75		ACK
+tube	set power	10		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\10W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	75		ACK
+tube	set power	20		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\20W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	75		ACK
+tube	set power	30		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\30W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	75		ACK
+tube	set power	40		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\75kV\40W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	90		ACK
+tube	set power	20		ACK
+scanner	pause	20000.000000		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	90		ACK
+tube	set power	10		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\10W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	90		ACK
+tube	set power	20		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\20W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	90		ACK
+tube	set power	30		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\30W\scan_19.tif		ACK
+tube	set focus mode	microfocus		ACK
+tube	set kV	90		ACK
+tube	set power	40		ACK
+scanner	pause	10000.000000		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_00		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_00.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_01		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_01.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_02		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_02.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_03		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_03.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_04		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_04.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_05		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_05.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_06		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_06.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_07		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_07.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_08		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_08.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_09		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_09.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_10		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_10.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_11		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_11.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_12		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_12.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_13		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_13.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_14		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_14.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_15		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_15.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_16		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_16.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_17		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_17.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_18		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_18.tif		ACK
+scanner	set output path	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W		ACK
+scanner	set sample info	scan_19		ACK
+tube	xrayon			ACK
+camera	set number of averages	1		ACK
+camera	take image			ACK
+camera	save image	F:\alex\2026-06-08_Detector_noise_calibration\90kV\40W\scan_19.tif		ACK
+camera	set number of averages	1		ACK
+tube	xrayoff			ACK
+rot_obj	set speed	45.000000		ACK
+rot_obj	set acceleration	45.000000		ACK
+rot_obj	goto reference			ACK
+tra_obj	move absolute	0.540500		ACK

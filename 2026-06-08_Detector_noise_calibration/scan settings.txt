@@ -1,0 +1,13 @@
+Script summary:
+
+scan type:
+smooth scan
+# projections: 2867
+Start angle : 0.000000
+Last angle : 360.000000
+# pre flat fields: 145
+# post flat fields: 0
+# offset images: 60
+Reference images every 0 projections
+Preheating time: 20 minutes
+Axis for flat field movement : tra_obj

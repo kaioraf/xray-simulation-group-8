@@ -1,0 +1,11 @@
+[Scan info]
+ScanID = "260608_007"
+BatchID = ""
+Start = "2026-06-08 12:14:24.4975600 UTC"
+Stop = "2026-06-08 12:34:11.9538006 UTC"
+Duration = "00:19:47"
+Succeeded = TRUE
+Error = "No error"
+Scanner name = "CWI"
+Scanner S/N = "001"
+Acquila version = "2727:af20fc9e4ea4"
