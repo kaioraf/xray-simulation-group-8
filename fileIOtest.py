@@ -19,4 +19,4 @@ for filename in glob.glob(os.path.join(path, '*.csv')):
             var = 0
             for lines in csvFile:
                   var += ((float(lines[1]) - (summ/len))**2)
-            s
+            
