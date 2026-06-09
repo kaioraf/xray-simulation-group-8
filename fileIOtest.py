@@ -1,22 +1,29 @@
 import os, glob
-path = '/home/kaio/Documents/Uni/Practicum 1/Data'
-avg_list = {}
-std_dev_list = {}
-for filename in glob.glob(os.path.join(path, '*.csv')):
+from PIL import Image
+import scipy as sp
+import numpy as np
+import platform
+
+#take the path to the directory that will be processed, accounting for windows/unix filesystems
+dirname = os.path.dirname(__file__)
+if (platform.system() == 'Linux' or platform.system() == 'Darwin'): 
+      path = os.path.join(dirname, '2026-06-08_Detector_noise_calibration/darkfield')
+else:
+      path = os.path.join(dirname, '2026-06-08_Detector_noise_calibration\darkfield')
+      
+
+for filename in glob.glob(os.path.join(path, '*.tif')):
       print(filename)
-      with open(os.path.join(os.getcwd(), filename), 'r') as file: # open in readonly mode
-            csvFile = csv.reader(file)
-            next(csvFile)
-            summ = 0
-            len=0
-            for lines in csvFile:
-                  summ += float(lines[1])
-                  len += 1
-            avg_list.update({filename: (summ/len)})
-      with open(os.path.join(os.getcwd(), filename), 'r') as file: 
-            csvFile = csv.reader(file)
-            next(csvFile)
-            var = 0
-            for lines in csvFile:
-                  var += ((float(lines[1]) - (summ/len))**2)
+      # Image.open("2026-06-08_Detector_noise_calibration\darkfield\scan_00.tif")
+      # with open(os.path.join(os.getcwd(), filename), 'r') as file: # open in readonly mode
+      #       for lines in csvFile:
+      #             summ += float(lines[1])
+      #             len += 1
+      #       avg_list.update({filename: (summ/len)})
+      # with open(os.path.join(os.getcwd(), filename), 'r') as file: 
+      #       csvFile = csv.reader(file)
+      #       next(csvFile)
+      #       var = 0
+      #       for lines in csvFile:
+      #             var += ((float(lines[1]) - (summ/len))**2)
             
