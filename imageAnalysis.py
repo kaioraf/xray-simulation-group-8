@@ -43,16 +43,8 @@ def average_single_pixel(images, x, y):
 def get_variance_single_pixel(images, x, y, average):
       return np.var(images[y,x], mean=average)
 
-image = images_to_array()
-avg = average_single_pixel(image, 0, 0)
-print(get_variance_single_pixel(image, 0, 0, avg))
-# get_variance_single_pixel(average_single_pixel(images_to_array(), 0, 0), 0,0)
-
-# average_single_pixel(images_to_array(), 0, 0)     
-
-
-# px = average_full_images()
-# px = px *2
-# p = Image.fromarray((px).astype(np.uint16))
-
-# p.save('result.png')
+def create_image(image, exposure=1):
+      px = px * exposure
+      p = Image.fromarray((px).astype(np.uint16))
+      p.save('result.png')
+      
