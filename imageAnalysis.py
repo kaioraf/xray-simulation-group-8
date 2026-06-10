@@ -20,40 +20,31 @@ COUNTS = 20
 def average_full_images():
       images = images_to_array()
       
-      
-      
       #get the dimensions of the images
-      width = int(images.shape[1])
       height = int(images.shape[0])
-      print(width, height)
+      width = int(images.shape[1])
       
-      avg_array_xy = np.zeros(width, height)
-      for y in range(height):
-            for x in range(width):  
+      #create an empty array
+      avg_array_xy = np.zeros((width, height))
+      
+      for y in range(height-1):
+            for x in range(width-1):                   
                   avg_array_xy[x, y] = average_single_pixel(images, x, y) 
       
-      # for i in range(20):
-      #       for j in range(20):
-      #             print(len(avg_array_xy[x]), len(avg_array_xy))
-      return avg_array_xy
+#       # for i in range(20):
+#       #       for j in range(20):
+#       #             print(len(avg_array_xy[x]), len(avg_array_xy))
+#       return avg_array_xy
 
 #take the stack of 20 images and average their values
 def average_single_pixel(images, x, y):
-      return np.average(images[x,y])
-      
-      # array_to_average = []
-      # for image in images.values():
-      #       array_to_average.append(image[x][y])
-      # return np.average(array_to_average)
+      return np.average(images[y,x])
       
 def get_variance_single_pixel(images, x, y, average):
-      return np.var(images, x, y, mean=average)
+      return np.var(images[y,x], mean=average)
 
-average_single_pixel(images_to_array(), 0, 0)    
-
-print(average_full_images())  
-
-# px = average_full_images()
-# p = Image.fromarray((px).astype(np.uint8))
-
-# p.save('result.png')
+def create_image(image, exposure=1):
+      px = px * exposure
+      p = Image.fromarray((px).astype(np.uint16))
+      p.save('result.png')
+      
