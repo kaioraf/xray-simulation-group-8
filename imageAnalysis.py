@@ -31,10 +31,10 @@ def average_full_images():
             for x in range(width-1):                   
                   avg_array_xy[x, y] = average_single_pixel(images, x, y) 
       
-      # for i in range(20):
-      #       for j in range(20):
-      #             print(len(avg_array_xy[x]), len(avg_array_xy))
-      return avg_array_xy
+#       # for i in range(20):
+#       #       for j in range(20):
+#       #             print(len(avg_array_xy[x]), len(avg_array_xy))
+#       return avg_array_xy
 
 #take the stack of 20 images and average their values
 def average_single_pixel(images, x, y):

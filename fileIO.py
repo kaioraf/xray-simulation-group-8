@@ -51,9 +51,6 @@ def images_to_array(voltage_type= 'darkfield'):
                   prev_array = np.concat((prev_array, three_D_image_array), 2) 
                   
       image_array = prev_array
-      print(image_array.shape)
-      for i in range(20):
-            print(image_array[0,0,i])
       return image_array
         
 images_to_array()
