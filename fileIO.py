@@ -6,6 +6,7 @@ import platform
 
 #returns a dictionary filled with the 20 different image arrays, with their key being [filename]/scan_xx.tif
 def image_to_dict(voltage_type = 'darkfield'):
+      COUNTS = 20
       #take the path to the directory that will be processed, accounting for windows/unix filesystems
       dirname = os.path.dirname(__file__)
       if (platform.system() == 'Linux' or platform.system() == 'Darwin'): #darwin = macos
@@ -24,4 +25,24 @@ def image_to_dict(voltage_type = 'darkfield'):
       
       return image_dict
 
+def image_to_array(voltage_type= 'darkfield'):
+      COUNTS = 20
+      image_array = np.zeros(20)
+      #take the path to the directory that will be processed, accounting for windows/unix filesystems
+      dirname = os.path.dirname(__file__)
+      if (platform.system() == 'Linux' or platform.system() == 'Darwin'): #darwin = macos
+            path = os.path.join(dirname, '2026-06-08_Detector_noise_calibration/', voltage_type)
+      else: #windows
+            path = os.path.join(dirname, '2026-06-08_Detector_noise_calibration\\', voltage_type) 
+            
+      image_dict = {}
+      i=0
+      for filename in glob.glob(os.path.join(path, '*.tif')): #loop through all the .tif image files in the specified folder
+            image = Image.open(filename)
+            image_as_array = np.array(image)
+            image_array[i] = image_as_array
+            i+=1
+      print(image_array)
+
+image_to_array()
 image_to_dict()            
