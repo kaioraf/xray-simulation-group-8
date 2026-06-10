@@ -4,30 +4,53 @@ import scipy as sp
 import numpy as np
 import platform
 
-VOLTAGES = {30, 45, 60, 75, 90} 
-WATTAGES = {10, 20, 30, 40}
-COUNTS = 20
-
+SCREENWIDTH = 1520
+SCREENHEIGHT = 1912
 
 #returns a dictionary filled with the 20 different image arrays, with their key being [filename]/scan_xx.tif
-def image_to_dict(voltage_type = 'darkfield'):
+def images_to_dict(voltage_type = 'darkfield'):
+      COUNTS = 20
       #take the path to the directory that will be processed, accounting for windows/unix filesystems
       dirname = os.path.dirname(__file__)
-      if (platform.system() == 'Linux' or platform.system() == 'Darwin'): 
+      if (platform.system() == 'Linux' or platform.system() == 'Darwin'): #darwin = macos
             path = os.path.join(dirname, '2026-06-08_Detector_noise_calibration/', voltage_type)
-      else:
-            path = os.path.join(dirname, '2026-06-08_Detector_noise_calibration\\', voltage_type)
+      else: #windows
+            path = os.path.join(dirname, '2026-06-08_Detector_noise_calibration\\', voltage_type) 
             
       image_dict = {}
 
-      for filename in glob.glob(os.path.join(path, '*.tif')):
-            print(filename)
+      for filename in glob.glob(os.path.join(path, '*.tif')): #loop through all the .tif image files in the specified folder
             image = Image.open(filename)
             image_as_array = np.array(image)
             image_dict.update({filename: image_as_array})
 
-      print(image_dict.keys())
+      # print(image_dict.keys()) #test print
       
       return image_dict
 
-image_to_dict()            
+def images_to_array(voltage_type= 'darkfield'):
+      COUNTS = 20
+      
+      #take the path to the directory that will be processed, accounting for windows/unix filesystems
+      dirname = os.path.dirname(__file__)
+      if (platform.system() == 'Linux' or platform.system() == 'Darwin'): #darwin = macos
+            path = os.path.join(dirname, '2026-06-08_Detector_noise_calibration/', voltage_type)
+      else: #windows
+            path = os.path.join(dirname, '2026-06-08_Detector_noise_calibration\\', voltage_type) 
+            
+      #now we will create the 3d np.array, first creating a 2d image array
+      first_loop = True 
+      for filename in glob.glob(os.path.join(path, '*.tif')): #loop through all the .tif image files in the specified folder
+            image_as_array = np.array(Image.open(filename))
+            three_D_image_array = image_as_array[:, :, None] #make a 2d image into a n * n * 1 3d image for later
+
+            if first_loop: #on the first loop, we can't combine the current with the previous, so we just set prev_array to the current one
+                  prev_array = three_D_image_array
+                  first_loop = False
+            else: #here, we add the new 3d array to the existing 3d array 
+                  prev_array = np.concat((prev_array, three_D_image_array), 2) 
+                  
+      image_array = prev_array
+      return image_array
+        
+images_to_array()
