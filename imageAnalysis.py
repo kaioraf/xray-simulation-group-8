@@ -17,8 +17,8 @@ COUNTS = 20
 
 
 #take all the files within some folder e.g. 75kV/10W/, and then averages all their values into a single new image
-def average_full_images():
-      images = images_to_array()
+def average_full_images(path):
+      images = images_to_array(path)
       
       #get the dimensions of the images
       height = int(images.shape[0])
@@ -31,9 +31,6 @@ def average_full_images():
             for x in range(width-1):                   
                   avg_array_xy[x, y] = average_single_pixel(images, x, y) 
       
-#       # for i in range(20):
-#       #       for j in range(20):
-#       #             print(len(avg_array_xy[x]), len(avg_array_xy))
 #       return avg_array_xy
 
 #take the stack of 20 images and average their values
@@ -43,8 +40,9 @@ def average_single_pixel(images, x, y):
 def get_variance_single_pixel(images, x, y, average):
       return np.var(images[y,x], mean=average)
 
+#go from an image array to a png image, use exposure to adjust the brightness
 def create_image(image, exposure=1):
-      px = px * exposure
-      p = Image.fromarray((px).astype(np.uint16))
+      image = image * exposure
+      p = Image.fromarray((image).astype(np.uint16))
       p.save('result.png')
       
