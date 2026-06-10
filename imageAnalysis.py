@@ -17,25 +17,25 @@ COUNTS = 20
 
 
 #take all the files within some folder e.g. 75kV/10W/, and then averages all their values into a single new image
-def average_full_images():
-      images = images_to_array()
+# def average_full_images():
+#       images = images_to_array()
       
       
       
-      #get the dimensions of the images
-      width = int(images.shape[1])
-      height = int(images.shape[0])
-      print(width, height)
+#       #get the dimensions of the images
+#       width = int(images.shape[1])
+#       height = int(images.shape[0])
+#       print(width, height)
       
-      avg_array_xy = np.zeros(width, height)
-      for y in range(height):
-            for x in range(width):  
-                  avg_array_xy[x, y] = average_single_pixel(images, x, y) 
+#       avg_array_xy = np.zeros(width, height)
+#       for y in range(height):
+#             for x in range(width):  
+#                   avg_array_xy[x, y] = average_single_pixel(images, x, y) 
       
-      # for i in range(20):
-      #       for j in range(20):
-      #             print(len(avg_array_xy[x]), len(avg_array_xy))
-      return avg_array_xy
+#       # for i in range(20):
+#       #       for j in range(20):
+#       #             print(len(avg_array_xy[x]), len(avg_array_xy))
+#       return avg_array_xy
 
 #take the stack of 20 images and average their values
 def average_single_pixel(images, x, y):
@@ -49,9 +49,7 @@ def average_single_pixel(images, x, y):
 def get_variance_single_pixel(images, x, y, average):
       return np.var(images, x, y, mean=average)
 
-average_single_pixel(images_to_array(), 0, 0)    
 
-print(average_full_images())  
 
 # px = average_full_images()
 # p = Image.fromarray((px).astype(np.uint8))
