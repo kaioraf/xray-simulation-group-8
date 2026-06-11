@@ -29,7 +29,10 @@ def average_full_images(path):
       
       for y in range(height-1):
             for x in range(width-1):                   
-                  avg_array_xy[x, y] = average_single_pixel(images, x, y) 
+                  avg_array_xy[x, y] = average_single_pixel(images, x, y)
+
+      #save values to npy file, retrieve: avg_image = np.load("avg_array_75kV_10W.npy")
+      # np.save(f"avg_array_{path}.npy", avg_array_xy) 
       
       return avg_array_xy
 

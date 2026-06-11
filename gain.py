@@ -20,7 +20,7 @@ def gain(images, pixel_x, pixel_y):
         raise ValueError("Cannot calculate gain because y and d_e are equal.")
 
     gain_value = (var_y - var_de) / (y - d_e)
-    print(gain_value)
+    # print(gain_value)
     return gain_value
 
 
@@ -58,7 +58,7 @@ for voltage, gains in gain_by_voltage.items():
 plt.xlabel("Wattage (W)")
 plt.ylabel("Gain")
 plt.title("Gain vs Wattage for Different Voltages")
-plt.xlim(5,46)
+plt.xlim(5,45)
 plt.ylim(0,2)
 plt.legend()
 plt.grid(True, which="both")
