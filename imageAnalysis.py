@@ -17,7 +17,7 @@ COUNTS = 20
 
 
 #take all the files within some folder e.g. 75kV/10W/, and then averages all their values into a single new image
-def average_full_images(images, voltage_type, save_file = False):
+def average_full_images(images, voltage_type='darfield', save_file = False):
       
       #get the dimensions of the images
       height = int(images.shape[0])
