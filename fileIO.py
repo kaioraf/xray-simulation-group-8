@@ -52,7 +52,20 @@ def images_to_array(voltage_type= 'darkfield'):
                   
       image_array = prev_array
       return image_array
-        
+
+def read_np_image_arrays(voltage_type = 'darkfield', filetype = 'npy', dist_type = 'avg'):
+      dirname = os.path.dirname(__file__)
+      safe_path = voltage_type[:4] + voltage_type[5:]
+      if (platform.system() == 'Linux' or platform.system() == 'Darwin'): #darwin = macos
+            full_path = f"{dirname}Numpy image arrays{voltage_type}{dist_type}_array_{safe_path}.{filetype}"
+      else: #windows
+            full_path = f"{dirname}\\Numpy image arrays\\{voltage_type}\\{dist_type}_array_{safe_path}.{filetype}"
+            
+      if filetype == 'png':
+            return full_path
+      elif filetype == 'npy':
+            return np.load(full_path)
+       
 #images_to_array()
 # print(images_to_array(r'45kV\10W'))
 #images=images_to_dict(r'45kV\10W')

@@ -21,26 +21,26 @@ wattages = [10, 20, 30, 40]
 pixel_x=600
 pixel_y=50
 
-# #plot van gemiddelde pixelwaarde vs wattage voor voltages
-for volt in voltages:
-    averagewattages_lst=[pixel_average(str(volt)+"kV\\"+str(watt)+"W", pixel_x, pixel_y) for watt in wattages]
-    plt.plot(wattages, averagewattages_lst, marker="o", label=f"{volt} kV")
-    plt.title("Average pixel value vs wattages for different voltages")
-    plt.xlabel("Wattages")
-    plt.ylabel("Averages(geen darkfield afgetrokken)")
-    plt.legend(["30kV", "45kv", "60kV", "75kV", "90kv"])
-plt.show()
+# # #plot van gemiddelde pixelwaarde vs wattage voor voltages
+# for volt in voltages:
+#     averagewattages_lst=[pixel_average(str(volt)+"kV\\"+str(watt)+"W", pixel_x, pixel_y) for watt in wattages]
+#     plt.plot(wattages, averagewattages_lst, marker="o", label=f"{volt} kV")
+#     plt.title("Average pixel value vs wattages for different voltages")
+#     plt.xlabel("Wattages")
+#     plt.ylabel("Averages(geen darkfield afgetrokken)")
+#     plt.legend(["30kV", "45kv", "60kV", "75kV", "90kv"])
+# plt.show()
 
-# #plot van variantie vs voltage voor verschillende wattages
-for watt in wattages:
-    variancevoltages_lst=[pixel_variance(str(volt)+"kV\\"+str(watt)+"W", pixel_x, pixel_y) for volt in voltages]
-    plt.plot(voltages, variancevoltages_lst, marker="o")
-    plt.legend()
-    plt.title("Variance vs voltage for 4 different wattages")
-    plt.ylabel("variance (darkfield nog niet eraf gehaald)")
-    plt.xlabel("voltage")
-    plt.legend(["10W", "20W", "30W", "40W"])
-plt.show()
+# # #plot van variantie vs voltage voor verschillende wattages
+# for watt in wattages:
+#     variancevoltages_lst=[pixel_variance(str(volt)+"kV\\"+str(watt)+"W", pixel_x, pixel_y) for volt in voltages]
+#     plt.plot(voltages, variancevoltages_lst, marker="o")
+#     plt.legend()
+#     plt.title("Variance vs voltage for 4 different wattages")
+#     plt.ylabel("variance (darkfield nog niet eraf gehaald)")
+#     plt.xlabel("voltage")
+#     plt.legend(["10W", "20W", "30W", "40W"])
+# plt.show()
 
 #plot van variantie vs wattage voor verschillende voltages
 for volt in voltages:
