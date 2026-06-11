@@ -4,24 +4,27 @@ import scipy as sp
 import numpy as np
 import platform
 
-from fileIO import images_to_array
+from fileIO import *
 
-dirname = os.path.dirname(__file__)
-if (platform.system() == 'Linux' or platform.system() == 'Darwin'): #darwin = macos
-    path = os.path.join(dirname, 'Numpy image arrays/')
-else: #windows
-    path = os.path.join(dirname, 'Numpy image arrays\\') 
+#def read_np_image_arrays(voltage_type = 'darkfield', filetype = 'npy', dist_type = 'avg'):
+intensity_array = 0
+x_len = read_np_image_arrays().shape[0]
+y_len = read_np_image_arrays().shape[1]
 
-intensity_array = np.zeros((5,5))
-
-#for filename in glob.glob(os.path.join(path, '*.npy')): 
-   # if 'avg' in filename:
+print(read_np_image_arrays()[x_len // 2, y_len // 2])
 
 
 
-intensity_array_30kV = np.array()
-intensity_array_30kV.append(2)
-print(intensity_array_30kV)
+
+
+
+
+#intensity_list_30kV = []
+#for filename in  glob.glob(os.path.join(path, '30kV')):
+#    if 'dark' in filename:
+#        array = np.load(filename)
+#        intensity_list_30kV.append()
+
         
     
 
