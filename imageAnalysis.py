@@ -11,14 +11,13 @@ import platform
 
 from fileIO import images_to_array
 
-VOLTAGES = {30, 45, 60, 75, 90} 
-WATTAGES = {10, 20, 30, 40}
+VOLTAGES = {'30', '45', '60', '75', '90'} 
+WATTAGES = {'10', '20', '30', '40'}
 COUNTS = 20
 
 
 #take all the files within some folder e.g. 75kV/10W/, and then averages all their values into a single new image
-def average_full_images(path):
-      images = images_to_array(path)
+def average_full_images(images, voltage_type='darkfield', save_file = False):
       
       #get the dimensions of the images
       height = int(images.shape[0])
@@ -31,26 +30,36 @@ def average_full_images(path):
             for x in range(width-1):                   
                   avg_array_xy[x, y] = average_single_pixel(images, x, y)
 
-      #save values to npy file, retrieve: avg_image = np.load("avg_array_75kV_10W.npy")
-      # np.save(f"avg_array_{path}.npy", avg_array_xy) 
-      
+      if save_file:
+            dirname = os.path.dirname(__file__)
+            #remove the slash from the filename
+            safe_path = voltage_type[:4] + voltage_type[5:]
+            #save values to npy file. to read out the image: avg_image = np.load("avg_array_75kV_10W.npy")
+            np.save(f"{dirname}/Numpy image arrays/{voltage_type}/avg_array_{safe_path}.npy", avg_array_xy)
+
       return avg_array_xy
 
 #take all the files within some folder e.g. 75kV/10W/, and for each pixel calculate the variance of the 20 images
 #so it outputs a 2D array with each pixel entry being it's variance
-def variance_full_images(path):
-      images = images_to_array(path)
+def variance_full_images(images, voltage_type='darkfield', save_file = False):
 
       #get dimension of the images
       height = int(images.shape[0])
-      width = int(images.shape)[1]
+      width = int(images.shape[1])
 
       #create an empty array
-      var_array_xy = np.zeros(width, height)
+      var_array_xy = np.zeros((width, height))
 
       for y in range(height-1):
             for x in range(width-1):
                   var_array_xy[x, y] = get_variance_single_pixel(images, x, y)
+      
+      if save_file:
+            dirname = os.path.dirname(__file__)
+            #remove the slash from the filename
+            safe_path = voltage_type[:4] + voltage_type[5:]
+            #save values to npy file. to read out the image: avg_image = np.load("avg_array_75kV_10W.npy")
+            np.save(f"{dirname}/Numpy image arrays/{voltage_type}/var_array_{safe_path}.npy", var_array_xy)
 
       return var_array_xy
 
@@ -58,25 +67,37 @@ def variance_full_images(path):
 def average_single_pixel(images, x, y):
       return np.average(images[y,x])
       
-def get_variance_single_pixel(images, x, y, average):
-      return np.var(images[y,x], mean=average)
+def get_variance_single_pixel(images, x, y):
+      return np.var(images[y,x])
 
-image = images_to_array()
-avg = average_single_pixel(image, 0, 0)
+#go from an image array to a png image, use exposure to adjust the brightness
+def create_image(image, exposure=1, filename='result.png'):
+      print(filename)
+      image = image * exposure
+      p = Image.fromarray((image).astype(np.uint16))
+      p.save(filename)
+      
+def create_all_images(): #very long function, do not run if the files are already created!
+      for voltage in VOLTAGES:
+            for wattage in WATTAGES:
+                  print(voltage, wattage)
+                  path = voltage + "kV" + "/" + wattage + "W" #linux/macos only, but this will only run once anyway
+                  images = images_to_array(path)
+                  avg = average_full_images(images, path, save_file=True)
+                  var = variance_full_images(images, path, save_file=True)
+                  
+                  dirname = os.path.dirname(__file__)
+                  safe_path = path[:4] + path[5:]
+                  full_path = f"{dirname}/Numpy image arrays/{path}/avg_array_{safe_path}.png"
+                  create_image(avg, filename=full_path)
+                  full_path = f"{dirname}/Numpy image arrays/{path}/var_array_{safe_path}.png"
+                  create_image(var, filename=full_path)
+                  
+# create_all_images()
+# image = images_to_array()
+# avg = average_single_pixel(image, 0, 0)
 # print(get_variance_single_pixel(image, 0, 0, avg))
 # get_variance_single_pixel(average_single_pixel(images_to_array(), 0, 0), 0,0)
 
 # average_single_pixel(images_to_array(), 0, 0)     
 
-
-# px = average_full_images()
-# px = px *2
-# p = Image.fromarray((px).astype(np.uint16))
-
-# p.save('result.png')
-#go from an image array to a png image, use exposure to adjust the brightness
-def create_image(image, exposure=1):
-      image = image * exposure
-      p = Image.fromarray((image).astype(np.uint16))
-      p.save('result.png')
-      
