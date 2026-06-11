@@ -45,10 +45,10 @@ def variance_full_images(images, voltage_type='darkfield', save_file = False):
 
       #get dimension of the images
       height = int(images.shape[0])
-      width = int(images.shape)[1]
+      width = int(images.shape[1])
 
       #create an empty array
-      var_array_xy = np.zeros(width, height)
+      var_array_xy = np.zeros((width, height))
 
       for y in range(height-1):
             for x in range(width-1):
@@ -67,8 +67,8 @@ def variance_full_images(images, voltage_type='darkfield', save_file = False):
 def average_single_pixel(images, x, y):
       return np.average(images[y,x])
       
-def get_variance_single_pixel(images, x, y, average):
-      return np.var(images[y,x], mean=average)
+def get_variance_single_pixel(images, x, y):
+      return np.var(images[y,x])
 
 #go from an image array to a png image, use exposure to adjust the brightness
 def create_image(image, exposure=1, filename='result.png'):
