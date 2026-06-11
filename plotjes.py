@@ -7,12 +7,12 @@ from fileIO import *
 import matplotlib.pyplot as plt
 
 def pixel_average(voltage_type, x, y):
-    return average_single_pixel(images_to_array(voltage_type), x, y)
+    return read_np_image_arrays(voltage_type, 'avg')[x,y]
 
 # print(pixel_average('75kV\\40W', 500, 40))
 
 def pixel_variance(voltage_type, x, y):
-    return get_variance_single_pixel(images_to_array(voltage_type), x, y)
+    read_np_image_arrays(voltage_type, 'var')[x,y]
 
 
 voltages = [30, 45, 60, 75, 90]
