@@ -53,4 +53,8 @@ def images_to_array(voltage_type= 'darkfield'):
       image_array = prev_array
       return image_array
         
-images_to_array()
+#images_to_array()
+print(images_to_array(r'45kV\10W'))
+#images=images_to_dict(r'45kV\10W')
+#print(images[r'C:\Users\beekm\programming_projects\Project-group-8\2026-06-08_Detector_noise_calibration\45kV\10W\scan_00.tif'])
+#print(images_to_dict(r'45kV\10W'))

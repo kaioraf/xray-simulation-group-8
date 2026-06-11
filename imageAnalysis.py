@@ -31,7 +31,25 @@ def average_full_images(path):
             for x in range(width-1):                   
                   avg_array_xy[x, y] = average_single_pixel(images, x, y) 
       
-#       return avg_array_xy
+      return avg_array_xy
+
+#take all the files within some folder e.g. 75kV/10W/, and for each pixel calculate the variance of the 20 images
+#so it outputs a 2D array with each pixel entry being it's variance
+def variance_full_images(path):
+      images = images_to_array(path)
+
+      #get dimension of the images
+      height = int(images.shape[0])
+      width = int(images.shape)[1]
+
+      #create an empty array
+      var_array_xy = np.zeros(width, height)
+
+      for y in range(height-1):
+            for x in range(width-1):
+                  var_array_xy[x, y] = get_variance_single_pixel(images, x, y)
+
+      return var_array_xy
 
 #take the stack of 20 images and average their values
 def average_single_pixel(images, x, y):
