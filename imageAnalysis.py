@@ -80,3 +80,4 @@ def create_image(image, exposure=1):
       p = Image.fromarray((image).astype(np.uint16))
       p.save('result.png')
       
+
