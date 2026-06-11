@@ -17,8 +17,8 @@ COUNTS = 20
 
 
 #take all the files within some folder e.g. 75kV/10W/, and then averages all their values into a single new image
-def average_full_images():
-      images = images_to_array()
+def average_full_images(path):
+      images = images_to_array(path)
       
       #get the dimensions of the images
       height = int(images.shape[0])
@@ -29,12 +29,30 @@ def average_full_images():
       
       for y in range(height-1):
             for x in range(width-1):                   
-                  avg_array_xy[x, y] = average_single_pixel(images, x, y) 
+                  avg_array_xy[x, y] = average_single_pixel(images, x, y)
+
+      #save values to npy file, retrieve: avg_image = np.load("avg_array_75kV_10W.npy")
+      # np.save(f"avg_array_{path}.npy", avg_array_xy) 
       
-#       # for i in range(20):
-#       #       for j in range(20):
-#       #             print(len(avg_array_xy[x]), len(avg_array_xy))
-#       return avg_array_xy
+      return avg_array_xy
+
+#take all the files within some folder e.g. 75kV/10W/, and for each pixel calculate the variance of the 20 images
+#so it outputs a 2D array with each pixel entry being it's variance
+def variance_full_images(path):
+      images = images_to_array(path)
+
+      #get dimension of the images
+      height = int(images.shape[0])
+      width = int(images.shape)[1]
+
+      #create an empty array
+      var_array_xy = np.zeros(width, height)
+
+      for y in range(height-1):
+            for x in range(width-1):
+                  var_array_xy[x, y] = get_variance_single_pixel(images, x, y)
+
+      return var_array_xy
 
 #take the stack of 20 images and average their values
 def average_single_pixel(images, x, y):
@@ -43,8 +61,22 @@ def average_single_pixel(images, x, y):
 def get_variance_single_pixel(images, x, y, average):
       return np.var(images[y,x], mean=average)
 
+image = images_to_array()
+avg = average_single_pixel(image, 0, 0)
+# print(get_variance_single_pixel(image, 0, 0, avg))
+# get_variance_single_pixel(average_single_pixel(images_to_array(), 0, 0), 0,0)
+
+# average_single_pixel(images_to_array(), 0, 0)     
+
+
+# px = average_full_images()
+# px = px *2
+# p = Image.fromarray((px).astype(np.uint16))
+
+# p.save('result.png')
+#go from an image array to a png image, use exposure to adjust the brightness
 def create_image(image, exposure=1):
-      px = px * exposure
-      p = Image.fromarray((px).astype(np.uint16))
+      image = image * exposure
+      p = Image.fromarray((image).astype(np.uint16))
       p.save('result.png')
       
