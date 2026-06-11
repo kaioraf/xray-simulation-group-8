@@ -28,3 +28,4 @@ import os, glob
 # array_dir = os.path.join(dirname, "Numpy image arrays")
 # print(array_dir)
 # print(os.path.exists(array_dir))
+
