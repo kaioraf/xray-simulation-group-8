@@ -10,7 +10,7 @@ pixel_x = 0
 pixel_y=0
 
 # Calculate gain for single pixels
-# ------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
 def gain(images_avg, images_var, pixel_x, pixel_y):
     # grab avg intensity and var intensity from array of chosen pixel
     y = images_avg[pixel_x, pixel_y]
@@ -49,6 +49,28 @@ for voltage in voltages:
         print(f"{voltage} kV, {watt} W: gain = {gain_value}")
 
     gain_by_voltage[voltage] = gain_lst
+
+    # RESULTS:
+    # 30 kV, 10 W: gain = 0.49732066565733396
+    # 30 kV, 20 W: gain = 0.49658032272206576
+    # 30 kV, 30 W: gain = 0.4974014623766823
+    # 30 kV, 40 W: gain = 0.4982955189648602
+    # 45 kV, 10 W: gain = 0.7079770380980214
+    # 45 kV, 20 W: gain = 0.708662168281262
+    # 45 kV, 30 W: gain = 0.7082068231686385
+    # 45 kV, 40 W: gain = 0.7096467542608949
+    # 60 kV, 10 W: gain = 0.8551124239661559
+    # 60 kV, 20 W: gain = 0.8563697851525969
+    # 60 kV, 30 W: gain = 0.8579282804948085
+    # 60 kV, 40 W: gain = 0.8594508876470477
+    # 75 kV, 10 W: gain = 0.9843940511669307
+    # 75 kV, 20 W: gain = 0.9846795218421803
+    # 75 kV, 30 W: gain = 0.9861696699784297
+    # 75 kV, 40 W: gain = 0.9851329470417651
+    # 90 kV, 10 W: gain = 1.1098482204501892
+    # 90 kV, 20 W: gain = 1.1124966302890238
+    # 90 kV, 30 W: gain = 1.1120634555658473
+    # 90 kV, 40 W: gain = 1.1119043705511888
 # --------------------------------------------------------------------------------------------
 
 # Plot wattage against gain for every constant voltage
@@ -57,11 +79,11 @@ for voltage, gains in gain_by_voltage.items():
 
 plt.xlabel("Wattage (W)")
 plt.ylabel("Gain")
-plt.title(f"Gain vs Wattage for Different Voltages, PIXEL({pixel_x},{pixel_y})")
+plt.title(f"Gain vs Wattage for Different Voltages FULL")
 plt.legend()
 plt.grid(True, which="both")
+plt.savefig(f"gain pixel({pixel_x}, {pixel_y}).png")
 plt.show()
-# plt.savefig(f"gain pixel({pixel_x}, {pixel_y}).png")
 
 
 # Calculate gain with the average values of entire image (avg avg and avg var)- !!!not in use!!!
@@ -90,7 +112,7 @@ plt.show()
 # # Store gain values for each voltage (dictionary)
 # gain_by_voltage = {}
 
-#all settings
+# # all settings
 # VOLTAGES = ["30", "45", "60", "75", "90"]
 # WATTAGES = ["10", "20", "30", "40"]
 
@@ -109,3 +131,5 @@ plt.show()
 
 #     gain_by_voltage[voltage] = gain_lst
 # ------------------------------------------------------------------------------------------------
+
+
