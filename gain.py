@@ -1,5 +1,6 @@
 from imageAnalysis import average_single_pixel, get_variance_single_pixel
 from fileIO import images_to_array
+import matplotlib.pyplot as plt
 
 
 def gain(images, pixel_x, pixel_y):
@@ -24,8 +25,45 @@ def gain(images, pixel_x, pixel_y):
 
 
 # Change folder and pixel
-images = images_to_array(voltage_type="30kV\\10W")
 pixel_x = 0
 pixel_y = 0
 
-gain(images, pixel_x, pixel_y)
+# Available settings
+voltages = [30, 45, 60, 75, 90]
+wattages = [10, 20, 30, 40]
+
+
+# Store gain values for each voltage (dictionary)
+gain_by_voltage = {}
+
+for voltage in voltages:
+    gain_lst = []
+
+    for watt in wattages:
+        folder = f"{voltage}kV\\{watt}W"
+        images = images_to_array(voltage_type=folder)
+
+        gain_value = gain(images, pixel_x, pixel_y)
+        gain_lst.append(gain_value)
+
+        # print(f"{voltage} kV, {watt} W: gain = {gain_value}")
+
+    gain_by_voltage[voltage] = gain_lst
+
+
+# Plot wattage against gain for every constant voltage
+for voltage, gains in gain_by_voltage.items():
+    plt.plot(wattages, gains, marker="o", label=f"{voltage} kV")
+
+plt.xlabel("Wattage (W)")
+plt.ylabel("Gain")
+plt.title("Gain vs Wattage for Different Voltages")
+plt.xlim(5,46)
+plt.ylim(0,2)
+plt.legend()
+plt.grid(True, which="both")
+plt.show()
+    
+
+
+

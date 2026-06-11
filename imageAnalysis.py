@@ -45,7 +45,7 @@ def get_variance_single_pixel(images, x, y, average):
 
 image = images_to_array()
 avg = average_single_pixel(image, 0, 0)
-print(get_variance_single_pixel(image, 0, 0, avg))
+# print(get_variance_single_pixel(image, 0, 0, avg))
 # get_variance_single_pixel(average_single_pixel(images_to_array(), 0, 0), 0,0)
 
 # average_single_pixel(images_to_array(), 0, 0)     
