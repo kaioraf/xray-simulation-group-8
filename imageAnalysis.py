@@ -11,13 +11,13 @@ import platform
 
 from fileIO import images_to_array
 
-VOLTAGES = {30, 45, 60, 75, 90} 
-WATTAGES = {10, 20, 30, 40}
+VOLTAGES = {'30', '45', '60', '75', '90'} 
+WATTAGES = {'10', '20', '30', '40'}
 COUNTS = 20
 
 
 #take all the files within some folder e.g. 75kV/10W/, and then averages all their values into a single new image
-def average_full_images(images, voltage_type='darfield', save_file = False):
+def average_full_images(images, voltage_type='darkfield', save_file = False):
       
       #get the dimensions of the images
       height = int(images.shape[0])
@@ -72,6 +72,7 @@ def get_variance_single_pixel(images, x, y):
 
 #go from an image array to a png image, use exposure to adjust the brightness
 def create_image(image, exposure=1, filename='result.png'):
+      print(filename)
       image = image * exposure
       p = Image.fromarray((image).astype(np.uint16))
       p.save(filename)
@@ -79,14 +80,20 @@ def create_image(image, exposure=1, filename='result.png'):
 def create_all_images(): #very long function, do not run if the files are already created!
       for voltage in VOLTAGES:
             for wattage in WATTAGES:
+                  print(voltage, wattage)
                   path = voltage + "kV" + "/" + wattage + "W" #linux/macos only, but this will only run once anyway
                   images = images_to_array(path)
                   avg = average_full_images(images, path, save_file=True)
                   var = variance_full_images(images, path, save_file=True)
-                  # create_image(avg, filename=)
                   
-  
-
+                  dirname = os.path.dirname(__file__)
+                  safe_path = path[:4] + path[5:]
+                  full_path = f"{dirname}/Numpy image arrays/{path}/avg_array_{safe_path}.png"
+                  create_image(avg, filename=full_path)
+                  full_path = f"{dirname}/Numpy image arrays/{path}/var_array_{safe_path}.png"
+                  create_image(var, filename=full_path)
+                  
+# create_all_images()
 # image = images_to_array()
 # avg = average_single_pixel(image, 0, 0)
 # print(get_variance_single_pixel(image, 0, 0, avg))
