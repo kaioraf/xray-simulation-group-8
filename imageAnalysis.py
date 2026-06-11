@@ -83,7 +83,7 @@ def create_all_images(): #very long function, do not run if the files are alread
                   images = images_to_array(path)
                   avg = average_full_images(images, path, save_file=True)
                   var = variance_full_images(images, path, save_file=True)
-                  create_image(avg, filename=)
+                  # create_image(avg, filename=)
                   
   
 
