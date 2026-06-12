@@ -3,11 +3,8 @@ Collection of functions to analyse the image arrays, taking their average and th
 either of an entire layer of images or a single layer of pixels
 """
 
-from fileIO import images_to_array
-from PIL import Image
-import glob, platform, os, time
-import numpy as np
-import scipy as sp
+from fileIO import *
+import time
 
 VOLTAGES: set = {'30', '45', '60', '75', '90'}
 WATTAGES: set = {'10', '20', '30', '40'}

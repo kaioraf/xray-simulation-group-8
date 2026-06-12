@@ -1,9 +1,4 @@
-from PIL import Image
-import scipy as sp
-import numpy as np
 from fileIO import *
-import os, glob
-
 
 def eerstepixelwaarde(volt, watt, count):
     volt=str(volt)
