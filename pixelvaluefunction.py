@@ -4,7 +4,10 @@ def eerstepixelwaarde(volt, watt, count):
     volt = str(object = volt)
     watt = str(object = watt)
     count = int(count)
-    voltage_name_maker: str = volt + "kV/" + watt + "W"
+    if (platform.system() == 'Linux' or platform.system() == 'Darwin'):
+        voltage_name_maker: str = volt + "kV/" + watt + "W"
+    else: # windows
+        voltage_name_maker: str = volt + "kV\\" + watt + "W"
     imagefolderarray: np.ndarray = images_to_array(voltage_type = voltage_name_maker)
     pixelwaarde: int = imagefolderarray[0, 0, count]
     return(pixelwaarde)
