@@ -16,7 +16,7 @@ wattages: list = [10, 20, 30, 40]
 pixel_x = 50
 pixel_y = 50
 
-# filpath
+# filepath
 if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
     slash: str = "/"
 else:
@@ -35,9 +35,9 @@ def plotje_avg_vs_watt():
         ]    
         plt.plot(wattages, averagewattages_lst, marker = "o", label = f"{volt} kV")
     
-    plt.title(label = "Average pixel value vs wattages for different voltages")
+    plt.title(label = "Average pixel value against wattage for different voltages")
     plt.xlabel(xlabel = "Wattages")
-    plt.ylabel(ylabel = "Averages(geen darkfield afgetrokken)")
+    plt.ylabel(ylabel = "Averages (geen darkfield afgetrokken)")
     plt.legend(["30kV", "45kv", "60kV", "75kV", "90kv"])
     plt.show()
 

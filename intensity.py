@@ -100,7 +100,11 @@ def plot_I_W(x, y):
             capsize = 8,
             label = voltages[i]
         )
+<<<<<<< HEAD
     plt.title(f'x, y = {int(x)}, {int(y)}')    
+=======
+    plt.title(f"PIXEL: ({x},{y})")
+>>>>>>> 124164db18182a16ef4e47ced9ce654a33a19660
     plt.xlabel(xlabel = r'Power $P$ ($W$)')
     plt.ylabel(ylabel = r'Average Intensity $I$ (detector units)')
     plt.legend()
