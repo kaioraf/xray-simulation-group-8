@@ -100,7 +100,7 @@ def plot_I_W(x, y):
             capsize = 8,
             label = voltages[i]
         )
-        
+    plt.title(f'x, y = {int(x)}, {int(y)}')    
     plt.xlabel(xlabel = r'Power $P$ ($W$)')
     plt.ylabel(ylabel = r'Average Intensity $I$ (detector units)')
     plt.legend()
@@ -115,7 +115,7 @@ def ran_plot_I_W(n):
     # create 2 * n array for coordinates
     x_coords: np.ndarray = np.zeros(n)
     y_coords: np.ndarray = np.zeros(n)
-    for i in range(10):
+    for i in range(n):
         x_coords[i] = int(read_np_image_arrays().shape[0] * random.random())
         y_coords[i] = int(read_np_image_arrays().shape[1] * random.random())
         print(int(x_coords[i]))
