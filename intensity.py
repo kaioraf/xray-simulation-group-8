@@ -39,9 +39,9 @@ def intensity_array_func(x, y):
             j: int = wattages.index(wattage)
             # start wattage entries at entry 1, not 0, since 0 is for dark field
             if (platform.system() == 'Linux' or platform.system() == 'Darwin'):
-                intensity_array[i, j + 1] = (read_np_image_arrays(voltage_type = f'{voltage}/{wattage}')[x_mid, y_mid])
+                intensity_array[i, j + 1] = (read_np_image_arrays(voltage_type = f'{voltage}/{wattage}')[x, y])
             else: #windows
-                intensity_array[i, j + 1] = (read_np_image_arrays(voltage_type = f'{voltage}\\{wattage}')[x_mid, y_mid])
+                intensity_array[i, j + 1] = (read_np_image_arrays(voltage_type = f'{voltage}\\{wattage}')[x, y])
 
     return intensity_array
 
@@ -67,9 +67,9 @@ def sigma_intensity_array_func(x, y):
             j: int = wattages.index(wattage)
             # start wattage entries at entry 1, not 0, since 0 is for dark field
             if (platform.system() == 'Linux' or platform.system() == 'Darwin'):
-                sigma_intensity_array[i, j + 1] = np.sqrt((read_np_image_arrays(voltage_type = f'{voltage}/{wattage}', dist_type = 'var')[x_mid, y_mid]))
+                sigma_intensity_array[i, j + 1] = np.sqrt((read_np_image_arrays(voltage_type = f'{voltage}/{wattage}', dist_type = 'var')[x, y]))
             else:
-                sigma_intensity_array[i, j + 1] = np.sqrt((read_np_image_arrays(voltage_type = f'{voltage}\\{wattage}', dist_type = 'var')[x_mid, y_mid]))
+                sigma_intensity_array[i, j + 1] = np.sqrt((read_np_image_arrays(voltage_type = f'{voltage}\\{wattage}', dist_type = 'var')[x, y]))
 
     return sigma_intensity_array
 
@@ -113,17 +113,27 @@ def plot_I_W(x, y):
 def ran_plot_I_W(n):
     
     # create 2 * n array for coordinates
-    coords: np.ndarray = np.zeros((n, 2), dtype = int)
+    x_coords: np.ndarray = np.zeros(n)
+    y_coords: np.ndarray = np.zeros(n)
+    for i in range(10):
+        x_coords[i] = int(read_np_image_arrays().shape[0] * random.random())
+        y_coords[i] = int(read_np_image_arrays().shape[1] * random.random())
+        print(int(x_coords[i]))
+        plot_I_W(int(x_coords[i]), int( y_coords[i]))
+    
+        
+
 
     # generate random x-coordinate: multiplying random value between 0 and 1
     # by the length of x-dimension of image
     # same for y-coordinate
-    for i in range(n):
-        coords[i, 0] = int(read_np_image_arrays().shape[0] * random.random())
-        coords[i, 1] = int(read_np_image_arrays().shape[1] * random.random())
+    #for i in range(n):
+    #    coords[i, 0] = int(read_np_image_arrays().shape[0] * random.random())
+    #    coords[i, 1] = int(read_np_image_arrays().shape[1] * random.random())
+    x_coords
 
-    for x, y in coords:
-        plot_I_W(x = x, y = y)
+    #for x, y in coords:
+    #    plot_I_W(x, y)
 
-plot_I_W(x = x_mid, y = y_mid)
+plot_I_W(x_mid, y_mid)
 ran_plot_I_W(n = 5)
