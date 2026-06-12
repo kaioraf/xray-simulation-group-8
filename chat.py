@@ -15,6 +15,11 @@ W: np.ndarray = np.array(object = W_list, dtype = float)
 x_mid: int = read_np_image_arrays().shape[0] // 2
 y_mid: int = read_np_image_arrays().shape[1] // 2
 
+# filpath
+if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
+    slash: str = "/"
+else:
+    slash: str = "\\"
 
 # outputs a 3D mean-intensity stack for one voltage
 # first dimension is wattage
@@ -41,11 +46,7 @@ def intensity_stack_func(voltage):
     # insert each intensity image
     for wattage in wattages:
         j: int = wattages.index(wattage)
-        
-        if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
-            intensity_stack[j + 1, :, :] = read_np_image_arrays(voltage_type = f'{voltage}/{wattage}')
-        else:
-            intensity_stack[j + 1, :, :] = read_np_image_arrays(voltage_type = f'{voltage}\\{wattage}')
+        intensity_stack[j + 1, :, :] = read_np_image_arrays(voltage_type = f'{voltage}' + slash + f'{wattage}')
 
     return intensity_stack
 
@@ -56,10 +57,10 @@ def intensity_stack_func(voltage):
 def sigma_stack_func(voltage):
 
     # read dark field variance image
-    dark_var_image = read_np_image_arrays(dist_type='var')
+    dark_var_image: str = read_np_image_arrays(dist_type = 'var')
 
-    x_len = dark_var_image.shape[0]
-    y_len = dark_var_image.shape[1]
+    x_len: int = dark_var_image.shape[0]
+    y_len: int = dark_var_image.shape[1]
 
     # create stack:
     # entry 0 = dark field sigma, W = 0
@@ -67,20 +68,19 @@ def sigma_stack_func(voltage):
     # entry 2 = 20W sigma
     # entry 3 = 30W sigma
     # entry 4 = 40W sigma
-    sigma_stack = np.zeros((5, x_len, y_len))
+    sigma_stack: np.ndarray = np.zeros((5, x_len, y_len))
 
     # add dark field sigma to first wattage entry
     sigma_stack[0, :, :] = np.sqrt(dark_var_image)
 
     # insert each sigma image
     for wattage in wattages:
-        j = wattages.index(wattage)
-
-        var_image = read_np_image_arrays(
-            voltage_type=f'{voltage}\\{wattage}',
-            dist_type='var'
+        j: int = wattages.index(wattage)
+        var_image: str = read_np_image_arrays(
+            voltage_type = f'{voltage}' + slash + f'{wattage}',
+            dist_type = 'var'
         )
-
+        
         sigma_stack[j + 1, :, :] = np.sqrt(var_image)
 
     return sigma_stack
@@ -94,37 +94,37 @@ def linear_fit(P, a, b):
 # efficient weighted linear fit for all pixels at one voltage
 def fit_maps_for_voltage(voltage):
 
-    # I has shape: (5, x_len, y_len)
-    I = intensity_stack_func(voltage)
+    # I has shape (5, x_len, y_len)
+    I: np.ndarray = intensity_stack_func(voltage = voltage)
 
-    # sigma has shape: (5, x_len, y_len)
-    sigma = sigma_stack_func(voltage)
+    # sigma has shape (5, x_len, y_len)
+    sigma: np.ndarray = sigma_stack_func(voltage = voltage)
 
     # avoid division by zero
-    #if sigma is greater than zero, it keeps it's value
-    #if sigma is zero or negative, it is converted to not a number (nan)
+    # if sigma is greater than zero, it keeps it's value
+    # if sigma is zero or negative, it is converted to not a number (nan)
     sigma = np.where(sigma > 0, sigma, np.nan)
 
-    # weighted least squares uses 1/sigma^2
+    # weighted least squares uses 1 / sigma**2
     weights = 1 / sigma**2
 
     # reshape W from shape (5,) to shape (5, 1, 1)
     # this lets W broadcast over all pixels
-    P = W[:, np.newaxis, np.newaxis]
+    P: np.ndarray = W[:, np.newaxis, np.newaxis]
 
     # weighted sums over wattage axis
-    #np.nansum take sum, but ignores values that are not numbers (nan)
-    S = np.nansum(weights, axis=0)
-    SP = np.nansum(weights * P, axis=0)
-    SI = np.nansum(weights * I, axis=0)
-    SPP = np.nansum(weights * P**2, axis=0)
-    SPI = np.nansum(weights * P * I, axis=0)
+    # np.nansum take sum, but ignores values that are not numbers (nan)
+    S: float = np.nansum(a = weights, axis = 0)
+    SP: float = np.nansum(a = weights * P, axis = 0)
+    SI: float = np.nansum(a = weights * I, axis = 0)
+    SPP: float = np.nansum(a = weights * P**2, axis = 0)
+    SPI : float = np.nansum(a = weights * P * I, axis = 0)
 
-    denominator = S * SPP - SP**2
+    denominator: float = S * SPP - SP**2
 
     # a and b maps
-    a_map = (S * SPI - SP * SI) / denominator
-    b_map = (SPP * SI - SP * SPI) / denominator
+    a_map: float = (S * SPI - SP * SI) / denominator
+    b_map: float = (SPP * SI - SP * SPI) / denominator
 
     return a_map, b_map
 
@@ -132,19 +132,20 @@ def fit_maps_for_voltage(voltage):
 # fit all pixels for all voltages
 def fit_maps_all_voltages():
 
-    example_image = read_np_image_arrays()
-    x_len = example_image.shape[0]
-    y_len = example_image.shape[1]
+    example_image: str = read_np_image_arrays()
+    x_len: int = example_image.shape[0]
+    y_len: int = example_image.shape[1]
 
-    a_maps = np.zeros((5, x_len, y_len))
-    b_maps = np.zeros((5, x_len, y_len))
+    a_maps: np.ndarray = np.zeros((5, x_len, y_len))
+    b_maps: np.ndarray = np.zeros((5, x_len, y_len))
 
     for voltage in voltages:
-        i = voltages.index(voltage)
-
+        i: int = voltages.index(voltage)
         print(f'Fitting {voltage}...')
-
-        a_map, b_map = fit_maps_for_voltage(voltage)
+        
+        a_map: float
+        b_map: float
+        a_map, b_map = fit_maps_for_voltage(voltage = voltage)
 
         a_maps[i, :, :] = a_map
         b_maps[i, :, :] = b_map
@@ -156,15 +157,15 @@ def fit_maps_all_voltages():
 def plot_fit_map(fit_map, title, colorbar_label):
 
     # ignore nan values
-    vmin = np.nanpercentile(fit_map, 1)
-    vmax = np.nanpercentile(fit_map, 99)
+    vmin: float = np.nanpercentile(fit_map, 1)
+    vmax: float = np.nanpercentile(fit_map, 99)
 
     plt.figure()
-    plt.imshow(fit_map, vmin=vmin, vmax=vmax)
-    plt.colorbar(label=colorbar_label)
-    plt.title(title)
-    plt.xlabel('y pixel')
-    plt.ylabel('x pixel')
+    plt.imshow(X = fit_map, vmin = vmin, vmax = vmax)
+    plt.colorbar(label = colorbar_label)
+    plt.title(label = title)
+    plt.xlabel(xlabel = 'y pixel')
+    plt.ylabel(ylabel = 'x pixel')
     plt.show()
 
 
@@ -173,64 +174,63 @@ def plot_I_W_with_numpy_fit(x, y):
 
     plt.figure()
 
-    colors = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple']
-    W_fit = np.linspace(0, 40, 100)
+    colors: list = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple']
+    W_fit: np.ndarray = np.linspace(start = 0, stop = 40, num = 100)
 
     for voltage in voltages:
-        i = voltages.index(voltage)
-        color = colors[i]
+        i: int = voltages.index(voltage)
+        color: str = colors[i]
 
-        intensity_stack = intensity_stack_func(voltage)
-        sigma_stack = sigma_stack_func(voltage)
+        intensity_stack: np.ndarray = intensity_stack_func(voltage = voltage)
+        sigma_stack: np.ndarray = sigma_stack_func(voltage = voltage)
 
-        I_values = intensity_stack[:, x, y]
-        sigma_values = sigma_stack[:, x, y]
+        I_values: np.ndarray = intensity_stack[:, x, y]
+        sigma_values: np.ndarray = sigma_stack[:, x, y]
+        
+        a_map: np.ndarray
+        b_map: np.ndarray
+        a_map, b_map = fit_maps_for_voltage(voltage = voltage)
+        
+        a: float = a_map[x, y]
+        b: float = b_map[x, y]
 
-        a_map, b_map = fit_maps_for_voltage(voltage)
-
-        a = a_map[x, y]
-        b = b_map[x, y]
-
-        I_fit = linear_fit(W_fit, a, b)
+        I_fit: np.ndarray = linear_fit(P = W_fit, a = a, b = b)
 
         plt.errorbar(
-            W,
-            I_values,
-            yerr=sigma_values,
-            fmt='o',
-            color=color,
-            ecolor=color,
-            markersize=3,
-            capsize=6,
-            label=voltage
+            x = W,
+            y = I_values,
+            yerr = sigma_values,
+            fmt = 'o',
+            color = color,
+            ecolor = color,
+            markersize = 3,
+            capsize = 6,
+            label = voltage
         )
 
-        plt.plot(
-            W_fit,
-            I_fit,
-            '-',
-            color=color
-        )
+        plt.plot(W_fit, I_fit, '-', color = color)
 
-    plt.xlabel('Power P in Watt (W)')
-    plt.ylabel('Average Intensity I (detector units)')
+    plt.xlabel(xlabel = 'Power P in Watt (W)')
+    plt.ylabel(ylabel = 'Average Intensity I (detector units)')
     plt.legend()
     plt.show()
 
 
 # run all fits
+a_maps: np.ndarray
+b_maps: np.ndarray
 a_maps, b_maps = fit_maps_all_voltages()
 
 # save fit parameter maps
 for voltage in voltages:
-    i = voltages.index(voltage)
+    i: int = voltages.index(voltage)
 
-    np.save(f'a_map_{voltage}.npy', a_maps[i, :, :])
-    np.save(f'b_map_{voltage}.npy', b_maps[i, :, :])
+    np.save(file = f'a_map_{voltage}.npy', arr = a_maps[i, :, :])
+    np.save(file = f'b_map_{voltage}.npy', arr = b_maps[i, :, :])
 
 # example: plot 30kV maps
-plot_fit_map(a_maps[0, :, :], 'Slope map a for 30kV', 'a')
-plot_fit_map(b_maps[0, :, :], 'Intercept map b for 30kV', 'b')
+plot_fit_map(fit_map = a_maps[0, :, :], title = 'Slope map a for 30kV', colorbar_label = 'a')
+plot_fit_map(fit_map = b_maps[0, :, :], title = 'Intercept map b for 30kV', colorbar_label = 'b')
 
 # example: check middle pixel
-plot_I_W_with_numpy_fit(x_mid, y_mid)
+plot_I_W_with_numpy_fit(x = x_mid, y = y_mid)
