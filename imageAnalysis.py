@@ -16,17 +16,7 @@ COUNTS = 20
 
 # take all the files within some folder e.g. 75kV/10W/, and then averages all their values into a single new image
 def average_full_images(images, voltage_type = 'darkfield', save_file = False):
-      
-      # get the dimensions of the images
-      height = int(images.shape[0])
-      width = int(images.shape[1])
-      
-      # create an empty array
-      avg_array_xy: np.ndarray = np.zeros((width, height))
-      
-      for y in range(height - 1):
-            for x in range(width - 1):                   
-                  avg_array_xy[x, y] = average_single_pixel(images = images, x = x, y = y)
+      avg_array_xy: np.ndarray = np.average(images, axis = 2).T
 
       if save_file:
             dirname: str = os.path.dirname(p = __file__)
@@ -40,17 +30,7 @@ def average_full_images(images, voltage_type = 'darkfield', save_file = False):
 # take all the files within some folder e.g. 75kV/10W/, and for each pixel calculate the variance of the 20 images
 # so it outputs a 2d array with each pixel entry being its variance
 def variance_full_images(images, voltage_type = 'darkfield', save_file = False):
-
-      # get dimension of the images
-      height = int(images.shape[0])
-      width = int(images.shape[1])
-
-      # create an empty array
-      var_array_xy: np.ndarray = np.zeros((width, height))
-
-      for y in range(height - 1):
-            for x in range(width - 1):
-                  var_array_xy[x, y] = get_variance_single_pixel(images = images, x = x, y = y)
+      var_array_xy: np.ndarray = np.var(images, axis = 2).T
       
       if save_file:
             dirname: str = os.path.dirname(p = __file__)
@@ -72,7 +52,7 @@ def get_variance_single_pixel(images, x, y):
 def create_image(image, exposure = 1, filename = 'result.png'):
       print(filename)
       image: Image = image * exposure
-      picture: Image = Image.fromarray(obj = (image).astype(np.uint16))
+      picture: Image = Image.fromarray(obj = (image.T).astype(np.uint16))
       picture.save(filename)
       
 def create_all_images(): # very long function, do not run if the files are already created!
