@@ -56,7 +56,7 @@ def read_np_image_arrays(voltage_type = 'darkfield', filetype = 'npy', dist_type
       dirname: str = os.path.dirname(p = __file__)
       safe_path: str = voltage_type[:4] + voltage_type[5:]
       if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
-            full_path: str = f"{dirname}Numpy image arrays{voltage_type}{dist_type}_array_{safe_path}.{filetype}"
+            full_path: str = f"{dirname}/Numpy image arrays/{voltage_type}/{dist_type}_array_{safe_path}.{filetype}"
       else: # windows
             full_path = f"{dirname}\\Numpy image arrays\\{voltage_type}\\{dist_type}_array_{safe_path}.{filetype}"
             
