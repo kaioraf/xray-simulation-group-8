@@ -1,21 +1,19 @@
-
 import matplotlib.pyplot as plt
 from fileIO import *
 
 # voltages en wattages lists with names in numpy image arrays to extract data
-voltages = ['30kV', '45kV', '60kV', '75kV', '90kV']
-wattages = ['10W', '20W', '30W', '40W']
+voltages: list = ['30kV', '45kV', '60kV', '75kV', '90kV']
+wattages: list = ['10W', '20W', '30W', '40W']
 
 # arrays with actual values of wattages and voltages to plot later on
-kV_list = [30, 45, 60, 75, 90]
-kV = np.array(kV_list)
-
-W_list = [0, 10, 20, 30, 40]
-W = np.array(W_list, dtype=float)
+kV_list: list = [30, 45, 60, 75, 90]
+W_list: list = [0, 10, 20, 30, 40]
+kV: np.ndarray = np.array(object = kV_list)
+W: np.ndarray = np.array(object = W_list, dtype = float)
 
 # find x- and y-coordinate of middle pixel for later use
-x_mid = read_np_image_arrays().shape[0] // 2
-y_mid = read_np_image_arrays().shape[1] // 2
+x_mid: int = read_np_image_arrays().shape[0] // 2
+y_mid: int = read_np_image_arrays().shape[1] // 2
 
 
 # outputs a 3D mean-intensity stack for one voltage
@@ -24,10 +22,10 @@ y_mid = read_np_image_arrays().shape[1] // 2
 def intensity_stack_func(voltage):
 
     # read dark field image
-    dark_image = read_np_image_arrays()
+    dark_image: str = read_np_image_arrays()
 
-    x_len = dark_image.shape[0]
-    y_len = dark_image.shape[1]
+    x_len: int = dark_image.shape[0]
+    y_len: int = dark_image.shape[1]
 
     # create stack:
     # entry 0 = dark field, W = 0
@@ -35,18 +33,19 @@ def intensity_stack_func(voltage):
     # entry 2 = 20W
     # entry 3 = 30W
     # entry 4 = 40W
-    intensity_stack = np.zeros((5, x_len, y_len))
+    intensity_stack: np.ndarray = np.zeros((5, x_len, y_len))
 
     # add dark field image to first wattage entry
     intensity_stack[0, :, :] = dark_image
 
     # insert each intensity image
     for wattage in wattages:
-        j = wattages.index(wattage)
-
-        intensity_stack[j + 1, :, :] = read_np_image_arrays(
-            voltage_type=f'{voltage}\\{wattage}'
-        )
+        j: int = wattages.index(wattage)
+        
+        if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
+            intensity_stack[j + 1, :, :] = read_np_image_arrays(voltage_type = f'{voltage}/{wattage}')
+        else:
+            intensity_stack[j + 1, :, :] = read_np_image_arrays(voltage_type = f'{voltage}\\{wattage}')
 
     return intensity_stack
 
