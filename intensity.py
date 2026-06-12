@@ -126,4 +126,4 @@ def ran_plot_I_W(n):
         plot_I_W(x = x, y = y)
 
 plot_I_W(x = x_mid, y = y_mid)
-ran_plot_I_W(n = 10)
+ran_plot_I_W(n = 5)
