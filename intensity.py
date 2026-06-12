@@ -1,12 +1,9 @@
-import os, glob
-from PIL import Image
-import scipy as sp
-import numpy as np
-import platform
-import matplotlib.pyplot as plt
-from lmfit import models
 
+
+
+import matplotlib.pyplot as plt
 from fileIO import *
+import random
 
 #voltages en wattages lists with names in numpy image arrays to extract data
 voltages = ['30kV', '45kV', '60kV', '75kV', '90kV']
@@ -102,80 +99,31 @@ def plot_I_W(x, y):
     plt.show()
 
 
-#plot_I_W(x_mid, y_mid)
-
-
-#create linear fit model
-def linear_fit(P, a, b):
-    return a * P + b
+# similar to last function plot_I_W(x, y)
+# but doesnt create one figure for coordinate x, y
+# creates n figures for n random coordinates
+def ran_plot_I_W(n):
     
-model_I_W = models.Model(linear_fit)
+    # create 2 by n array for coordinates
+    coords = np.zeros((n, 2), dtype=int)
 
-# makes linear fit for pixel x,y
-def fit_I_W_lmfit(x, y):
+    # generate random x-coordinate: multiplying random value between 0 and 1
+    # by the length of x-dimension of image
+    # same for y-coordinate
+    for i in range(n):
+        coords[i, 0] = int(read_np_image_arrays().shape[0] * random.random())
+        coords[i, 1] = int(read_np_image_arrays().shape[1] * random.random())
 
-    intensity_array = intensity_array_func(x, y)
-    sigma_intensity_array = sigma_intensity_array_func(x, y)
-    fit_results = fit_I_W_lmfit(x, y)
+    for x, y in coords:
+        plot_I_W(x, y)
 
-    plt.figure()
-
-    W_fit = np.linspace(0, 40, 100)
-
-    colors = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple']
-
-    for i in range(5):
-
-        color = colors[i]
-
-        # fitted parameters
-        a = fit_results[i].params['a'].value
-        b = fit_results[i].params['b'].value
-
-        # fitted line
-        I_fit = linear_fit(W_fit, a, b)
-
-        plt.plot(
-            W_fit,
-            I_fit,
-            '-',
-            color=color,
-            label=f'{voltages[i]} fit'
-        )
-
-        # measured data with errorbars
-        plt.errorbar(
-            W,
-            intensity_array[i, :],
-            yerr=sigma_intensity_array[i, :],
-            fmt='o',
-            color=color,
-            ecolor=color,
-            markersize=3,
-            capsize=6,
-            label=voltages[i]
-        )
-
-    plt.xlabel('Power P in Watt (W)')
-    plt.ylabel('Average Intensity I (detector units)')
-    plt.legend()
-    plt.show()
+plot_I_W(x_mid, y_mid)
+ran_plot_I_W(10)
 
 
-# print fit reports for pixel x,y
-def print_fit_reports(x, y):
-
-    fit_results = fit_I_W_lmfit(x, y)
-
-    for i in range(5):
-        print()
-        print(f"Fit report for {voltages[i]}")
-        print(fit_results[i].fit_report())
 
 
-# run for middle pixel
-fit_I_W_lmfit(x_mid, y_mid)
-print_fit_reports(x_mid, y_mid)
+
 
 
 
