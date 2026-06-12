@@ -79,7 +79,7 @@ for voltage, gains in gain_by_voltage.items():
 
 plt.xlabel("Wattage (W)")
 plt.ylabel("Gain")
-plt.title(f"Gain vs Wattage for Different Voltages FULL")
+plt.title(f"Gain vs Wattage for Different Voltages, PIXEL{pixel_x, pixel_y}")
 plt.legend()
 plt.grid(True, which="both")
 plt.savefig(f"gain pixel({pixel_x}, {pixel_y}).png")
