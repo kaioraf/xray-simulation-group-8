@@ -1,19 +1,15 @@
-from PIL import Image
-import scipy as sp
-import numpy as np
 from fileIO import *
-import os, glob
-
 
 def eerstepixelwaarde(volt, watt, count):
-    volt=str(volt)
-    watt=str(watt)
-    count=int(count)
-    dirname = os.path.dirname(__file__)
-    voltage_name_maker=volt+"kV/"+watt+"W"
-    dirnamepixel=dirname + "\\2026-06-08_Detector_noise_calibration\\" + volt + "kV" + "\\" +watt+"W\\scan_"+f"{count:02d}"+".tif"
-    imagefolderarray=images_to_array(voltage_type=voltage_name_maker)
-    pixelwaarde=imagefolderarray[0, 0, count]
+    volt = str(object = volt)
+    watt = str(object = watt)
+    count = int(count)
+    if (platform.system() == 'Linux' or platform.system() == 'Darwin'):
+        voltage_name_maker: str = volt + "kV/" + watt + "W"
+    else: # windows
+        voltage_name_maker: str = volt + "kV\\" + watt + "W"
+    imagefolderarray: np.ndarray = images_to_array(voltage_type = voltage_name_maker)
+    pixelwaarde: int = imagefolderarray[0, 0, count]
     return(pixelwaarde)
 
-print(eerstepixelwaarde(45, 20, 13))
+print(eerstepixelwaarde(volt = 90, watt = 20, count = 13))
