@@ -83,4 +83,4 @@ def plotje_true_avg_vs_watt():
     plt.ylabel("Averages(geen darkfield afgetrokken)")
     plt.legend(["30kV", "45kv", "60kV", "75kV", "90kv"])
     plt.show()
-plotje_true_avg_vs_watt()
+plotje_var_vs_volt()
