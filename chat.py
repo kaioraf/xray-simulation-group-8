@@ -164,8 +164,8 @@ def plot_fit_map(fit_map, title, colorbar_label):
     plt.imshow(X = fit_map, vmin = vmin, vmax = vmax)
     plt.colorbar(label = colorbar_label)
     plt.title(label = title)
-    plt.xlabel(xlabel = 'y pixel')
-    plt.ylabel(ylabel = 'x pixel')
+    plt.xlabel(xlabel = r'$y$ (pixel)')
+    plt.ylabel(ylabel = r'$x$ (pixel)')
     plt.show()
 
 
@@ -210,8 +210,8 @@ def plot_I_W_with_numpy_fit(x, y):
 
         plt.plot(W_fit, I_fit, '-', color = color)
 
-    plt.xlabel(xlabel = 'Power P in Watt (W)')
-    plt.ylabel(ylabel = 'Average Intensity I (detector units)')
+    plt.xlabel(xlabel = r'$P$ (W)')
+    plt.ylabel(ylabel = r'$\overline{I}$ (detector units)')
     plt.legend()
     plt.show()
 
@@ -229,8 +229,8 @@ for voltage in voltages:
     np.save(file = f'b_map_{voltage}.npy', arr = b_maps[i, :, :])
 
 # example: plot 30kV maps
-plot_fit_map(fit_map = a_maps[0, :, :], title = 'Slope map a for 30kV', colorbar_label = 'a')
-plot_fit_map(fit_map = b_maps[0, :, :], title = 'Intercept map b for 30kV', colorbar_label = 'b')
+plot_fit_map(fit_map = a_maps[0, :, :], title = r'Slope map $a$ for $30$ kV', colorbar_label = r'$a$')
+plot_fit_map(fit_map = b_maps[0, :, :], title = r'Intercept map $b$ for $30$ kV', colorbar_label = r'$b$')
 
 # example: check middle pixel
 plot_I_W_with_numpy_fit(x = x_mid, y = y_mid)
