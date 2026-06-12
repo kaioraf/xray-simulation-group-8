@@ -73,40 +73,47 @@ def sigma_intensity_array_func(x, y):
 
     return sigma_intensity_array
 
-#print(intensity_list_func(x_mid, y_mid))
+# print(intensity_array_func(x = x_mid, y = y_mid))
 
-#color map voor intensity, wattages op x-as, voltages op y-as
-#plt.imshow(intensity_list_func(x_mid, y_mid))
-#plt.colorbar()
-#plt.show()
+# color map voor intensity, wattages op x-as, voltages op y-as
+# plt.imshow(X = intensity_array_func(x = x_mid, y = y_mid))
+# plt.colorbar()
+# plt.show()
 
-
-#for pixel [x,y], plot intensity entries against wattages, 5 times, one for each voltage
-#includes st_dev
+# for pixel [x,y], plot intensity entries against wattages, 5 times, one for each voltage
+# includes st_dev
 def plot_I_W(x, y):
 
-    #get intensity array and st_dev-of-intensity array of chosen pixel
-    intensity_array = intensity_array_func(x, y)
-    sigma_intensity_array = sigma_intensity_array_func(x, y)
+    # get intensity array and st_dev-of-intensity array of chosen pixel
+    intensity_array: np.ndarray = intensity_array_func(x = x, y = y)
+    sigma_intensity_array: np.ndarray = sigma_intensity_array_func(x = x, y = y)
 
     plt.figure()
 
     for i in range(5):
-        plt.errorbar(W, intensity_array[i, :], yerr=sigma_intensity_array[i, :], fmt='-o', markersize=2, capsize=8, label=voltages[i])
+        plt.errorbar(
+            x = W,
+            y = intensity_array[i, :],
+            yerr = sigma_intensity_array[i, :],
+            fmt = '-o',
+            markersize = 2,
+            capsize = 8,
+            label = voltages[i]
+        )
         
-    plt.xlabel(f'Power P in Watt (W)')
-    plt.ylabel(f'Average Intensity I (detector units)')
+    plt.xlabel(xlabel = r'Power $P$ ($W$)')
+    plt.ylabel(ylabel = r'Average Intensity $I$ (detector units)')
     plt.legend()
     plt.show()
 
 
 # similar to last function plot_I_W(x, y)
-# but doesnt create one figure for coordinate x, y
-# creates n figures for n random coordinates
+# but does not create one figure for coordinates (x, y)
+# inestead, creates n figures for n random coordinates
 def ran_plot_I_W(n):
     
-    # create 2 by n array for coordinates
-    coords = np.zeros((n, 2), dtype=int)
+    # create 2 * n array for coordinates
+    coords: np.ndarray = np.zeros((n, 2), dtype = int)
 
     # generate random x-coordinate: multiplying random value between 0 and 1
     # by the length of x-dimension of image
@@ -116,7 +123,7 @@ def ran_plot_I_W(n):
         coords[i, 1] = int(read_np_image_arrays().shape[1] * random.random())
 
     for x, y in coords:
-        plot_I_W(x, y)
+        plot_I_W(x = x, y = y)
 
-plot_I_W(x_mid, y_mid)
-ran_plot_I_W(10)
+plot_I_W(x = x_mid, y = y_mid)
+ran_plot_I_W(n = 10)
