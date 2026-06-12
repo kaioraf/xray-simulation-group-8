@@ -156,8 +156,12 @@ def fit_maps_all_voltages():
 # plot one fit-parameter image
 def plot_fit_map(fit_map, title, colorbar_label):
 
+    # ignore nan values
+    vmin = np.nanpercentile(fit_map, 1)
+    vmax = np.nanpercentile(fit_map, 99)
+
     plt.figure()
-    plt.imshow(fit_map)
+    plt.imshow(fit_map, vmin=vmin, vmax=vmax)
     plt.colorbar(label=colorbar_label)
     plt.title(title)
     plt.xlabel('y pixel')
