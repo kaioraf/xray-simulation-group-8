@@ -1,6 +1,4 @@
 
-
-
 import matplotlib.pyplot as plt
 from fileIO import *
 import random
@@ -30,11 +28,8 @@ def intensity_array_func(x, y):
     intensity_array = np.zeros((5, 5))
 
     #add dark field intensity to first wattage entry (for each voltage)
-    intensity_array[0, 0] = read_np_image_arrays()[x, y] 
-    intensity_array[1, 0] = read_np_image_arrays()[x, y] 
-    intensity_array[2, 0] = read_np_image_arrays()[x, y] 
-    intensity_array[3, 0] = read_np_image_arrays()[x, y] 
-    intensity_array[4, 0] = read_np_image_arrays()[x, y]
+    for i in range(len(intensity_array[0])):
+        intensity_array[i, 0] = read_np_image_arrays()[x, y] 
 
     #insert each intensity entry 
     for voltage in voltages:
@@ -42,7 +37,10 @@ def intensity_array_func(x, y):
         for wattage in wattages:
             j = wattages.index(wattage)
             #start wattage entries at entry 1, not 0, since 0 is for dark field
-            intensity_array[i, j + 1] = (read_np_image_arrays(voltage_type=f'{voltage}\\{wattage}')[x_mid, y_mid])
+            if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
+                intensity_array[i, j + 1] = (read_np_image_arrays(voltage_type=f'{voltage}/{wattage}')[x_mid, y_mid])
+            else: # windows
+                intensity_array[i, j + 1] = (read_np_image_arrays(voltage_type=f'{voltage}\\{wattage}')[x_mid, y_mid])
 
     return intensity_array
 
@@ -55,11 +53,8 @@ def sigma_intensity_array_func(x, y):
     sigma_intensity_array = np.zeros((5, 5))
 
     #add dark field sigmas to first wattage entry (for each voltage)
-    sigma_intensity_array[0, 0] = np.sqrt(read_np_image_arrays(dist_type='var')[x, y])
-    sigma_intensity_array[1, 0] = np.sqrt(read_np_image_arrays(dist_type='var')[x, y])
-    sigma_intensity_array[2, 0] = np.sqrt(read_np_image_arrays(dist_type='var')[x, y])
-    sigma_intensity_array[3, 0] = np.sqrt(read_np_image_arrays(dist_type='var')[x, y])
-    sigma_intensity_array[4, 0] = np.sqrt(read_np_image_arrays(dist_type='var')[x, y])
+    for i in range(len(sigma_intensity_array[0])):
+        sigma_intensity_array[i, 0] = np.sqrt(read_np_image_arrays(dist_type='var')[x, y])
     
 
     #insert each st_dev-of-intensity entry 
@@ -68,7 +63,11 @@ def sigma_intensity_array_func(x, y):
         for wattage in wattages:
             j = wattages.index(wattage)
             #start wattage entries at entry 1, not 0, since 0 is for dark field
-            sigma_intensity_array[i, j + 1] = np.sqrt((read_np_image_arrays(voltage_type=f'{voltage}\\{wattage}', dist_type='var')[x_mid, y_mid]))
+            if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
+                sigma_intensity_array[i, j + 1] = np.sqrt((read_np_image_arrays(voltage_type=f'{voltage}/{wattage}', dist_type='var')[x_mid, y_mid]))
+            else: # windows
+                sigma_intensity_array[i, j + 1] = np.sqrt((read_np_image_arrays(voltage_type=f'{voltage}\\{wattage}', dist_type='var')[x_mid, y_mid]))
+
 
     return sigma_intensity_array
 
@@ -89,7 +88,7 @@ def plot_I_W(x, y):
     sigma_intensity_array = sigma_intensity_array_func(x, y)
 
     plt.figure()
-
+    plt.title(f"{x}, {y}")
     for i in range(5):
         plt.errorbar(W, intensity_array[i, :], yerr=sigma_intensity_array[i, :], fmt='-o', markersize=2, capsize=8, label=voltages[i])
         
@@ -102,7 +101,7 @@ def plot_I_W(x, y):
 # similar to last function plot_I_W(x, y)
 # but doesnt create one figure for coordinate x, y
 # creates n figures for n random coordinates
-def ran_plot_I_W(n):
+def n_plots_I_W(n):
     
     # create 2 by n array for coordinates
     coords = np.zeros((n, 2), dtype=int)
@@ -118,7 +117,7 @@ def ran_plot_I_W(n):
         plot_I_W(x, y)
 
 plot_I_W(x_mid, y_mid)
-ran_plot_I_W(10)
+n_plots_I_W(10)
 
 
 
