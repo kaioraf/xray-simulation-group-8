@@ -130,5 +130,90 @@ def ran_plot_I_kV(n):
         plot_I_kV(int(x_coords[i]), int(y_coords[i]))
 
 
-plot_I_kV(x_mid, y_mid)
-ran_plot_I_kV(n = 5)
+#plot_I_kV(x_mid, y_mid)
+#ran_plot_I_kV(n = 5)
+
+# quadratic fit function: I = aU^2 + bU + c
+def quadratic_fit(U, a, b, c):
+    return a * U**2 + b * U + c
+
+
+# plot quadratic fits of intensity against voltage for one pixel
+def plot_I_kV_quadratic_fit(x, y):
+
+    intensity_array: np.ndarray = intensity_array_func(x = x, y = y)
+    sigma_intensity_array: np.ndarray = sigma_intensity_array_func(x = x, y = y)
+
+    plt.figure()
+
+    colors: list = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red']
+    kV_fit: np.ndarray = np.linspace(start = 30, stop = 90, num = 100)
+
+    # use only the real voltage data for fitting, so not the darkfield at 0 kV
+    kV_fit_data: np.ndarray = kV[1:]
+
+    for i in range(4):
+        I_values: np.ndarray = intensity_array[i, 1:]
+        sigma_values: np.ndarray = sigma_intensity_array[i, 1:]
+
+        sigma_values = np.where(sigma_values > 0, sigma_values, np.nan)
+
+        weights: np.ndarray = 1 / sigma_values**2
+
+        S0: float = np.nansum(weights)
+        S1: float = np.nansum(weights * kV_fit_data)
+        S2: float = np.nansum(weights * kV_fit_data**2)
+        S3: float = np.nansum(weights * kV_fit_data**3)
+        S4: float = np.nansum(weights * kV_fit_data**4)
+
+        T0: float = np.nansum(weights * I_values)
+        T1: float = np.nansum(weights * kV_fit_data * I_values)
+        T2: float = np.nansum(weights * kV_fit_data**2 * I_values)
+
+        A: np.ndarray = np.array([
+            [S4, S3, S2],
+            [S3, S2, S1],
+            [S2, S1, S0]
+        ])
+
+        B: np.ndarray = np.array([T2, T1, T0])
+
+        a: float
+        b: float
+        c: float
+        a, b, c = np.linalg.pinv(A) @ B
+
+        I_fit: np.ndarray = quadratic_fit(U = kV_fit, a = a, b = b, c = c)
+
+        plt.errorbar(
+            x = kV_fit_data,
+            y = I_values,
+            yerr = sigma_values,
+            fmt = 'o',
+            color = colors[i],
+            ecolor = colors[i],
+            markersize = 3,
+            capsize = 6,
+            label = wattages[i]
+        )
+
+        plt.plot(kV_fit, I_fit, '-', color = colors[i])
+
+    plt.title(label = f'Pixel ({x}, {y})')
+    plt.xlabel(xlabel = r'Voltage $U$ ($kV$)')
+    plt.ylabel(ylabel = r'Average Intensity $I$ (detector units)')
+    plt.legend()
+    plt.show()
+
+
+# creates n quadratic-fit plots for random pixels
+def ran_plot_I_kV_quadratic_fit(n):
+
+    for i in range(n):
+        x: int = int(read_np_image_arrays().shape[0] * random.random())
+        y: int = int(read_np_image_arrays().shape[1] * random.random())
+
+        print(x, y)
+        plot_I_kV_quadratic_fit(x = x, y = y)
+
+ran_plot_I_kV_quadratic_fit(n = 5)
