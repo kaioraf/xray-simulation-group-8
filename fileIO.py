@@ -40,11 +40,9 @@ def images_to_array(voltage_type = 'darkfield'):
       # take the path to the directory that will be processed, accounting for windows/unix filesystems
       dirname: str = os.path.dirname(p = __file__)
       path: str = os.path.join(dirname, f"2026-06-08_Detector_noise_calibration{SLASH}", voltage_type)
-      print(path)
             
       # now we will create the 3d np.array, first creating a 2d image array
       
-      start = time.time()
       first_loop = True
       for filename in glob.glob(pathname = os.path.join(path, '*.tif')): # loop through all the .tif image files in the specified folder
             image_as_array: np.ndarray = np.array(object = Image.open(fp = filename), dtype=np.float64)
@@ -56,9 +54,6 @@ def images_to_array(voltage_type = 'darkfield'):
             else: # here, we add the new 3d array to the existing 3d array
                   prev_array = np.concat((prev_array, three_D_image_array), axis = 2)
       image_array: np.ndarray = prev_array
-      end = time.time()
-      print(end - start)
-      print(image_array.shape)
       return image_array
 
 def read_np_image_arrays(voltage_type = 'darkfield', filetype = 'npy', dist_type = 'avg'):
