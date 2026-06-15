@@ -1,5 +1,8 @@
 import matplotlib.pyplot as plt
 from fileIO import *
+import platform
+import os, glob
+
 
 # voltages en wattages lists with names in numpy image arrays to extract data
 voltages: list = ['30kV', '45kV', '60kV', '75kV', '90kV']
@@ -225,8 +228,18 @@ a_maps, b_maps = fit_maps_all_voltages()
 for voltage in voltages:
     i: int = voltages.index(voltage)
 
-    np.save(file = f'a_map_{voltage}.npy', arr = a_maps[i, :, :])
-    np.save(file = f'b_map_{voltage}.npy', arr = b_maps[i, :, :])
+    if (platform.system() == 'Linux' or platform.system() == 'Darwin'):  # darwin = macos
+        np.save(file = f'Parameter maps/a_map_{voltage}.npy', arr = a_maps[i, :, :])
+    else:  # windows
+        np.save(file = f'Parameter maps\\a_map_{voltage}.npy', arr = a_maps[i, :, :])
+
+    if (platform.system() == 'Linux' or platform.system() == 'Darwin'):  # darwin = macos
+        np.save(file = f'Parameter maps/b_map_{voltage}.npy', arr = b_maps[i, :, :])
+    else:  # windows
+        np.save(file = f'Parameter maps\\b_map_{voltage}.npy', arr = b_maps[i, :, :])
+
+
+     
 
 # example: plot 30kV maps
 plot_fit_map(fit_map = a_maps[0, :, :], title = r'Slope map $a$ for $30$ kV', colorbar_label = r'$a$')
