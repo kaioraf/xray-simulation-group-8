@@ -12,8 +12,6 @@ COUNTS = 20
 BIGCOUNTS = 512
 FIVETWELVERECIPROCAL = 1/20
 
-
-
 # take all the files within some folder e.g. 75kV/10W/, and then averages all their values into a single new image
 def average_full_images(images, voltage_type = 'darkfield', save_file = False):
       # get the dimensions of the images
@@ -60,10 +58,6 @@ def variance_full_images(images, avg_array, voltage_type = 'darkfield', save_fil
       print("mewhen", var_array_xy[0,0],get_variance_single_pixel(images, 0,0) )
       end = time.time()
       print(end - start)
-      # var_array_xy = np.zeros((width))
-      # for y in range(height - 1):
-      #       for x in range(width - 1):
-      #             var_array_xy[x, y] = get_variance_single_pixel(images, x, y)
       
       if save_file:
             dirname: str = os.path.dirname(__file__)
@@ -142,26 +136,11 @@ def test_var_func(avg):
             for j in range(len(new_array[i])):
                   if (not (new_array[i, j] == old_array[i, j])):
                         # print(i, j)
-                        print(new_array[i,j], old_array[i,j])
+                        # print(new_array[i,j], old_array[i,j])
                         # print("hmm ", new_array[i, j] - old_array[i, j])
-                        # return False
+                        return False
       return True
 
 images = images_to_array()
 new_array = average_full_images(images)
 print(test_var_func(new_array))
-
-
-# average_full_images(images_to_array())
-# variance_full_images(images_to_array(), average_full_images(images_to_array()))
-# create_image(average_full_images(images_to_array()))
-# start: float = time.perf_counter() # timer
-# create_all_images()
-# image: np.ndarray = images_to_array()
-# avg: float = average_single_pixel(images = image, x = 0, y = 0)
-# print(get_variance_single_pixel(images = image, x = 0, y = 0))
-# get_variance_single_pixel(images = average_single_pixel(images = images_to_array(), x = 0, y = 0), x = 0, y = 0)
-# end: float = time.perf_counter() # timer
-
-# print(f"Duration: {end - start} s") # timer
-# average_single_pixel(images = images_to_array(), x = 0, y = 0)
