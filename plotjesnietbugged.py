@@ -18,9 +18,9 @@ pixel_y = 50
 
 # filepath
 if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
-    slash: str = "/"
+    SLASH: str = "/"
 else:
-    slash: str = "\\"
+    SLASH: str = "\\"
 
 
 # plot van gemiddelde pixelwaarde vs wattage voor voltages
@@ -28,7 +28,7 @@ def plotje_avg_vs_watt():
     for volt in voltages:
         averagewattages_lst: list = [
             pixel_average(
-                voltagetype = str(object = volt) + "kV" + slash + str(object = watt) + "W",
+                voltagetype = str(object = volt) + "kV" + SLASH + str(object = watt) + "W",
                 x = pixel_x,
                 y = pixel_y
             ) for watt in wattages
@@ -46,7 +46,7 @@ def plotje_var_vs_volt():
     for watt in wattages:
         variancevoltages_lst: list = [
             pixel_variance(
-                voltagetype = str(object = volt) + "kV" + slash + str(object = watt) + "W",
+                voltagetype = str(object = volt) + "kV" + SLASH + str(object = watt) + "W",
                 x = pixel_x,
                 y = pixel_y
             ) for volt in voltages
@@ -65,7 +65,7 @@ def plotje_var_vs_watt():
     for volt in voltages:
         variancewattages_lst: list = [
             pixel_variance(
-                voltagetype = str(object = volt) + "kV" + slash + str(object = watt) + "W",
+                voltagetype = str(object = volt) + "kV" + SLASH + str(object = watt) + "W",
                 x = pixel_x,
                 y = pixel_y
             ) for watt in wattages
@@ -91,7 +91,7 @@ def plotje_true_var_vs_watt():
     for volt in voltages:
         variancewattages_lst: list = [
             true_pixel_variance(
-                voltage_type = str(object = volt) + "kV" + slash + str(object = watt) + "W",
+                voltage_type = str(object = volt) + "kV" + SLASH + str(object = watt) + "W",
                 x = pixel_x,
                 y = pixel_y
             ) for watt in wattages
@@ -110,7 +110,7 @@ def plotje_true_avg_vs_watt():
     for volt in voltages:
         averagewattages_lst: list = [
             true_pixel_average(
-                voltage_type = str(object = volt) + "kV" + slash + str(object = watt) + "W",
+                voltage_type = str(object = volt) + "kV" + SLASH + str(object = watt) + "W",
                 x = pixel_x,
                 y = pixel_y
             ) for watt in wattages
