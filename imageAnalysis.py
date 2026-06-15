@@ -8,6 +8,7 @@ from PIL import Image
 import scipy as sp
 import numpy as np
 import platform
+import time
 
 from fileIO import images_to_array
 
