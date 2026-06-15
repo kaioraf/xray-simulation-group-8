@@ -9,10 +9,10 @@ import time
 VOLTAGES: set = {'30', '45', '60', '75', '90'}
 WATTAGES: set = {'10', '20', '30', '40'}
 COUNTS = 20
-
-
+BIGCOUNTS = 512
+FIVETWELVERECIPROCAL = 1/20
 # take all the files within some folder e.g. 75kV/10W/, and then averages all their values into a single new image
-def average_full_images(images, voltage_type = 'darkfield', save_file = False):
+def old_average_full_images(images, voltage_type = 'darkfield', save_file = False):
       
       # get the dimensions of the images
       height = int(images.shape[1])
@@ -34,7 +34,7 @@ def average_full_images(images, voltage_type = 'darkfield', save_file = False):
 
 # take all the files within some folder e.g. 75kV/10W/, and for each pixel calculate the variance of the 20 images
 # so it outputs a 2d array with each pixel entry being its variance
-def variance_full_images(images, voltage_type = 'darkfield', save_file = False):
+def old_variance_full_images(images, voltage_type = 'darkfield', save_file = False):
 
       # get dimension of the images
       height = int(images.shape[1])
@@ -45,6 +45,62 @@ def variance_full_images(images, voltage_type = 'darkfield', save_file = False):
       for y in range(height - 1):
             for x in range(width - 1):
                   var_array_xy[x, y] = get_variance_single_pixel(images, x, y)
+      
+      if save_file:
+            dirname: str = os.path.dirname(__file__)
+            # remove the slash from the filename
+            safe_path: str = voltage_type[:4] + voltage_type[5:]
+            # save values to .npy file to read out the image: var_image = np.load("var_array_75kV_10W.npy")
+            np.save(file = f"{dirname}/Numpy image arrays/{voltage_type}/var_array_{safe_path}.npy", arr = var_array_xy) # macos/linux
+
+      return var_array_xy
+
+# take all the files within some folder e.g. 75kV/10W/, and then averages all their values into a single new image
+def average_full_images(images, voltage_type = 'darkfield', save_file = False):
+      # get the dimensions of the images
+      height = int(images.shape[1])
+      width = int(images.shape[0])
+      depth = int(images.shape[2])
+      # create an empty array
+      avg_array_xy: np.ndarray = np.zeros((width, height))
+      sum_array: np.ndarray = images[:, :, 0]
+      for z in range(1, depth):
+            sum_array = sum_array + images[:, :, z]
+      avg_array_xy = sum_array * FIVETWELVERECIPROCAL
+      if save_file:
+            dirname: str = os.path.dirname(p = __file__)
+            # remove the slash from the filename
+            safe_path: str = voltage_type[:4] + voltage_type[5:]
+            # save values to .npy file to read out the image: avg_image = np.load("avg_array_75kV_10W.npy")
+            np.save(file = f"{dirname}/Numpy image arrays/{voltage_type}/avg_array_{safe_path}.npy", arr = avg_array_xy) # macos/linux
+            print(voltage_type, safe_path)
+      return avg_array_xy
+
+# take all the files within some folder e.g. 75kV/10W/, and for each pixel calculate the variance of the 20 images
+# so it outputs a 2d array with each pixel entry being its variance
+def variance_full_images(images, avg_array, voltage_type = 'darkfield', save_file = False):
+
+      height = int(images.shape[1])
+      width = int(images.shape[0])
+      depth = int(images.shape[2])
+      
+      start = time.time()
+      
+      # vectorized version of the algorithm at https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Computing_shifted_data
+      # this is done to avoid catastrophic cancellation
+      Ex = np.zeros((width, height))
+      Ex2 = np.zeros((width, height))
+      K = images[:,:,4]
+      for z in range(depth):
+            Ex += images[:, :, z] - K
+            Ex2 += (images[:, :, z] - K)**2
+      #       print("ex2", Ex2[0,0],
+      #             "ex", Ex[0,0])
+      # print("EXes", Ex[0,0], Ex2[0,0])
+      var_array_xy = (Ex2 - Ex**2 * FIVETWELVERECIPROCAL) / (COUNTS)
+      # print("mewhen", var_array_xy[0,0],get_variance_single_pixel(images, 0,0) )
+      end = time.time()
+      print(end - start)
       
       if save_file:
             dirname: str = os.path.dirname(__file__)
@@ -69,27 +125,28 @@ def create_image(image, exposure = 1, filename = 'result.png'):
       picture: Image = Image.fromarray(obj = (image.transpose()).astype(np.uint16))
       picture.save(filename)
       
-def create_flatfield_images(): # very long function, do not run if the files are already created!
+def create_flatfield_images(save_image = False): # very long function, do not run if the files are already created!
+      dirname: str = os.path.dirname(p = __file__)          
       for voltage in VOLTAGES:
             for wattage in WATTAGES:
                   print(voltage, wattage)
                   path: str = voltage + "kV" + "/" + wattage + "W" # linux/macos only, but this will only run once anyway
                   images: np.ndarray = images_to_array(voltage_type = path)
-                  avg: np.ndarray = average_full_images(images = images, voltage_type = path, save_file = True)
-                  var: np.ndarray = variance_full_images(images = images, voltage_type = path, save_file = True)
+                  avg: np.ndarray = average_full_images(images, voltage_type = path, save_file = True)
+                  var: np.ndarray = variance_full_images(images, avg_array=avg, voltage_type = path, save_file = True)
                   
-                  dirname: str = os.path.dirname(p = __file__)
-                  safe_path: str = path[:4] + path[5:]
-                  full_path: str = f"{dirname}/Numpy image arrays/{path}/avg_array_{safe_path}.png"
-                  create_image(image = avg, filename = full_path)
-                  full_path = f"{dirname}/Numpy image arrays/{path}/var_array_{safe_path}.png"
-                  create_image(image = var, filename = full_path)
+                  if save_image:
+                        safe_path: str = path[:4] + path[5:]
+                        full_path: str = f"{dirname}/Numpy image arrays/{path}/avg_array_{safe_path}.png"
+                        create_image(image = avg, filename = full_path)
+                        full_path = f"{dirname}/Numpy image arrays/{path}/var_array_{safe_path}.png"
+                        create_image(image = var, filename = full_path)
             
-def create_darkfield_images():
+def create_darkfield_images(): #another function to create files, do not run unless these files do not exist
       path: str = 'darkfield'
       images: np.ndarray = images_to_array(voltage_type = path)
       avg: np.ndarray = average_full_images(images = images, voltage_type = path, save_file = True)
-      var: np.ndarray = variance_full_images(images = images, voltage_type = path, save_file = True)
+      var: np.ndarray = variance_full_images(images = images, avg_array=avg,  voltage_type = path, save_file = True)
       
       dirname: str = os.path.dirname(p = __file__)
       safe_path: str = path[:4] + path[5:]
@@ -98,15 +155,54 @@ def create_darkfield_images():
       full_path = f"{dirname}/Numpy image arrays/{path}/var_array_{safe_path}.png"
       create_image(image = var, filename = full_path)
       
-create_darkfield_images()
-# create_image(average_full_images(images_to_array()))
-# start: float = time.perf_counter() # timer
-# create_all_images()
-# image: np.ndarray = images_to_array()
-# avg: float = average_single_pixel(images = image, x = 0, y = 0)
-# print(get_variance_single_pixel(images = image, x = 0, y = 0))
-# get_variance_single_pixel(images = average_single_pixel(images = images_to_array(), x = 0, y = 0), x = 0, y = 0)
-# end: float = time.perf_counter() # timer
 
-# print(f"Duration: {end - start} s") # timer
-# average_single_pixel(images = images_to_array(), x = 0, y = 0)
+def test_avg_func():
+      images = images_to_array()
+      
+      start = time.time()
+      old_array = old_average_full_images(images)
+      end = time.time()
+      print("old average: ", end - start)
+      
+      start = time.time()
+      new_array = average_full_images(images)
+      end = time.time()
+      print("new average: ", end - start)
+      new_array = new_array.transpose()
+      print(old_array.shape, new_array.shape)
+      # for i in range(len(new_array)):
+      #       for j in range(len(new_array[i])):
+      #             print(i, j)
+      #             print("hmm ", new_array[i, j] - old_array[i, j])
+      #             if new_array[i, j] - old_array[i, j] > 2:
+      #                   print(new_array[i,j], old_array[i,j])
+      #                   # return False
+      return True
+
+def test_var_func(avg):
+      images = images_to_array()
+      
+      start = time.time()
+      old_array = old_variance_full_images(images)
+      end = time.time()
+      print("old variance: ", end - start)
+      
+      start = time.time()
+      new_array = variance_full_images(images, avg_array=avg)
+      end = time.time()
+      print("new variance: ", end - start)
+      new_array = new_array.transpose()
+      print(old_array.shape, new_array.shape)
+      # for i in range(len(new_array)):
+      #       for j in range(len(new_array[i])):
+      #             print(i, j)
+      #             print("hmm ", new_array[i, j] - old_array[i, j])
+      #             if new_array[i, j] - old_array[i, j] > 2:
+      #                   print(new_array[i,j], old_array[i,j])
+      #                   # return False
+      return True
+
+images = images_to_array()
+new_array = average_full_images(images)
+test_avg_func()
+test_var_func(new_array)
