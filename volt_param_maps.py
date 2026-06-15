@@ -195,7 +195,7 @@ def plot_fit_map(fit_map, title, colorbar_label):
     plt.xlabel(xlabel = r'$y$ (pixel)')
     plt.ylabel(ylabel = r'$x$ (pixel)')
     plt.show()
-
+    
 
 # plot data and fit for one pixel, just for checking
 def plot_I_kV_with_numpy_fit(x, y):
@@ -261,6 +261,18 @@ for wattage in wattages:
     np.save(file = f'c_map_{wattage}.npy', arr = c_maps[i, :, :])
 
 # example: plot 10W maps
+plot_fit_map(fit_map = a_maps[0, :, :], title = r'Quadratic map $a$ for $10$ W', colorbar_label = r'$a$')
+plot_fit_map(fit_map = b_maps[0, :, :], title = r'Linear map $b$ for $10$ W', colorbar_label = r'$b$')
+plot_fit_map(fit_map = c_maps[0, :, :], title = r'Constant map $c$ for $10$ W', colorbar_label = r'$c$')
+
+plot_fit_map(fit_map = a_maps[1, :, :], title = r'Quadratic map $a$ for $20$ W', colorbar_label = r'$a$')
+plot_fit_map(fit_map = b_maps[1, :, :], title = r'Linear map $b$ for $20$ W', colorbar_label = r'$b$')
+plot_fit_map(fit_map = c_maps[1, :, :], title = r'Constant map $c$ for $20$ W', colorbar_label = r'$c$')
+
+plot_fit_map(fit_map = a_maps[2, :, :], title = r'Quadratic map $a$ for $30$ W', colorbar_label = r'$a$')
+plot_fit_map(fit_map = b_maps[2, :, :], title = r'Linear map $b$ for $30$ W', colorbar_label = r'$b$')
+plot_fit_map(fit_map = c_maps[2, :, :], title = r'Constant map $c$ for $30$ W', colorbar_label = r'$c$')
+
 plot_fit_map(fit_map = a_maps[3, :, :], title = r'Quadratic map $a$ for $40$ W', colorbar_label = r'$a$')
 plot_fit_map(fit_map = b_maps[3, :, :], title = r'Linear map $b$ for $40$ W', colorbar_label = r'$b$')
 plot_fit_map(fit_map = c_maps[3, :, :], title = r'Constant map $c$ for $40$ W', colorbar_label = r'$c$')

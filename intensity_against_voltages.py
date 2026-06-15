@@ -147,7 +147,7 @@ def plot_I_kV_quadratic_fit(x, y):
     plt.figure()
 
     colors: list = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red']
-    kV_fit: np.ndarray = np.linspace(start = 30, stop = 90, num = 100)
+    kV_fit: np.ndarray = np.linspace(start = 0, stop = 90, num = 100)
 
     # use only the real voltage data for fitting, so not the darkfield at 0 kV
     kV_fit_data: np.ndarray = kV[1:]
@@ -217,3 +217,4 @@ def ran_plot_I_kV_quadratic_fit(n):
         plot_I_kV_quadratic_fit(x = x, y = y)
 
 ran_plot_I_kV_quadratic_fit(n = 5)
+ran_plot_I_kV(5)
