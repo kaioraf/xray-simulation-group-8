@@ -39,17 +39,28 @@ def average_full_images(images, voltage_type = 'darkfield', save_file = False):
 # so it outputs a 2d array with each pixel entry being its variance
 def variance_full_images(images, avg_array, voltage_type = 'darkfield', save_file = False):
 
-      # get dimension of the images
       height = int(images.shape[1])
       width = int(images.shape[0])
       depth = int(images.shape[2])
-      # create an empty array
-      sum_array_xy: np.ndarray = np.zeros((width, height))
-      for z in range(1, depth):
-            diff = images[:, :, z] - avg_array
-            diff_squared = diff * diff
-            sum_array_xy += diff_squared
-      var_array_xy = sum_array_xy * FIVETWELVERECIPROCAL 
+      
+      start = time.time()
+      
+      # vectorized version of the algorithm at https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance#Computing_shifted_data
+      # this is done to avoid catastrophic cancellation
+      Ex = np.zeros((width, height))
+      Ex2 = np.zeros((width, height))
+      K = images[:,:,4]
+      for z in range(depth):
+            Ex += images[:, :, z] - K
+            Ex2 += (images[:, :, z] - K)**2
+            print("ex2", Ex2[0,0],
+                  "ex", Ex[0,0])
+      print("EXes", Ex[0,0], Ex2[0,0])
+      var_array_xy = (Ex2 - Ex**2 * FIVETWELVERECIPROCAL) / (COUNTS)
+      print("mewhen", var_array_xy[0,0],get_variance_single_pixel(images, 0,0) )
+      end = time.time()
+      print(end - start)
+      # var_array_xy = np.zeros((width))
       # for y in range(height - 1):
       #       for x in range(width - 1):
       #             var_array_xy[x, y] = get_variance_single_pixel(images, x, y)
@@ -94,7 +105,7 @@ def create_flatfield_images(save_image = False): # very long function, do not ru
                         full_path = f"{dirname}/Numpy image arrays/{path}/var_array_{safe_path}.png"
                         create_image(image = var, filename = full_path)
             
-def create_darkfield_images():
+def create_darkfield_images(): #another function to create files, do not run unless these files do not exist
       path: str = 'darkfield'
       images: np.ndarray = images_to_array(voltage_type = path)
       avg: np.ndarray = average_full_images(images = images, voltage_type = path, save_file = True)
@@ -130,9 +141,9 @@ def test_var_func(avg):
       for i in range(len(new_array)):
             for j in range(len(new_array[i])):
                   if (not (new_array[i, j] == old_array[i, j])):
-                        print(i, j)
+                        # print(i, j)
                         print(new_array[i,j], old_array[i,j])
-                        print("hmm ", new_array[i, j] - old_array[i, j])
+                        # print("hmm ", new_array[i, j] - old_array[i, j])
                         # return False
       return True
 

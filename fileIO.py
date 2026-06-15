@@ -3,6 +3,7 @@ from PIL import Image
 import scipy as sp
 import numpy as np
 import platform
+import time
 
 SCREENWIDTH = 1520
 SCREENHEIGHT = 1912
@@ -42,6 +43,8 @@ def images_to_array(voltage_type = 'darkfield'):
       print(path)
             
       # now we will create the 3d np.array, first creating a 2d image array
+      
+      start = time.time()
       first_loop = True
       for filename in glob.glob(pathname = os.path.join(path, '*.tif')): # loop through all the .tif image files in the specified folder
             image_as_array: np.ndarray = np.array(object = Image.open(fp = filename), dtype=np.float64)
@@ -53,6 +56,8 @@ def images_to_array(voltage_type = 'darkfield'):
             else: # here, we add the new 3d array to the existing 3d array
                   prev_array = np.concat((prev_array, three_D_image_array), axis = 2)
       image_array: np.ndarray = prev_array
+      end = time.time()
+      print(end - start)
       print(image_array.shape)
       return image_array
 
