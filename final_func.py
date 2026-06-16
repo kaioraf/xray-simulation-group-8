@@ -56,7 +56,7 @@ def eind_baas(P, V):
     darkfield_array: np.ndarray = np.load(full_path)
 
     # create function
-    I: np.ndarray = darkfield_array + P * (alpha_array * V**2 + beta_array * V + gamma_array)
+    I: np.ndarray = darkfield_array + (alpha_array * V**2 + beta_array * V + gamma_array) * P 
 
     return I
 
@@ -67,12 +67,13 @@ def color_map_eind_baas(P, V):
     vmin: float = np.nanpercentile(I, 1)
     vmax: float = np.nanpercentile(I, 99)
 
-    plt.subplot(121)
+    plt.figure()    
     plt.imshow(X = I, vmin = vmin, vmax = vmax)
     plt.colorbar(label = 'mean Intensity I')
-    plt.title(label = 'mean intensity $I$ color map')
+    plt.title(label = 'mean intensity $I$ color map (generated)')
     plt.xlabel(xlabel = r'$y$ (pixel)')
     plt.ylabel(ylabel = r'$x$ (pixel)')
+    plt.show()
     
 
 
@@ -144,8 +145,8 @@ def color_map_avg_array(P, V):
 
 
 
-color_map_eind_baas(P = 20, V = 75)
-color_map_avg_array(P = 20, V = 75)
+color_map_eind_baas(P = 40, V = 90)
+color_map_avg_array(P = 40, V = 90)
 
 #color_map_var_eind_baas(P = 40, V = 90)
 

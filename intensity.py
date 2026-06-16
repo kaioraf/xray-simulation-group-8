@@ -73,6 +73,40 @@ def sigma_intensity_array_func(x, y):
 
     return sigma_intensity_array
 
+
+# outputs a 2D variance-of-intensity array for pixel x, y
+# first dimension for voltages, second for wattages
+def variance_intensity_array_func(x, y):
+
+    # create an array for pixel x, y
+    variance_intensity_array: np.ndarray = np.zeros((5, 5))
+
+    # add dark field variances to first wattage entry (for each voltage)
+    variance_intensity_array[0, 0] = read_np_image_arrays(dist_type = 'var')[x, y]
+    variance_intensity_array[1, 0] = read_np_image_arrays(dist_type = 'var')[x, y]
+    variance_intensity_array[2, 0] = read_np_image_arrays(dist_type = 'var')[x, y]
+    variance_intensity_array[3, 0] = read_np_image_arrays(dist_type = 'var')[x, y]
+    variance_intensity_array[4, 0] = read_np_image_arrays(dist_type = 'var')[x, y]
+
+    # insert each variance-of-intensity entry
+    for voltage in voltages:
+        i: int = voltages.index(voltage)
+        for wattage in wattages:
+            j: int = wattages.index(wattage)
+            # start wattage entries at entry 1, not 0, since 0 is for dark field
+            if (platform.system() == 'Linux' or platform.system() == 'Darwin'):
+                variance_intensity_array[i, j + 1] = read_np_image_arrays(
+                    voltage_type = f'{voltage}/{wattage}',
+                    dist_type = 'var'
+                )[x, y]
+            else:
+                variance_intensity_array[i, j + 1] = read_np_image_arrays(
+                    voltage_type = f'{voltage}\\{wattage}',
+                    dist_type = 'var'
+                )[x, y]
+
+    return variance_intensity_array
+
 # print(intensity_array_func(x = x_mid, y = y_mid))
 
 # color map voor intensity, wattages op x-as, voltages op y-as
@@ -194,6 +228,44 @@ def plot_I_W_linear_fit(x, y):
     plt.show()
 
 
+# plot linear fits of variance against power for one pixel
+def plot_Var_W_linear_fit(x, y):
+
+    variance_intensity_array: np.ndarray = variance_intensity_array_func(x = x, y = y)
+
+    plt.figure()
+
+    colors: list = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple']
+    W_fit: np.ndarray = np.linspace(start = 0, stop = 40, num = 100)
+
+    for i in range(5):
+        Var_values: np.ndarray = variance_intensity_array[i, :]
+
+        valid: np.ndarray = np.isfinite(Var_values)
+        a: float
+        b: float
+        a, b = np.polyfit(x = W[valid], y = Var_values[valid], deg = 1)
+
+        Var_fit: np.ndarray = linear_fit(P = W_fit, a = a, b = b)
+
+        plt.plot(
+            W[valid],
+            Var_values[valid],
+            'o',
+            color = colors[i],
+            markersize = 3,
+            label = voltages[i]
+        )
+
+        plt.plot(W_fit, Var_fit, '-', color = colors[i])
+
+    plt.title(label = f'Pixel ({x}, {y})')
+    plt.xlabel(xlabel = r'Power $P$ ($W$)')
+    plt.ylabel(ylabel = r'Variance of intensity $\mathrm{Var}(I)$')
+    plt.legend()
+    plt.show()
+
+
 # creates n linear-fit plots for random pixels
 def ran_plot_I_W_linear_fit(n):
 
@@ -205,4 +277,16 @@ def ran_plot_I_W_linear_fit(n):
         plot_I_W_linear_fit(x = x, y = y)
 
 
-ran_plot_I_W_linear_fit(n = 5)
+# creates n variance-against-power linear-fit plots for random pixels
+def ran_plot_Var_W_linear_fit(n):
+
+    for i in range(n):
+        x: int = int(read_np_image_arrays().shape[0] * random.random())
+        y: int = int(read_np_image_arrays().shape[1] * random.random())
+
+        print(x, y)
+        plot_Var_W_linear_fit(x = x, y = y)
+
+
+# ran_plot_I_W_linear_fit(n = 5)
+ran_plot_Var_W_linear_fit(n = 5)

@@ -125,6 +125,3 @@ def create_folder_structure(parent_directory_name = "test"):
                   os.mkdir(wattage_directory_path)
                   print(parent_directory_path)
                   
-# create_darkfield_images(save_image=True)
-# create_flatfield_images(save_image=True)
-# create_folder_structure()

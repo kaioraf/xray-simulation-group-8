@@ -88,6 +88,41 @@ def sigma_intensity_array_func(x, y):
     return sigma_intensity_array
 
 
+# outputs a 2D variance-of-intensity array for pixel x, y
+# first dimension for wattages, second for voltages
+def variance_intensity_array_func(x, y):
+
+    # create an array for pixel x, y
+    variance_intensity_array: np.ndarray = np.zeros((4, 6))
+
+    # add dark field variances to first voltage entry, for each wattage
+    variance_intensity_array[0, 0] = read_np_image_arrays(dist_type = 'var')[x, y]
+    variance_intensity_array[1, 0] = read_np_image_arrays(dist_type = 'var')[x, y]
+    variance_intensity_array[2, 0] = read_np_image_arrays(dist_type = 'var')[x, y]
+    variance_intensity_array[3, 0] = read_np_image_arrays(dist_type = 'var')[x, y]
+
+    # insert each variance-of-intensity entry
+    for wattage in wattages:
+        i: int = wattages.index(wattage)
+
+        for voltage in voltages:
+            j: int = voltages.index(voltage)
+
+            # start voltage entries at entry 1, not 0, since 0 is for dark field
+            if (platform.system() == 'Linux' or platform.system() == 'Darwin'):
+                variance_intensity_array[i, j + 1] = read_np_image_arrays(
+                    voltage_type = f'{voltage}/{wattage}',
+                    dist_type = 'var'
+                )[x, y]
+            else: # windows
+                variance_intensity_array[i, j + 1] = read_np_image_arrays(
+                    voltage_type = f'{voltage}\\{wattage}',
+                    dist_type = 'var'
+                )[x, y]
+
+    return variance_intensity_array
+
+
 # for pixel [x, y], plot intensity entries against voltages
 # includes st_dev
 def plot_I_kV(x, y):
@@ -206,6 +241,48 @@ def plot_I_kV_quadratic_fit(x, y):
     plt.show()
 
 
+# plot quadratic fits of variance against voltage for one pixel
+def plot_Var_kV_quadratic_fit(x, y):
+
+    variance_intensity_array: np.ndarray = variance_intensity_array_func(x = x, y = y)
+
+    plt.figure()
+
+    colors: list = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red']
+    kV_fit: np.ndarray = np.linspace(start = 30, stop = 90, num = 100)
+
+    # fit only the real voltage data, not the darkfield point at 0 kV
+    kV_fit_data: np.ndarray = kV[1:]
+
+    for i in range(4):
+        Var_values: np.ndarray = variance_intensity_array[i, 1:]
+
+        valid: np.ndarray = np.isfinite(Var_values)
+        a: float
+        b: float
+        c: float
+        a, b, c = np.polyfit(x = kV_fit_data[valid], y = Var_values[valid], deg = 2)
+
+        Var_fit: np.ndarray = quadratic_fit(U = kV_fit, a = a, b = b, c = c)
+
+        plt.plot(
+            kV_fit_data[valid],
+            Var_values[valid],
+            'o',
+            color = colors[i],
+            markersize = 3,
+            label = wattages[i]
+        )
+
+        plt.plot(kV_fit, Var_fit, '-', color = colors[i])
+
+    plt.title(label = f'Pixel ({x}, {y})')
+    plt.xlabel(xlabel = r'Voltage $U$ ($kV$)')
+    plt.ylabel(ylabel = r'Variance of intensity $\mathrm{Var}(I)$')
+    plt.legend()
+    plt.show()
+
+
 # creates n quadratic-fit plots for random pixels
 def ran_plot_I_kV_quadratic_fit(n):
 
@@ -216,5 +293,18 @@ def ran_plot_I_kV_quadratic_fit(n):
         print(x, y)
         plot_I_kV_quadratic_fit(x = x, y = y)
 
-ran_plot_I_kV_quadratic_fit(n = 5)
-ran_plot_I_kV(5)
+
+# creates n variance-against-voltage quadratic-fit plots for random pixels
+def ran_plot_Var_kV_quadratic_fit(n):
+
+    for i in range(n):
+        x: int = int(read_np_image_arrays().shape[0] * random.random())
+        y: int = int(read_np_image_arrays().shape[1] * random.random())
+
+        print(x, y)
+        plot_Var_kV_quadratic_fit(x = x, y = y)
+
+
+# ran_plot_I_kV_quadratic_fit(n = 5)
+# ran_plot_I_kV(5)
+ran_plot_Var_kV_quadratic_fit(n = 5)

@@ -167,8 +167,8 @@ def plot_fit_map(fit_map, title, colorbar_label):
     plt.imshow(X = fit_map, vmin = vmin, vmax = vmax)
     plt.colorbar(label = colorbar_label)
     plt.title(label = title)
-    plt.xlabel(xlabel = r'$y$ (pixel)')
-    plt.ylabel(ylabel = r'$x$ (pixel)')
+    plt.xlabel(xlabel = r'$x$ (pixel)')
+    plt.ylabel(ylabel = r'$y$ (pixel)')
     plt.show()
 
 

@@ -1,6 +1,7 @@
 import os
 import platform
 
+import matplotlib.pyplot as plt
 import numpy as np
 
 from fileIO import read_np_image_arrays
@@ -113,6 +114,24 @@ def fit_k_values_for_voltages():
     return k_values, intercepts, r_squared_values, relative_rmse_values
 
 
+def get_intensity_and_variance_means_for_voltage(voltage):
+    intensity_means: list = []
+    variance_means: list = []
+
+    for wattage in wattages:
+        mean_intensity: float
+        mean_variance: float
+        mean_intensity, mean_variance = get_mean_intensity_and_variance(
+            voltage = voltage,
+            wattage = wattage
+        )
+
+        intensity_means.append(mean_intensity)
+        variance_means.append(mean_variance)
+
+    return np.array(object = intensity_means, dtype = float), np.array(object = variance_means, dtype = float)
+
+
 def fit_k_as_function_of_voltage():
     k_values: np.ndarray
     intercepts: np.ndarray
@@ -134,6 +153,104 @@ def fit_k_as_function_of_voltage():
     rmse: float = np.sqrt(np.mean(a = residuals**2))
 
     return k_fit_parameters, intercept_fit_parameters, k_values, intercepts, r_squared_values, relative_rmse_values, r_squared, rmse
+
+
+def plot_variance_against_mean_with_fit():
+    colors: list = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple']
+
+    plt.figure()
+
+    for i in range(len(voltages)):
+        voltage: int = voltages[i]
+
+        intensity_means: np.ndarray
+        variance_means: np.ndarray
+        intensity_means, variance_means = get_intensity_and_variance_means_for_voltage(voltage = voltage)
+
+        slope: float
+        intercept: float
+        r_squared: float
+        rmse: float
+        slope, intercept, r_squared, rmse = linear_fit(
+            x_values = intensity_means,
+            y_values = variance_means
+        )
+
+        intensity_fit: np.ndarray = np.linspace(
+            start = np.min(a = intensity_means),
+            stop = np.max(a = intensity_means),
+            num = 100
+        )
+        variance_fit: np.ndarray = slope * intensity_fit + intercept
+
+        plt.plot(
+            intensity_means,
+            variance_means,
+            'o',
+            color = colors[i],
+            label = f'{voltage} kV data'
+        )
+        plt.plot(
+            intensity_fit,
+            variance_fit,
+            '-',
+            color = colors[i],
+            label = f'{voltage} kV fit'
+        )
+
+    plt.title(label = 'Variance against mean intensity')
+    plt.xlabel(xlabel = 'Mean intensity')
+    plt.ylabel(ylabel = 'Variance')
+    plt.legend()
+    plt.show()
+
+
+def plot_k_against_voltage_with_fit():
+    k_fit_parameters: np.ndarray
+    intercept_fit_parameters: np.ndarray
+    k_values: np.ndarray
+    intercepts: np.ndarray
+    r_squared_values: np.ndarray
+    relative_rmse_values: np.ndarray
+    r_squared: float
+    rmse: float
+    k_fit_parameters, intercept_fit_parameters, k_values, intercepts, r_squared_values, relative_rmse_values, r_squared, rmse = fit_k_as_function_of_voltage()
+
+    kV_fit: np.ndarray = np.linspace(start = np.min(a = kV), stop = np.max(a = kV), num = 100)
+    k_fit: np.ndarray = np.polyval(p = k_fit_parameters, x = kV_fit)
+
+    plt.figure()
+    plt.plot(kV, k_values, 'o', label = 'fitted k values')
+    plt.plot(kV_fit, k_fit, '-', label = 'quadratic fit')
+    plt.title(label = 'Proportionality constant against voltage')
+    plt.xlabel(xlabel = 'Voltage (kV)')
+    plt.ylabel(ylabel = 'k in Var = kI + intercept')
+    plt.legend()
+    plt.show()
+
+
+def plot_intercept_against_voltage_with_fit():
+    k_fit_parameters: np.ndarray
+    intercept_fit_parameters: np.ndarray
+    k_values: np.ndarray
+    intercepts: np.ndarray
+    r_squared_values: np.ndarray
+    relative_rmse_values: np.ndarray
+    r_squared: float
+    rmse: float
+    k_fit_parameters, intercept_fit_parameters, k_values, intercepts, r_squared_values, relative_rmse_values, r_squared, rmse = fit_k_as_function_of_voltage()
+
+    kV_fit: np.ndarray = np.linspace(start = np.min(a = kV), stop = np.max(a = kV), num = 100)
+    intercept_fit: np.ndarray = np.polyval(p = intercept_fit_parameters, x = kV_fit)
+
+    plt.figure()
+    plt.plot(kV, intercepts, 'o', label = 'fitted intercept values')
+    plt.plot(kV_fit, intercept_fit, '-', label = 'quadratic fit')
+    plt.title(label = 'Variance-fit intercept against voltage')
+    plt.xlabel(xlabel = 'Voltage (kV)')
+    plt.ylabel(ylabel = 'intercept in Var = kI + intercept')
+    plt.legend()
+    plt.show()
 
 
 def print_k_fit_report():
@@ -187,5 +304,8 @@ def save_k_fit_parameters():
 
 
 
-print_k_fit_report()
-save_k_fit_parameters()
+#print_k_fit_report()
+#save_k_fit_parameters()
+plot_variance_against_mean_with_fit()
+plot_k_against_voltage_with_fit()
+plot_intercept_against_voltage_with_fit()
