@@ -135,5 +135,74 @@ def ran_plot_I_W(n):
     #for x, y in coords:
     #    plot_I_W(x, y)
 
-plot_I_W(x_mid, y_mid)
-ran_plot_I_W(n = 5)
+
+# linear fit function: I = aP + b
+def linear_fit(P, a, b):
+    return a * P + b
+
+
+# plot linear fits of intensity against power for one pixel
+def plot_I_W_linear_fit(x, y):
+
+    intensity_array: np.ndarray = intensity_array_func(x = x, y = y)
+    sigma_intensity_array: np.ndarray = sigma_intensity_array_func(x = x, y = y)
+
+    plt.figure()
+
+    colors: list = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple']
+    W_fit: np.ndarray = np.linspace(start = 0, stop = 40, num = 100)
+
+    for i in range(5):
+        I_values: np.ndarray = intensity_array[i, :]
+        sigma_values: np.ndarray = sigma_intensity_array[i, :]
+
+        sigma_values = np.where(sigma_values > 0, sigma_values, np.nan)
+
+        weights: np.ndarray = 1 / sigma_values**2
+
+        S: float = np.nansum(weights)
+        SP: float = np.nansum(weights * W)
+        SI: float = np.nansum(weights * I_values)
+        SPP: float = np.nansum(weights * W**2)
+        SPI: float = np.nansum(weights * W * I_values)
+
+        denominator: float = S * SPP - SP**2
+
+        a: float = (S * SPI - SP * SI) / denominator
+        b: float = (SPP * SI - SP * SPI) / denominator
+
+        I_fit: np.ndarray = linear_fit(P = W_fit, a = a, b = b)
+
+        plt.errorbar(
+            x = W,
+            y = I_values,
+            yerr = sigma_values,
+            fmt = 'o',
+            color = colors[i],
+            ecolor = colors[i],
+            markersize = 3,
+            capsize = 6,
+            label = voltages[i]
+        )
+
+        plt.plot(W_fit, I_fit, '-', color = colors[i])
+
+    plt.title(label = f'Pixel ({x}, {y})')
+    plt.xlabel(xlabel = r'Power $P$ ($W$)')
+    plt.ylabel(ylabel = r'Average Intensity $I$ (detector units)')
+    plt.legend()
+    plt.show()
+
+
+# creates n linear-fit plots for random pixels
+def ran_plot_I_W_linear_fit(n):
+
+    for i in range(n):
+        x: int = int(read_np_image_arrays().shape[0] * random.random())
+        y: int = int(read_np_image_arrays().shape[1] * random.random())
+
+        print(x, y)
+        plot_I_W_linear_fit(x = x, y = y)
+
+
+ran_plot_I_W_linear_fit(n = 5)

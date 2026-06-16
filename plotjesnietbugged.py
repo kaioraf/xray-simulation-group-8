@@ -46,7 +46,7 @@ def plotje_var_vs_volt():
     for watt in wattages:
         variancevoltages_lst: list = [
             pixel_variance(
-                voltagetype = str(object = volt) + "kV" + SLASH + str(object = watt) + "W",
+                voltage_type = str(object = volt) + "kV" + SLASH + str(object = watt) + "W",
                 x = pixel_x,
                 y = pixel_y
             ) for volt in voltages
@@ -123,4 +123,5 @@ def plotje_true_avg_vs_watt():
     plt.legend(["30kV", "45kv", "60kV", "75kV", "90kv"])
     plt.show()
 
-plotje_true_avg_vs_watt()
+#plotje_true_avg_vs_watt()
+plotje_var_vs_volt()

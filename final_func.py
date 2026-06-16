@@ -76,6 +76,48 @@ def color_map_eind_baas(P, V):
     plt.show()
 
 
+def var_eind_baas(P, V):
+    dirname: str = os.path.dirname(__file__)
+
+    # import k(V) fit parameters: k(V) = q2 * V**2 + q1 * V + q0
+    if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
+        full_path: str = f"{dirname}/Final parameter maps/variance_k_quadratic_coefficients.npy"
+    else: # windows
+        full_path: str = f"{dirname}\\Final parameter maps\\variance_k_quadratic_coefficients.npy"
+    k_fit_parameters: np.ndarray = np.load(full_path)
+
+    # import intercept(V) fit parameters: intercept(V) = r2 * V**2 + r1 * V + r0
+    if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
+        full_path: str = f"{dirname}/Final parameter maps/variance_intercept_quadratic_coefficients.npy"
+    else: # windows
+        full_path: str = f"{dirname}\\Final parameter maps\\variance_intercept_quadratic_coefficients.npy"
+    intercept_fit_parameters: np.ndarray = np.load(full_path)
+
+    k: float = k_fit_parameters[0] * V**2 + k_fit_parameters[1] * V + k_fit_parameters[2]
+    intercept: float = intercept_fit_parameters[0] * V**2 + intercept_fit_parameters[1] * V + intercept_fit_parameters[2]
+
+    I: np.ndarray = eind_baas(P = P, V = V)
+    Var_I: np.ndarray = k * I + intercept
+
+    return Var_I
+
+
+def color_map_var_eind_baas(P, V):
+    Var_I: np.ndarray = var_eind_baas(P = P, V = V)
+
+    # ignore nan values
+    vmin: float = np.nanpercentile(Var_I, 1)
+    vmax: float = np.nanpercentile(Var_I, 99)
+
+    plt.figure()
+    plt.imshow(X = Var_I, vmin = vmin, vmax = vmax)
+    plt.colorbar(label = r'Variance of intensity $\mathrm{Var}(I)$')
+    plt.title(label = r'Variance of intensity color map')
+    plt.xlabel(xlabel = r'$y$ (pixel)')
+    plt.ylabel(ylabel = r'$x$ (pixel)')
+    plt.show()
+
+
 def color_map_avg_array(P, V):
     dirname: str = os.path.dirname(__file__)
 
@@ -102,5 +144,7 @@ def color_map_avg_array(P, V):
 
 
 
-color_map_eind_baas(P = 40, V = 90)
-color_map_avg_array(P = 40, V = 90)
+#color_map_eind_baas(P = 20, V = 75)
+#color_map_avg_array(P = 20, V = 75)
+
+color_map_var_eind_baas(P = 40, V = 90)
