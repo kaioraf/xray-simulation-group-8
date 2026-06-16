@@ -36,6 +36,7 @@ def images_to_dict(voltage_type = 'darkfield'):
       return image_dict
 
 def images_to_array(voltage_type = 'darkfield'):
+      start = time.time()
       COUNTS = 20
       # take the path to the directory that will be processed, accounting for windows/unix filesystems
       dirname: str = os.path.dirname(p = __file__)
@@ -45,7 +46,7 @@ def images_to_array(voltage_type = 'darkfield'):
       
       first_loop = True
       for filename in glob.glob(pathname = os.path.join(path, '*.tif')): # loop through all the .tif image files in the specified folder
-            image_as_array: np.ndarray = np.array(object = Image.open(fp = filename), dtype=np.float64)
+            image_as_array: np.ndarray = np.array(object = Image.open(fp = filename), dtype=np.float64).T
             three_D_image_array: np.ndarray = image_as_array[:, :, None] # make a 2d image into a n * n * 1 three dimensional image for later
 
             if first_loop: # on the first loop, we can't combine the current with the previous, so we just set prev_array to the current one
@@ -54,6 +55,8 @@ def images_to_array(voltage_type = 'darkfield'):
             else: # here, we add the new 3d array to the existing 3d array
                   prev_array = np.concat((prev_array, three_D_image_array), axis = 2)
       image_array: np.ndarray = prev_array
+      end = time.time()
+      print(f"Converted images to arrays in {end - start} seconds")
       return image_array
 
 def read_np_image_arrays(voltage_type = 'darkfield', filetype = 'npy', dist_type = 'avg'):

@@ -12,19 +12,13 @@ from PIL import Image
 import scipy as sp
 import platform
 import matplotlib.pyplot as plt
+from fileIO import read_np_image_arrays
 
 
 
 # a_p is the linear coefficient of power; a, b en c are the coefficients of voltage
 def eind_baas(P, V):
     dirname: str = os.path.dirname(__file__)
-
-    # import a_p map for 90kV
-    if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
-        full_path: str = f"{dirname}/Parameter maps/a_map_90kV.npy"
-    else: # windows
-        full_path: str = f"{dirname}\\Parameter maps\\a_map_90kV.npy"
-    a_p_array: np.ndarray = np.load(full_path)
 
     # import a map for 40W
     if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
@@ -47,14 +41,9 @@ def eind_baas(P, V):
         full_path: str = f"{dirname}\\Final parameter maps\\gamma_map.npy"
     gamma_array: np.ndarray = np.load(full_path)
 
-
     # import darkfield map
-    if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
-        full_path: str = f"{dirname}/Numpy image arrays/darkfield/avg_array_darkield.npy"
-    else: # windows
-        full_path: str = f"{dirname}\\Numpy image arrays\\darkfield\\avg_array_darkield.npy"
-    darkfield_array: np.ndarray = np.load(full_path)
-
+    darkfield_array = read_np_image_arrays(voltage_type = 'darkfield', filetype = 'npy', dist_type = 'avg')
+    print(darkfield_array.shape)
     # create function
     I: np.ndarray = darkfield_array + P * (alpha_array * V**2 + beta_array * V + gamma_array)
 

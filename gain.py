@@ -17,23 +17,23 @@ wattages = [10, 20, 30, 40]
 pixel_x = 0
 pixel_y=0
 
-# # (hopefully) Efficient vectorized calculation for the gain for each pixel, stored into an array
-# def full_image_gain(avg_image, var_image):
-#     avg_darkfield = read_np_image_arrays(dist_type='avg')
-#     var_darkfield = read_np_image_arrays(dist_type='var')
+# (hopefully) Efficient vectorized calculation for the gain for each pixel, stored into an array
+def full_image_gain(avg_image, var_image):
+    avg_darkfield = read_np_image_arrays(dist_type='avg')
+    var_darkfield = read_np_image_arrays(dist_type='var')
     
-#     true_intensity_avg_image = avg_image - avg_darkfield
-#     # create_image(true_intensity_avg_image, exposure=5)
-#     # create_image(var_image - var_darkfield, exposure=5)
-#     # for i in true_intensity_avg_image:
-#     #     for j in i:
-#     #         print(j)        
+    true_intensity_avg_image = avg_image - avg_darkfield
+    # create_image(true_intensity_avg_image, exposure=5)
+    # create_image(var_image - var_darkfield, exposure=5)
             
-#     with np.errstate(divide='ignore', invalid='ignore'):
-#         true_intensity_avg_image = np.nan_to_num(np.reciprocal(true_intensity_avg_image))
+    with np.errstate(divide='ignore', invalid='ignore'):
+        true_intensity_avg_image = np.nan_to_num(np.reciprocal(true_intensity_avg_image))
         
-#     gain_image = (var_image - var_darkfield) * true_intensity_avg_image
-#     create_image(gain_image, exposure=100, filename="gaintest.png")
+    gain_image = (var_image - var_darkfield) * true_intensity_avg_image
+    for i in gain_image:
+        for j in i:
+            print(j)        
+    create_image(gain_image, exposure=100, filename="gaintest.png")
 
 # avg_image = read_np_image_arrays(voltage_type='30kV/20W',dist_type='avg')
 # var_image = read_np_image_arrays(voltage_type='30kV/20W',dist_type='var')
