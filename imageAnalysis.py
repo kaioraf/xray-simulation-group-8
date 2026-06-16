@@ -10,7 +10,7 @@ VOLTAGES: set = {'30', '45', '60', '75', '90'}
 WATTAGES: set = {'10', '20', '30', '40'}
 COUNTS = 20
 BIGCOUNTS = 512
-FIVETWELVERECIPROCAL = 1/20
+ONEOVERTENTWENTYFOUR = 1/20
 
 # take all the files within some folder e.g. 75kV/10W/, and then averages all their values into a single new image
 def average_full_images(images, voltage_type = 'darkfield', save_file = False):
@@ -23,7 +23,7 @@ def average_full_images(images, voltage_type = 'darkfield', save_file = False):
       sum_array: np.ndarray = images[:, :, 0]
       for z in range(1, depth):
             sum_array = sum_array + images[:, :, z]
-      avg_array_xy = sum_array * FIVETWELVERECIPROCAL
+      avg_array_xy = sum_array * ONEOVERTENTWENTYFOUR
       if save_file:
             dirname: str = os.path.dirname(p = __file__)
             # remove the slash from the filename
@@ -54,7 +54,7 @@ def variance_full_images(images, avg_array, voltage_type = 'darkfield', save_fil
       #       print("ex2", Ex2[0,0],
       #             "ex", Ex[0,0])
       # print("EXes", Ex[0,0], Ex2[0,0])
-      var_array_xy = (Ex2 - Ex**2 * FIVETWELVERECIPROCAL) / (COUNTS)
+      var_array_xy = (Ex2 - Ex**2 * ONEOVERTENTWENTYFOUR) / (COUNTS)
       # print("mewhen", var_array_xy[0,0],get_variance_single_pixel(images, 0,0) )
       end = time.time()
       print(end - start)
@@ -82,7 +82,20 @@ def create_image(image, exposure = 1, filename = 'result.png'):
       picture: Image = Image.fromarray(obj = (image.transpose()).astype(np.uint16))
       picture.save(filename)
       
-def create_flatfield_images(save_image = False): # very long function, do not run if the files are already created!
+def create_images(save_image = False, parent_directory_name = "Numpy image arrays"): # very long function, do not run if the files are already created!
+      dirname: str = os.path.dirname(p = __file__)
+      path: str = 'darkfield'
+      images: np.ndarray = images_to_array(voltage_type = path)
+      avg: np.ndarray = average_full_images(images = images, voltage_type = path, save_file = True)
+      var: np.ndarray = variance_full_images(images = images, avg_array=avg,  voltage_type = path, save_file = True)
+      
+      if save_image:
+            safe_path: str = path[:4] + path[5:]
+            full_path: str = f"{dirname}{SLASH}{parent_directory_name}{SLASH}{path}{SLASH}avg_array_{safe_path}.png"
+            create_image(image = avg, filename = full_path)
+            full_path = f"{dirname}{SLASH}{parent_directory_name}{SLASH}{path}{SLASH}var_array_{safe_path}.png"
+            create_image(image = var, filename = full_path)   
+             
       dirname: str = os.path.dirname(p = __file__)          
       for voltage in VOLTAGES:
             for wattage in WATTAGES:
@@ -94,21 +107,24 @@ def create_flatfield_images(save_image = False): # very long function, do not ru
                   
                   if save_image:
                         safe_path: str = path[:4] + path[5:]
-                        full_path: str = f"{dirname}/Numpy image arrays/{path}/avg_array_{safe_path}.png"
+                        full_path: str = f"{dirname}{SLASH}{parent_directory_name}/{path}{SLASH}avg_array_{safe_path}.png"
                         create_image(image = avg, filename = full_path)
-                        full_path = f"{dirname}/Numpy image arrays/{path}/var_array_{safe_path}.png"
+                        full_path = f"{dirname}{SLASH}{parent_directory_name}/{path}{SLASH}var_array_{safe_path}.png"
                         create_image(image = var, filename = full_path)
-            
-def create_darkfield_images(): #another function to create files, do not run unless these files do not exist
-      path: str = 'darkfield'
-      images: np.ndarray = images_to_array(voltage_type = path)
-      avg: np.ndarray = average_full_images(images = images, voltage_type = path, save_file = True)
-      var: np.ndarray = variance_full_images(images = images, avg_array=avg,  voltage_type = path, save_file = True)
-      
+                          
+def create_folder_structure(parent_directory_name = "test"):
       dirname: str = os.path.dirname(p = __file__)
-      safe_path: str = path[:4] + path[5:]
-      full_path: str = f"{dirname}/Numpy image arrays/{path}/avg_array_{safe_path}.png"
-      create_image(image = avg, filename = full_path)
-      full_path = f"{dirname}/Numpy image arrays/{path}/var_array_{safe_path}.png"
-      create_image(image = var, filename = full_path)
-      
+      parent_directory_path: str = f'{dirname}{SLASH}{parent_directory_name}{SLASH}'
+      os.mkdir(parent_directory_path)
+      os.mkdir(f'{parent_directory_path}darkfield{SLASH}')
+      for voltage in VOLTAGES:
+            voltage_directory = f"{parent_directory_path}{voltage}kV{SLASH}"
+            os.mkdir(voltage_directory)
+            for wattage in WATTAGES:
+                  wattage_directory_path: str = f"{voltage_directory}{wattage}W{SLASH}"
+                  os.mkdir(wattage_directory_path)
+                  print(parent_directory_path)
+                  
+# create_darkfield_images(save_image=True)
+# create_flatfield_images(save_image=True)
+# create_folder_structure()
