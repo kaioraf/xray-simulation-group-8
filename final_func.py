@@ -67,13 +67,13 @@ def color_map_eind_baas(P, V):
     vmin: float = np.nanpercentile(I, 1)
     vmax: float = np.nanpercentile(I, 99)
 
-    plt.figure()
+    plt.subplot(121)
     plt.imshow(X = I, vmin = vmin, vmax = vmax)
     plt.colorbar(label = 'mean Intensity I')
     plt.title(label = 'mean intensity $I$ color map')
     plt.xlabel(xlabel = r'$y$ (pixel)')
     plt.ylabel(ylabel = r'$x$ (pixel)')
-    plt.show()
+    
 
 
 def var_eind_baas(P, V):
