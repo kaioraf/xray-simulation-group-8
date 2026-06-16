@@ -99,16 +99,19 @@ def create_flatfield_images(save_image = False): # very long function, do not ru
                         full_path = f"{dirname}/Numpy image arrays/{path}/var_array_{safe_path}.png"
                         create_image(image = var, filename = full_path)
             
-def create_darkfield_images(): #another function to create files, do not run unless these files do not exist
+def create_darkfield_images(save_image = False): #another function to create files, do not run unless these files do not exist
+      dirname: str = os.path.dirname(p = __file__)
       path: str = 'darkfield'
       images: np.ndarray = images_to_array(voltage_type = path)
       avg: np.ndarray = average_full_images(images = images, voltage_type = path, save_file = True)
       var: np.ndarray = variance_full_images(images = images, avg_array=avg,  voltage_type = path, save_file = True)
       
-      dirname: str = os.path.dirname(p = __file__)
-      safe_path: str = path[:4] + path[5:]
-      full_path: str = f"{dirname}/Numpy image arrays/{path}/avg_array_{safe_path}.png"
-      create_image(image = avg, filename = full_path)
-      full_path = f"{dirname}/Numpy image arrays/{path}/var_array_{safe_path}.png"
-      create_image(image = var, filename = full_path)
-      
+      if save_image:
+            safe_path: str = path[:4] + path[5:]
+            full_path: str = f"{dirname}/Numpy image arrays/{path}/avg_array_{safe_path}.png"
+            create_image(image = avg, filename = full_path)
+            full_path = f"{dirname}/Numpy image arrays/{path}/var_array_{safe_path}.png"
+            create_image(image = var, filename = full_path)    
+              
+# create_darkfield_images(save_image=True)
+# create_flatfield_images(save_image=True)
