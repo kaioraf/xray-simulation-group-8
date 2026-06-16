@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 
 
 
-# a_p is de lineaire coefficient van power; a, b en c zijn de coefficienten van voltage
+# a_p is the linear coefficient of power; a, b en c are the coefficients of voltage
 def eind_baas(P, V):
     dirname: str = os.path.dirname(__file__)
 
@@ -28,27 +28,35 @@ def eind_baas(P, V):
 
     # import a map for 40W
     if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
-        full_path: str = f"{dirname}/Parameter maps/a_map_40W.npy"
+        full_path: str = f"{dirname}/Final parameter maps/alpha_map.npy"
     else: # windows
-        full_path: str = f"{dirname}\\Parameter maps\\a_map_40W.npy"
-    a_array: np.ndarray = np.load(full_path)
+        full_path: str = f"{dirname}\\Final parameter maps\\alpha_map.npy"
+    alpha_array: np.ndarray = np.load(full_path)
 
     # import b map for 40W
     if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
-        full_path: str = f"{dirname}/Parameter maps/b_map_40W.npy"
+        full_path: str = f"{dirname}/Final parameter maps/beta_map.npy"
     else: # windows
-        full_path: str = f"{dirname}\\Parameter maps\\b_map_40W.npy"
-    b_array: np.ndarray = np.load(full_path)
+        full_path: str = f"{dirname}\\Final parameter maps\\beta_map.npy"
+    beta_array: np.ndarray = np.load(full_path)
 
     # import c map for 40W
     if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
-        full_path: str = f"{dirname}/Parameter maps/c_map_40W.npy"
+        full_path: str = f"{dirname}/Final parameter maps/gamma_map.npy"
     else: # windows
-        full_path: str = f"{dirname}\\Parameter maps\\c_map_40W.npy"
-    c_array: np.ndarray = np.load(full_path)
+        full_path: str = f"{dirname}\\Final parameter maps\\gamma_map.npy"
+    gamma_array: np.ndarray = np.load(full_path)
+
+
+    # import darkfield map
+    if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
+        full_path: str = f"{dirname}/Numpy image arrays/darkfield/avg_array_darkield.npy"
+    else: # windows
+        full_path: str = f"{dirname}\\Numpy image arrays\\darkfield\\avg_array_darkield.npy"
+    darkfield_array: np.ndarray = np.load(full_path)
 
     # create function
-    I: np.ndarray = (1 / 7234) * a_p_array * P * (a_array * V**2 + b_array * V) + c_array
+    I: np.ndarray = darkfield_array + P * (alpha_array * V**2 + beta_array * V + gamma_array)
 
     return I
 
@@ -68,13 +76,55 @@ def color_map_eind_baas(P, V):
     plt.show()
 
 
-def color_map_avg_array_90kV40W():
+def var_eind_baas(P, V):
+    dirname: str = os.path.dirname(__file__)
+
+    # import k(V) fit parameters: k(V) = q2 * V**2 + q1 * V + q0
+    if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
+        full_path: str = f"{dirname}/Final parameter maps/variance_k_quadratic_coefficients.npy"
+    else: # windows
+        full_path: str = f"{dirname}\\Final parameter maps\\variance_k_quadratic_coefficients.npy"
+    k_fit_parameters: np.ndarray = np.load(full_path)
+
+    # import intercept(V) fit parameters: intercept(V) = r2 * V**2 + r1 * V + r0
+    if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
+        full_path: str = f"{dirname}/Final parameter maps/variance_intercept_quadratic_coefficients.npy"
+    else: # windows
+        full_path: str = f"{dirname}\\Final parameter maps\\variance_intercept_quadratic_coefficients.npy"
+    intercept_fit_parameters: np.ndarray = np.load(full_path)
+
+    k: float = k_fit_parameters[0] * V**2 + k_fit_parameters[1] * V + k_fit_parameters[2]
+    intercept: float = intercept_fit_parameters[0] * V**2 + intercept_fit_parameters[1] * V + intercept_fit_parameters[2]
+
+    I: np.ndarray = eind_baas(P = P, V = V)
+    Var_I: np.ndarray = k * I + intercept
+
+    return Var_I
+
+
+def color_map_var_eind_baas(P, V):
+    Var_I: np.ndarray = var_eind_baas(P = P, V = V)
+
+    # ignore nan values
+    vmin: float = np.nanpercentile(Var_I, 1)
+    vmax: float = np.nanpercentile(Var_I, 99)
+
+    plt.figure()
+    plt.imshow(X = Var_I, vmin = vmin, vmax = vmax)
+    plt.colorbar(label = r'Variance of intensity $\mathrm{Var}(I)$')
+    plt.title(label = r'Variance of intensity color map')
+    plt.xlabel(xlabel = r'$y$ (pixel)')
+    plt.ylabel(ylabel = r'$x$ (pixel)')
+    plt.show()
+
+
+def color_map_avg_array(P, V):
     dirname: str = os.path.dirname(__file__)
 
     if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
-        full_path: str = f"{dirname}/Numpy image arrays/90kV/40W/avg_array_90kV40W.npy"
+        full_path: str = f"{dirname}/Numpy image arrays/{V}kV/{P}W/avg_array_{V}kV{P}W.npy"
     else: # windows
-        full_path: str = f"{dirname}\\Numpy image arrays\\90kV\\40W\\avg_array_90kV40W.npy"
+        full_path: str = f"{dirname}\\Numpy image arrays\\{V}kV\\{P}W\\avg_array_{V}kV{P}W.npy"
 
     avg_array: np.ndarray = np.load(full_path)
 
@@ -85,11 +135,18 @@ def color_map_avg_array_90kV40W():
     plt.figure()
     plt.imshow(X = avg_array, vmin = vmin, vmax = vmax)
     plt.colorbar(label = 'mean intensity I')
-    plt.title(label = r'Average intensity map for $90$ kV, $40$ W')
-    plt.xlabel(xlabel = r'$y$ (pixel)')
-    plt.ylabel(ylabel = r'$x$ (pixel)')
+    plt.title(label = f'Average intensity map for ${V}$ kV, ${P}$ W')
+    plt.xlabel(xlabel = f'$y$ (pixel)')
+    plt.ylabel(ylabel = f'$x$ (pixel)')
     plt.show()
 
 
+
+
+
 color_map_eind_baas(P = 20, V = 75)
-color_map_avg_array_90kV40W()
+color_map_avg_array(P = 20, V = 75)
+
+#color_map_var_eind_baas(P = 40, V = 90)
+
+
