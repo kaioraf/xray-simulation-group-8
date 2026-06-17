@@ -313,6 +313,6 @@ def ran_plot_Var_kV_quadratic_fit(n):
         plot_Var_kV_quadratic_fit(x = x, y = y)
 
 
-ran_plot_I_kV_quadratic_fit(n = 5)
+#ran_plot_I_kV_quadratic_fit(n = 5)
 # ran_plot_I_kV(5)
-#ran_plot_Var_kV_quadratic_fit(n = 5)
+ran_plot_Var_kV_quadratic_fit(n = 5)

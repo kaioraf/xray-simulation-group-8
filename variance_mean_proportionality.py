@@ -7,11 +7,17 @@ import numpy as np
 from fileIO import read_np_image_arrays
 
 
-# This file creates the scalar voltage-dependent proportionality function:
-# Var_total = k(V) * I_total + intercept
+# This file creates the scalar voltage-dependent proportionality function for
+# the real x-ray signal, not for the darkfield offset:
 #
-# The final variance function can later use:
-# Var_total(P, V) = k(V) * I_total(P, V) + intercept(V)
+# Var_real = k(V) * I_real
+#
+# with:
+# I_real = I_total - I_dark
+# Var_real = Var_total - Var_dark
+#
+# The final variance function should use:
+# Var_total(P, V) = Var_dark + k(V) * I_real(P, V)
 
 voltages: list = [30, 45, 60, 75, 90]
 wattages: list = [10, 20, 30, 40]
@@ -32,26 +38,7 @@ def voltage_type(voltage, wattage):
     return f'{voltage}kV{slash}{wattage}W'
 
 
-def linear_fit(x_values, y_values):
-    x_values: np.ndarray = np.array(object = x_values, dtype = float)
-    y_values: np.ndarray = np.array(object = y_values, dtype = float)
-
-    fit_parameters: np.ndarray = np.polyfit(x = x_values, y = y_values, deg = 1)
-    y_fit: np.ndarray = np.polyval(p = fit_parameters, x = x_values)
-
-    residuals: np.ndarray = y_values - y_fit
-    ss_res: float = np.sum(a = residuals**2)
-    ss_tot: float = np.sum(a = (y_values - np.mean(a = y_values))**2)
-    r_squared: float = 1 - ss_res / ss_tot
-    rmse: float = np.sqrt(np.mean(a = residuals**2))
-
-    slope: float = fit_parameters[0]
-    intercept: float = fit_parameters[1]
-
-    return slope, intercept, r_squared, rmse
-
-
-def get_mean_intensity_and_variance(voltage, wattage):
+def get_real_mean_intensity_and_variance(voltage, wattage):
     average_map: np.ndarray = read_np_image_arrays(
         voltage_type = voltage_type(voltage = voltage, wattage = wattage),
         dist_type = 'avg'
@@ -60,91 +47,114 @@ def get_mean_intensity_and_variance(voltage, wattage):
         voltage_type = voltage_type(voltage = voltage, wattage = wattage),
         dist_type = 'var'
     )
-
-    mask: np.ndarray = (
-        np.isfinite(average_map)
-        & np.isfinite(variance_map)
-        & (average_map > 0)
-        & (variance_map > 0)
+    darkfield_average_map: np.ndarray = read_np_image_arrays(
+        voltage_type = 'darkfield',
+        dist_type = 'avg'
+    )
+    darkfield_variance_map: np.ndarray = read_np_image_arrays(
+        voltage_type = 'darkfield',
+        dist_type = 'var'
     )
 
-    mean_intensity: float = np.mean(a = average_map[mask])
-    mean_variance: float = np.mean(a = variance_map[mask])
+    real_intensity_map: np.ndarray = average_map - darkfield_average_map
+    real_variance_map: np.ndarray = variance_map - darkfield_variance_map
 
-    return mean_intensity, mean_variance
+    mask: np.ndarray = (
+        np.isfinite(real_intensity_map)
+        & np.isfinite(real_variance_map)
+        & (real_intensity_map > 0)
+    )
+
+    mean_real_intensity: float = np.mean(a = real_intensity_map[mask])
+    mean_real_variance: float = np.mean(a = real_variance_map[mask])
+
+    return mean_real_intensity, mean_real_variance
+
+
+def fit_slope_through_origin(x_values, y_values):
+    x_values: np.ndarray = np.array(object = x_values, dtype = float)
+    y_values: np.ndarray = np.array(object = y_values, dtype = float)
+
+    valid: np.ndarray = np.isfinite(x_values) & np.isfinite(y_values) & (x_values > 0)
+    x_values = x_values[valid]
+    y_values = y_values[valid]
+
+    slope: float = np.sum(a = x_values * y_values) / np.sum(a = x_values**2)
+    y_fit: np.ndarray = slope * x_values
+
+    residuals: np.ndarray = y_values - y_fit
+    ss_res: float = np.sum(a = residuals**2)
+    ss_tot: float = np.sum(a = (y_values - np.mean(a = y_values))**2)
+    r_squared: float = 1 - ss_res / ss_tot
+    rmse: float = np.sqrt(np.mean(a = residuals**2))
+
+    return slope, r_squared, rmse
 
 
 def fit_k_values_for_voltages():
     k_values: np.ndarray = np.zeros(shape = len(voltages))
-    intercepts: np.ndarray = np.zeros(shape = len(voltages))
     r_squared_values: np.ndarray = np.zeros(shape = len(voltages))
     relative_rmse_values: np.ndarray = np.zeros(shape = len(voltages))
 
     for i in range(len(voltages)):
         voltage: int = voltages[i]
 
-        intensity_means: list = []
-        variance_means: list = []
+        real_intensity_means: list = []
+        real_variance_means: list = []
 
         for wattage in wattages:
-            mean_intensity: float
-            mean_variance: float
-            mean_intensity, mean_variance = get_mean_intensity_and_variance(
+            mean_real_intensity: float
+            mean_real_variance: float
+            mean_real_intensity, mean_real_variance = get_real_mean_intensity_and_variance(
                 voltage = voltage,
                 wattage = wattage
             )
 
-            intensity_means.append(mean_intensity)
-            variance_means.append(mean_variance)
+            real_intensity_means.append(mean_real_intensity)
+            real_variance_means.append(mean_real_variance)
 
         slope: float
-        intercept: float
         r_squared: float
         rmse: float
-        slope, intercept, r_squared, rmse = linear_fit(
-            x_values = intensity_means,
-            y_values = variance_means
+        slope, r_squared, rmse = fit_slope_through_origin(
+            x_values = real_intensity_means,
+            y_values = real_variance_means
         )
 
         k_values[i] = slope
-        intercepts[i] = intercept
         r_squared_values[i] = r_squared
-        relative_rmse_values[i] = 100 * rmse / np.mean(a = variance_means)
+        relative_rmse_values[i] = 100 * rmse / np.mean(a = real_variance_means)
 
-    return k_values, intercepts, r_squared_values, relative_rmse_values
+    return k_values, r_squared_values, relative_rmse_values
 
 
-def get_intensity_and_variance_means_for_voltage(voltage):
-    intensity_means: list = []
-    variance_means: list = []
+def get_real_intensity_and_variance_means_for_voltage(voltage):
+    real_intensity_means: list = []
+    real_variance_means: list = []
 
     for wattage in wattages:
-        mean_intensity: float
-        mean_variance: float
-        mean_intensity, mean_variance = get_mean_intensity_and_variance(
+        mean_real_intensity: float
+        mean_real_variance: float
+        mean_real_intensity, mean_real_variance = get_real_mean_intensity_and_variance(
             voltage = voltage,
             wattage = wattage
         )
 
-        intensity_means.append(mean_intensity)
-        variance_means.append(mean_variance)
+        real_intensity_means.append(mean_real_intensity)
+        real_variance_means.append(mean_real_variance)
 
-    return np.array(object = intensity_means, dtype = float), np.array(object = variance_means, dtype = float)
+    return np.array(object = real_intensity_means, dtype = float), np.array(object = real_variance_means, dtype = float)
 
 
 def fit_k_as_function_of_voltage():
     k_values: np.ndarray
-    intercepts: np.ndarray
     r_squared_values: np.ndarray
     relative_rmse_values: np.ndarray
-    k_values, intercepts, r_squared_values, relative_rmse_values = fit_k_values_for_voltages()
+    k_values, r_squared_values, relative_rmse_values = fit_k_values_for_voltages()
 
     # k(V) = q2 * V**2 + q1 * V + q0
     k_fit_parameters: np.ndarray = np.polyfit(x = kV, y = k_values, deg = 2)
     k_fit: np.ndarray = np.polyval(p = k_fit_parameters, x = kV)
-
-    # intercept(V) = r2 * V**2 + r1 * V + r0
-    intercept_fit_parameters: np.ndarray = np.polyfit(x = kV, y = intercepts, deg = 2)
 
     residuals: np.ndarray = k_values - k_fit
     ss_res: float = np.sum(a = residuals**2)
@@ -152,10 +162,10 @@ def fit_k_as_function_of_voltage():
     r_squared: float = 1 - ss_res / ss_tot
     rmse: float = np.sqrt(np.mean(a = residuals**2))
 
-    return k_fit_parameters, intercept_fit_parameters, k_values, intercepts, r_squared_values, relative_rmse_values, r_squared, rmse
+    return k_fit_parameters, k_values, r_squared_values, relative_rmse_values, r_squared, rmse
 
 
-def plot_variance_against_mean_with_fit():
+def plot_real_variance_against_real_mean_with_fit():
     colors: list = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple']
 
     plt.figure()
@@ -163,29 +173,28 @@ def plot_variance_against_mean_with_fit():
     for i in range(len(voltages)):
         voltage: int = voltages[i]
 
-        intensity_means: np.ndarray
-        variance_means: np.ndarray
-        intensity_means, variance_means = get_intensity_and_variance_means_for_voltage(voltage = voltage)
+        real_intensity_means: np.ndarray
+        real_variance_means: np.ndarray
+        real_intensity_means, real_variance_means = get_real_intensity_and_variance_means_for_voltage(voltage = voltage)
 
         slope: float
-        intercept: float
         r_squared: float
         rmse: float
-        slope, intercept, r_squared, rmse = linear_fit(
-            x_values = intensity_means,
-            y_values = variance_means
+        slope, r_squared, rmse = fit_slope_through_origin(
+            x_values = real_intensity_means,
+            y_values = real_variance_means
         )
 
         intensity_fit: np.ndarray = np.linspace(
-            start = np.min(a = intensity_means),
-            stop = np.max(a = intensity_means),
+            start = 0,
+            stop = np.max(a = real_intensity_means),
             num = 100
         )
-        variance_fit: np.ndarray = slope * intensity_fit + intercept
+        variance_fit: np.ndarray = slope * intensity_fit
 
         plt.plot(
-            intensity_means,
-            variance_means,
+            real_intensity_means,
+            real_variance_means,
             'o',
             color = colors[i],
             label = f'{voltage} kV data'
@@ -198,23 +207,21 @@ def plot_variance_against_mean_with_fit():
             label = f'{voltage} kV fit'
         )
 
-    plt.title(label = 'Variance against mean intensity')
-    plt.xlabel(xlabel = 'Mean intensity')
-    plt.ylabel(ylabel = 'Variance')
+    plt.title(label = 'Real variance against real mean intensity')
+    plt.xlabel(xlabel = r'Real mean intensity $I - I_{\mathrm{dark}}$')
+    plt.ylabel(ylabel = r'Real variance $\mathrm{Var}(I) - \mathrm{Var}_{\mathrm{dark}}$')
     plt.legend()
     plt.show()
 
 
 def plot_k_against_voltage_with_fit():
     k_fit_parameters: np.ndarray
-    intercept_fit_parameters: np.ndarray
     k_values: np.ndarray
-    intercepts: np.ndarray
     r_squared_values: np.ndarray
     relative_rmse_values: np.ndarray
     r_squared: float
     rmse: float
-    k_fit_parameters, intercept_fit_parameters, k_values, intercepts, r_squared_values, relative_rmse_values, r_squared, rmse = fit_k_as_function_of_voltage()
+    k_fit_parameters, k_values, r_squared_values, relative_rmse_values, r_squared, rmse = fit_k_as_function_of_voltage()
 
     kV_fit: np.ndarray = np.linspace(start = np.min(a = kV), stop = np.max(a = kV), num = 100)
     k_fit: np.ndarray = np.polyval(p = k_fit_parameters, x = kV_fit)
@@ -222,33 +229,9 @@ def plot_k_against_voltage_with_fit():
     plt.figure()
     plt.plot(kV, k_values, 'o', label = 'fitted k values')
     plt.plot(kV_fit, k_fit, '-', label = 'quadratic fit')
-    plt.title(label = 'Proportionality constant against voltage')
+    plt.title(label = 'Real-signal proportionality constant against voltage')
     plt.xlabel(xlabel = 'Voltage (kV)')
-    plt.ylabel(ylabel = 'k in Var = kI + intercept')
-    plt.legend()
-    plt.show()
-
-
-def plot_intercept_against_voltage_with_fit():
-    k_fit_parameters: np.ndarray
-    intercept_fit_parameters: np.ndarray
-    k_values: np.ndarray
-    intercepts: np.ndarray
-    r_squared_values: np.ndarray
-    relative_rmse_values: np.ndarray
-    r_squared: float
-    rmse: float
-    k_fit_parameters, intercept_fit_parameters, k_values, intercepts, r_squared_values, relative_rmse_values, r_squared, rmse = fit_k_as_function_of_voltage()
-
-    kV_fit: np.ndarray = np.linspace(start = np.min(a = kV), stop = np.max(a = kV), num = 100)
-    intercept_fit: np.ndarray = np.polyval(p = intercept_fit_parameters, x = kV_fit)
-
-    plt.figure()
-    plt.plot(kV, intercepts, 'o', label = 'fitted intercept values')
-    plt.plot(kV_fit, intercept_fit, '-', label = 'quadratic fit')
-    plt.title(label = 'Variance-fit intercept against voltage')
-    plt.xlabel(xlabel = 'Voltage (kV)')
-    plt.ylabel(ylabel = 'intercept in Var = kI + intercept')
+    plt.ylabel(ylabel = r'$k$ in $\mathrm{Var}_{\mathrm{real}} = k I_{\mathrm{real}}$')
     plt.legend()
     plt.show()
 
@@ -256,19 +239,17 @@ def plot_intercept_against_voltage_with_fit():
 def print_k_fit_report():
     k_fit_parameters: np.ndarray
     k_values: np.ndarray
-    intercept_fit_parameters: np.ndarray
-    intercepts: np.ndarray
     r_squared_values: np.ndarray
     relative_rmse_values: np.ndarray
     r_squared: float
     rmse: float
-    k_fit_parameters, intercept_fit_parameters, k_values, intercepts, r_squared_values, relative_rmse_values, r_squared, rmse = fit_k_as_function_of_voltage()
+    k_fit_parameters, k_values, r_squared_values, relative_rmse_values, r_squared, rmse = fit_k_as_function_of_voltage()
 
-    print('Fit per voltage: Var_total = k * I_total + intercept')
-    print('V(kV)        k      intercept       R^2    rel RMSE')
+    print('Fit per voltage: Var_real = k * I_real')
+    print('V(kV)        k       R^2    rel RMSE')
 
     for i in range(len(voltages)):
-        print(f'{voltages[i]:5d} {k_values[i]:9.5f} {intercepts[i]:14.3f} {r_squared_values[i]:9.6f} {relative_rmse_values[i]:9.3f}%')
+        print(f'{voltages[i]:5d} {k_values[i]:9.5f} {r_squared_values[i]:9.6f} {relative_rmse_values[i]:9.3f}%')
 
     print()
     print('Quadratic voltage fit: k(V) = q2 * V**2 + q1 * V + q0')
@@ -277,35 +258,30 @@ def print_k_fit_report():
     print(f'q0 = {k_fit_parameters[2]}')
     print(f'R^2 = {r_squared}')
     print(f'RMSE = {rmse}')
-    print()
-    print('Quadratic voltage fit: intercept(V) = r2 * V**2 + r1 * V + r0')
-    print(f'r2 = {intercept_fit_parameters[0]}')
-    print(f'r1 = {intercept_fit_parameters[1]}')
-    print(f'r0 = {intercept_fit_parameters[2]}')
 
 
 def save_k_fit_parameters():
     k_fit_parameters: np.ndarray
-    intercept_fit_parameters: np.ndarray
     k_values: np.ndarray
-    intercepts: np.ndarray
     r_squared_values: np.ndarray
     relative_rmse_values: np.ndarray
     r_squared: float
     rmse: float
-    k_fit_parameters, intercept_fit_parameters, k_values, intercepts, r_squared_values, relative_rmse_values, r_squared, rmse = fit_k_as_function_of_voltage()
+    k_fit_parameters, k_values, r_squared_values, relative_rmse_values, r_squared, rmse = fit_k_as_function_of_voltage()
 
     output_folder: str = project_path('Final parameter maps')
     os.makedirs(name = output_folder, exist_ok = True)
 
+    np.save(file = os.path.join(output_folder, 'variance_real_k_quadratic_coefficients.npy'), arr = k_fit_parameters)
+    np.save(file = os.path.join(output_folder, 'variance_real_k_values.npy'), arr = k_values)
+
+    # Keep the old filename usable, but with the corrected real-signal meaning.
     np.save(file = os.path.join(output_folder, 'variance_k_quadratic_coefficients.npy'), arr = k_fit_parameters)
-    np.save(file = os.path.join(output_folder, 'variance_intercept_quadratic_coefficients.npy'), arr = intercept_fit_parameters)
     np.save(file = os.path.join(output_folder, 'variance_k_values.npy'), arr = k_values)
 
 
-
-#print_k_fit_report()
-#save_k_fit_parameters()
-plot_variance_against_mean_with_fit()
-plot_k_against_voltage_with_fit()
-plot_intercept_against_voltage_with_fit()
+if __name__ == '__main__':
+    print_k_fit_report()
+    save_k_fit_parameters()
+    plot_real_variance_against_real_mean_with_fit()
+    plot_k_against_voltage_with_fit()

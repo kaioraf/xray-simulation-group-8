@@ -1,5 +1,6 @@
 import os
 import platform
+import random
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -7,18 +8,17 @@ import numpy as np
 from fileIO import read_np_image_arrays
 
 
-# This file creates a per-pixel version of the variance model.
+# Per-pixel version of the corrected variance model:
 #
-# For every pixel and every voltage:
-# Var(I) = k_map(V) * I + intercept_map(V)
+# I_real = I_total - I_dark
+# Var_real = Var_total - Var_dark
+# Var_real = k_map(V) * I_real
 #
 # Then, for every pixel:
 # k_map(V) = q2_map * V**2 + q1_map * V + q0_map
-# intercept_map(V) = r2_map * V**2 + r1_map * V + r0_map
 #
 # The final variance function can later use:
-# I = eind_baas(P, V)
-# Var(I) = k_map(V) * I + intercept_map(V)
+# Var_total(P, V) = Var_dark + k_map(V) * I_real(P, V)
 
 voltages: list = [30, 45, 60, 75, 90]
 wattages: list = [10, 20, 30, 40]
@@ -39,85 +39,70 @@ def make_voltage_type(voltage, wattage):
     return f'{voltage}kV{slash}{wattage}W'
 
 
-def load_maps_for_voltage(voltage):
-    example_map: np.ndarray = read_np_image_arrays(
-        voltage_type = make_voltage_type(voltage = voltage, wattage = wattages[0]),
-        dist_type = 'avg'
-    )
+def load_real_maps_for_voltage(voltage):
+    darkfield_average_map: np.ndarray = read_np_image_arrays(voltage_type = 'darkfield', dist_type = 'avg')
+    darkfield_variance_map: np.ndarray = read_np_image_arrays(voltage_type = 'darkfield', dist_type = 'var')
 
-    height: int = example_map.shape[0]
-    width: int = example_map.shape[1]
+    height: int = darkfield_average_map.shape[0]
+    width: int = darkfield_average_map.shape[1]
 
-    average_stack: np.ndarray = np.zeros(shape = (len(wattages), height, width))
-    variance_stack: np.ndarray = np.zeros(shape = (len(wattages), height, width))
+    real_intensity_stack: np.ndarray = np.zeros(shape = (len(wattages), height, width))
+    real_variance_stack: np.ndarray = np.zeros(shape = (len(wattages), height, width))
 
     for i in range(len(wattages)):
         wattage: int = wattages[i]
         voltage_type: str = make_voltage_type(voltage = voltage, wattage = wattage)
 
-        average_stack[i, :, :] = read_np_image_arrays(voltage_type = voltage_type, dist_type = 'avg')
-        variance_stack[i, :, :] = read_np_image_arrays(voltage_type = voltage_type, dist_type = 'var')
+        average_map: np.ndarray = read_np_image_arrays(voltage_type = voltage_type, dist_type = 'avg')
+        variance_map: np.ndarray = read_np_image_arrays(voltage_type = voltage_type, dist_type = 'var')
 
-    return average_stack, variance_stack
+        real_intensity_stack[i, :, :] = average_map - darkfield_average_map
+        real_variance_stack[i, :, :] = variance_map - darkfield_variance_map
+
+    return real_intensity_stack, real_variance_stack
 
 
-def fit_variance_against_intensity_for_voltage(voltage):
-    average_stack: np.ndarray
-    variance_stack: np.ndarray
-    average_stack, variance_stack = load_maps_for_voltage(voltage = voltage)
+def fit_real_variance_against_real_intensity_for_voltage(voltage):
+    real_intensity_stack: np.ndarray
+    real_variance_stack: np.ndarray
+    real_intensity_stack, real_variance_stack = load_real_maps_for_voltage(voltage = voltage)
 
     valid: np.ndarray = (
-        np.isfinite(average_stack)
-        & np.isfinite(variance_stack)
-        & (average_stack > 0)
-        & (variance_stack > 0)
+        np.isfinite(real_intensity_stack)
+        & np.isfinite(real_variance_stack)
+        & (real_intensity_stack > 0)
     )
 
-    I: np.ndarray = np.where(valid, average_stack, np.nan)
-    Var_I: np.ndarray = np.where(valid, variance_stack, np.nan)
+    I_real: np.ndarray = np.where(valid, real_intensity_stack, np.nan)
+    Var_real: np.ndarray = np.where(valid, real_variance_stack, np.nan)
 
-    n: np.ndarray = np.sum(a = valid, axis = 0).astype(float)
-    Sx: np.ndarray = np.nansum(a = I, axis = 0)
-    Sy: np.ndarray = np.nansum(a = Var_I, axis = 0)
-    Sxx: np.ndarray = np.nansum(a = I**2, axis = 0)
-    Sxy: np.ndarray = np.nansum(a = I * Var_I, axis = 0)
+    numerator: np.ndarray = np.nansum(a = I_real * Var_real, axis = 0)
+    denominator: np.ndarray = np.nansum(a = I_real**2, axis = 0)
+    n: np.ndarray = np.sum(a = valid, axis = 0)
 
-    denominator: np.ndarray = n * Sxx - Sx**2
-    good_fit: np.ndarray = (n >= 2) & np.isfinite(denominator) & (denominator != 0)
+    good_fit: np.ndarray = (n >= 2) & np.isfinite(denominator) & (denominator > 0)
 
-    k_map: np.ndarray = np.full(shape = Sx.shape, fill_value = np.nan)
-    intercept_map: np.ndarray = np.full(shape = Sx.shape, fill_value = np.nan)
+    k_map: np.ndarray = np.full(shape = denominator.shape, fill_value = np.nan)
+    k_map[good_fit] = numerator[good_fit] / denominator[good_fit]
 
-    k_map[good_fit] = (n[good_fit] * Sxy[good_fit] - Sx[good_fit] * Sy[good_fit]) / denominator[good_fit]
-    intercept_map[good_fit] = (Sxx[good_fit] * Sy[good_fit] - Sx[good_fit] * Sxy[good_fit]) / denominator[good_fit]
-
-    return k_map, intercept_map
+    return k_map
 
 
-def fit_variance_against_intensity_all_voltages():
-    example_map: np.ndarray = read_np_image_arrays(
-        voltage_type = make_voltage_type(voltage = voltages[0], wattage = wattages[0]),
-        dist_type = 'avg'
-    )
-
-    height: int = example_map.shape[0]
-    width: int = example_map.shape[1]
+def fit_real_variance_against_real_intensity_all_voltages():
+    darkfield_average_map: np.ndarray = read_np_image_arrays(voltage_type = 'darkfield', dist_type = 'avg')
+    height: int = darkfield_average_map.shape[0]
+    width: int = darkfield_average_map.shape[1]
 
     k_maps: np.ndarray = np.zeros(shape = (len(voltages), height, width))
-    intercept_maps: np.ndarray = np.zeros(shape = (len(voltages), height, width))
 
     for i in range(len(voltages)):
         voltage: int = voltages[i]
-        print(f'Fitting variance against intensity for {voltage} kV...')
+        print(f'Fitting real variance against real intensity for {voltage} kV...')
 
-        k_map: np.ndarray
-        intercept_map: np.ndarray
-        k_map, intercept_map = fit_variance_against_intensity_for_voltage(voltage = voltage)
-
+        k_map: np.ndarray = fit_real_variance_against_real_intensity_for_voltage(voltage = voltage)
         k_maps[i, :, :] = k_map
-        intercept_maps[i, :, :] = intercept_map
 
-    return k_maps, intercept_maps
+    return k_maps
 
 
 def quadratic_voltage_fit_maps(parameter_stack, chunk_rows = 128):
@@ -184,82 +169,67 @@ def quadratic_voltage_fit_maps(parameter_stack, chunk_rows = 128):
     return q2_map, q1_map, q0_map
 
 
-def fit_per_pixel_variance_model_maps():
-    k_maps: np.ndarray
-    intercept_maps: np.ndarray
-    k_maps, intercept_maps = fit_variance_against_intensity_all_voltages()
+def fit_per_pixel_real_variance_model_maps():
+    k_maps: np.ndarray = fit_real_variance_against_real_intensity_all_voltages()
 
-    print('Fitting k maps against voltage...')
+    print('Fitting real-signal k maps against voltage...')
     k_q2_map: np.ndarray
     k_q1_map: np.ndarray
     k_q0_map: np.ndarray
     k_q2_map, k_q1_map, k_q0_map = quadratic_voltage_fit_maps(parameter_stack = k_maps)
 
-    print('Fitting intercept maps against voltage...')
-    intercept_r2_map: np.ndarray
-    intercept_r1_map: np.ndarray
-    intercept_r0_map: np.ndarray
-    intercept_r2_map, intercept_r1_map, intercept_r0_map = quadratic_voltage_fit_maps(parameter_stack = intercept_maps)
-
-    return k_maps, intercept_maps, k_q2_map, k_q1_map, k_q0_map, intercept_r2_map, intercept_r1_map, intercept_r0_map
+    return k_maps, k_q2_map, k_q1_map, k_q0_map
 
 
 def save_per_pixel_variance_model_maps(save_intermediate = True):
     k_maps: np.ndarray
-    intercept_maps: np.ndarray
     k_q2_map: np.ndarray
     k_q1_map: np.ndarray
     k_q0_map: np.ndarray
-    intercept_r2_map: np.ndarray
-    intercept_r1_map: np.ndarray
-    intercept_r0_map: np.ndarray
-    k_maps, intercept_maps, k_q2_map, k_q1_map, k_q0_map, intercept_r2_map, intercept_r1_map, intercept_r0_map = fit_per_pixel_variance_model_maps()
+    k_maps, k_q2_map, k_q1_map, k_q0_map = fit_per_pixel_real_variance_model_maps()
 
     output_folder: str = project_path('Final parameter maps')
     os.makedirs(name = output_folder, exist_ok = True)
 
+    np.save(file = os.path.join(output_folder, 'variance_pixel_real_k_q2_map.npy'), arr = k_q2_map)
+    np.save(file = os.path.join(output_folder, 'variance_pixel_real_k_q1_map.npy'), arr = k_q1_map)
+    np.save(file = os.path.join(output_folder, 'variance_pixel_real_k_q0_map.npy'), arr = k_q0_map)
+
+    # Keep the old filenames usable, but with the corrected real-signal meaning.
     np.save(file = os.path.join(output_folder, 'variance_pixel_k_q2_map.npy'), arr = k_q2_map)
     np.save(file = os.path.join(output_folder, 'variance_pixel_k_q1_map.npy'), arr = k_q1_map)
     np.save(file = os.path.join(output_folder, 'variance_pixel_k_q0_map.npy'), arr = k_q0_map)
 
-    np.save(file = os.path.join(output_folder, 'variance_pixel_intercept_r2_map.npy'), arr = intercept_r2_map)
-    np.save(file = os.path.join(output_folder, 'variance_pixel_intercept_r1_map.npy'), arr = intercept_r1_map)
-    np.save(file = os.path.join(output_folder, 'variance_pixel_intercept_r0_map.npy'), arr = intercept_r0_map)
-
     if save_intermediate:
         for i in range(len(voltages)):
             voltage: int = voltages[i]
+            np.save(file = os.path.join(output_folder, f'variance_pixel_real_k_map_{voltage}kV.npy'), arr = k_maps[i, :, :])
             np.save(file = os.path.join(output_folder, f'variance_pixel_k_map_{voltage}kV.npy'), arr = k_maps[i, :, :])
-            np.save(file = os.path.join(output_folder, f'variance_pixel_intercept_map_{voltage}kV.npy'), arr = intercept_maps[i, :, :])
 
 
 def load_per_pixel_variance_model_maps():
     input_folder: str = project_path('Final parameter maps')
 
-    k_q2_map: np.ndarray = np.load(file = os.path.join(input_folder, 'variance_pixel_k_q2_map.npy'))
-    k_q1_map: np.ndarray = np.load(file = os.path.join(input_folder, 'variance_pixel_k_q1_map.npy'))
-    k_q0_map: np.ndarray = np.load(file = os.path.join(input_folder, 'variance_pixel_k_q0_map.npy'))
+    k_q2_map: np.ndarray = np.load(file = os.path.join(input_folder, 'variance_pixel_real_k_q2_map.npy'))
+    k_q1_map: np.ndarray = np.load(file = os.path.join(input_folder, 'variance_pixel_real_k_q1_map.npy'))
+    k_q0_map: np.ndarray = np.load(file = os.path.join(input_folder, 'variance_pixel_real_k_q0_map.npy'))
 
-    intercept_r2_map: np.ndarray = np.load(file = os.path.join(input_folder, 'variance_pixel_intercept_r2_map.npy'))
-    intercept_r1_map: np.ndarray = np.load(file = os.path.join(input_folder, 'variance_pixel_intercept_r1_map.npy'))
-    intercept_r0_map: np.ndarray = np.load(file = os.path.join(input_folder, 'variance_pixel_intercept_r0_map.npy'))
-
-    return k_q2_map, k_q1_map, k_q0_map, intercept_r2_map, intercept_r1_map, intercept_r0_map
+    return k_q2_map, k_q1_map, k_q0_map
 
 
 def variance_from_intensity_map(intensity_map, V):
+    darkfield_average_map: np.ndarray = read_np_image_arrays(voltage_type = 'darkfield', dist_type = 'avg')
+    darkfield_variance_map: np.ndarray = read_np_image_arrays(voltage_type = 'darkfield', dist_type = 'var')
+
     k_q2_map: np.ndarray
     k_q1_map: np.ndarray
     k_q0_map: np.ndarray
-    intercept_r2_map: np.ndarray
-    intercept_r1_map: np.ndarray
-    intercept_r0_map: np.ndarray
-    k_q2_map, k_q1_map, k_q0_map, intercept_r2_map, intercept_r1_map, intercept_r0_map = load_per_pixel_variance_model_maps()
+    k_q2_map, k_q1_map, k_q0_map = load_per_pixel_variance_model_maps()
 
+    real_intensity_map: np.ndarray = intensity_map - darkfield_average_map
     k_map: np.ndarray = k_q2_map * V**2 + k_q1_map * V + k_q0_map
-    intercept_map: np.ndarray = intercept_r2_map * V**2 + intercept_r1_map * V + intercept_r0_map
 
-    variance_map: np.ndarray = k_map * intensity_map + intercept_map
+    variance_map: np.ndarray = darkfield_variance_map + k_map * real_intensity_map
 
     return variance_map
 
@@ -277,5 +247,190 @@ def plot_fit_map(fit_map, title, colorbar_label):
     plt.show()
 
 
+def random_pixel():
+    darkfield_average_map: np.ndarray = read_np_image_arrays(voltage_type = 'darkfield', dist_type = 'avg')
+    height: int = darkfield_average_map.shape[0]
+    width: int = darkfield_average_map.shape[1]
+
+    row: int = int(height * random.random())
+    column: int = int(width * random.random())
+
+    return row, column
+
+
+def real_intensity_and_variance_values_for_pixel(voltage, row, column):
+    real_intensity_stack: np.ndarray
+    real_variance_stack: np.ndarray
+    real_intensity_stack, real_variance_stack = load_real_maps_for_voltage(voltage = voltage)
+
+    real_intensity_values: np.ndarray = real_intensity_stack[:, row, column]
+    real_variance_values: np.ndarray = real_variance_stack[:, row, column]
+
+    return real_intensity_values, real_variance_values
+
+
+def fit_k_for_single_pixel_and_voltage(voltage, row, column):
+    real_intensity_values: np.ndarray
+    real_variance_values: np.ndarray
+    real_intensity_values, real_variance_values = real_intensity_and_variance_values_for_pixel(
+        voltage = voltage,
+        row = row,
+        column = column
+    )
+
+    valid: np.ndarray = (
+        np.isfinite(real_intensity_values)
+        & np.isfinite(real_variance_values)
+        & (real_intensity_values > 0)
+    )
+
+    numerator: float = np.sum(a = real_intensity_values[valid] * real_variance_values[valid])
+    denominator: float = np.sum(a = real_intensity_values[valid]**2)
+
+    if denominator <= 0:
+        return np.nan
+
+    k: float = numerator / denominator
+
+    return k
+
+
+def k_values_for_single_pixel(row, column):
+    k_values: np.ndarray = np.zeros(shape = len(voltages))
+
+    for i in range(len(voltages)):
+        voltage: int = voltages[i]
+        k_values[i] = fit_k_for_single_pixel_and_voltage(
+            voltage = voltage,
+            row = row,
+            column = column
+        )
+
+    return k_values
+
+
+def quadratic_k_fit_for_single_pixel(row, column):
+    k_values: np.ndarray = k_values_for_single_pixel(row = row, column = column)
+    valid: np.ndarray = np.isfinite(k_values)
+
+    if np.sum(a = valid) < 3:
+        return np.array([np.nan, np.nan, np.nan]), k_values
+
+    fit_parameters: np.ndarray = np.polyfit(x = kV[valid], y = k_values[valid], deg = 2)
+
+    return fit_parameters, k_values
+
+
+def plot_real_variance_against_real_intensity_for_pixel(row, column):
+    colors: list = ['tab:blue', 'tab:orange', 'tab:green', 'tab:red', 'tab:purple']
+
+    plt.figure()
+
+    for i in range(len(voltages)):
+        voltage: int = voltages[i]
+
+        real_intensity_values: np.ndarray
+        real_variance_values: np.ndarray
+        real_intensity_values, real_variance_values = real_intensity_and_variance_values_for_pixel(
+            voltage = voltage,
+            row = row,
+            column = column
+        )
+
+        k: float = fit_k_for_single_pixel_and_voltage(
+            voltage = voltage,
+            row = row,
+            column = column
+        )
+
+        intensity_fit: np.ndarray = np.linspace(
+            start = 0,
+            stop = np.nanmax(real_intensity_values),
+            num = 100
+        )
+        variance_fit: np.ndarray = k * intensity_fit
+
+        plt.plot(
+            real_intensity_values,
+            real_variance_values,
+            'o',
+            color = colors[i],
+            label = f'{voltage} kV data'
+        )
+        plt.plot(
+            intensity_fit,
+            variance_fit,
+            '-',
+            color = colors[i],
+            label = f'{voltage} kV fit'
+        )
+
+    plt.title(label = f'Pixel ({row}, {column}): real variance against real intensity')
+    plt.xlabel(xlabel = r'Real intensity $I - I_{\mathrm{dark}}$')
+    plt.ylabel(ylabel = r'Real variance $\mathrm{Var}(I) - \mathrm{Var}_{\mathrm{dark}}$')
+    plt.legend()
+    plt.show()
+
+
+def plot_k_against_voltage_for_pixel(row, column):
+    fit_parameters: np.ndarray
+    k_values: np.ndarray
+    fit_parameters, k_values = quadratic_k_fit_for_single_pixel(row = row, column = column)
+
+    kV_fit: np.ndarray = np.linspace(start = np.min(a = kV), stop = np.max(a = kV), num = 100)
+    k_fit: np.ndarray = np.polyval(p = fit_parameters, x = kV_fit)
+
+    plt.figure()
+    plt.plot(kV, k_values, 'o', label = r'fitted $k$ values')
+    plt.plot(kV_fit, k_fit, '-', label = 'quadratic fit')
+    plt.title(label = f'Pixel ({row}, {column}): k against voltage')
+    plt.xlabel(xlabel = 'Voltage (kV)')
+    plt.ylabel(ylabel = r'$k$ in $\mathrm{Var}_{\mathrm{real}} = k I_{\mathrm{real}}$')
+    plt.legend()
+    plt.show()
+
+
+def plot_saved_k_fit_against_voltage_for_pixel(row, column):
+    k_values: list = []
+
+    for voltage in voltages:
+        k_map: np.ndarray = np.load(
+            file = project_path('Final parameter maps', f'variance_pixel_real_k_map_{voltage}kV.npy')
+        )
+        k_values.append(k_map[row, column])
+
+    q2_map: np.ndarray
+    q1_map: np.ndarray
+    q0_map: np.ndarray
+    q2_map, q1_map, q0_map = load_per_pixel_variance_model_maps()
+
+    q2: float = q2_map[row, column]
+    q1: float = q1_map[row, column]
+    q0: float = q0_map[row, column]
+
+    kV_fit: np.ndarray = np.linspace(start = np.min(a = kV), stop = np.max(a = kV), num = 100)
+    k_fit: np.ndarray = q2 * kV_fit**2 + q1 * kV_fit + q0
+
+    plt.figure()
+    plt.plot(kV, k_values, 'o', label = r'saved $k$ maps')
+    plt.plot(kV_fit, k_fit, '-', label = 'saved quadratic fit')
+    plt.title(label = f'Pixel ({row}, {column}): saved k fit against voltage')
+    plt.xlabel(xlabel = 'Voltage (kV)')
+    plt.ylabel(ylabel = r'$k$ in $\mathrm{Var}_{\mathrm{real}} = k I_{\mathrm{real}}$')
+    plt.legend()
+    plt.show()
+
+
+def random_plot_variance_fitting_process(n):
+    for i in range(n):
+        row: int
+        column: int
+        row, column = random_pixel()
+
+        print(f'Pixel ({row}, {column})')
+        plot_real_variance_against_real_intensity_for_pixel(row = row, column = column)
+        plot_saved_k_fit_against_voltage_for_pixel(row = row, column = column)
+
+
 if __name__ == '__main__':
-    save_per_pixel_variance_model_maps(save_intermediate = True)
+    random_plot_variance_fitting_process(n = 3)
