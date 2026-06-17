@@ -145,7 +145,7 @@ def color_map_avg_array(P, V):
 
 
 
-color_map_eind_baas(P = 40, V = 90)
+color_map_eind_baas(P = 4000, V = 900)
 color_map_avg_array(P = 40, V = 90)
 
 #color_map_var_eind_baas(P = 40, V = 90)

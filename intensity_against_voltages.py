@@ -232,6 +232,14 @@ def plot_I_kV_quadratic_fit(x, y):
             label = wattages[i]
         )
 
+        ymin = np.max(I_values)
+        ymax = np.min(I_values)
+        plt.plot(
+            [25, 25], 
+            [2000, 10000], 
+            'k--'
+        )
+
         plt.plot(kV_fit, I_fit, '-', color = colors[i])
 
     plt.title(label = f'Pixel ({x}, {y})')
@@ -305,6 +313,6 @@ def ran_plot_Var_kV_quadratic_fit(n):
         plot_Var_kV_quadratic_fit(x = x, y = y)
 
 
-# ran_plot_I_kV_quadratic_fit(n = 5)
+ran_plot_I_kV_quadratic_fit(n = 5)
 # ran_plot_I_kV(5)
-ran_plot_Var_kV_quadratic_fit(n = 5)
+#ran_plot_Var_kV_quadratic_fit(n = 5)
