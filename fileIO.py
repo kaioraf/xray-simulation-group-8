@@ -68,8 +68,3 @@ def read_np_image_arrays(voltage_type = 'darkfield', filetype = 'npy', dist_type
             return full_path
       elif filetype == 'npy':
             return np.load(file = full_path)
-       
-# print(images_to_array())
-# print(images_to_array(voltage_type = '45kV/10W')) # macos
-# images: dict = images_to_dict(voltage_type = '45kV/10W') # macos
-# print(images[r'C:\Users\beekm\programming_projects\Project-group-8\2026-06-08_Detector_noise_calibration\45kV\10W\scan_00.tif'])
