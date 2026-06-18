@@ -434,3 +434,10 @@ def random_plot_variance_fitting_process(n):
 
 if __name__ == '__main__':
     random_plot_variance_fitting_process(n = 3)
+
+from final_func import color_map
+save_per_pixel_variance_model_maps()
+x, y, z = load_per_pixel_variance_model_maps()
+color_map(x, title="hallo", colorbar_label='y')
+color_map(y, title="hallo", colorbar_label='y')
+color_map(z, title="hallo", colorbar_label='y')

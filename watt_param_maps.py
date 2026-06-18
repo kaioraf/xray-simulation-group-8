@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from fileIO import *
 import platform
 import os, glob
+dataset_type = '1000' # of '20' als je de oude wilt doen
 
 
 # voltages en wattages lists with names in numpy image arrays to extract data

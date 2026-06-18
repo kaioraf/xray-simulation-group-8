@@ -7,6 +7,7 @@ import time
 
 SCREENWIDTH = 1520
 SCREENHEIGHT = 1912
+dataset_type = '1000'
 
 if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
       SLASH = '/'
@@ -59,18 +60,20 @@ def images_to_array(voltage_type = 'darkfield'):
       print(f"Converted images to arrays in {end - start} seconds")
       return stacked_images
 
-def read_np_image_arrays(voltage_type = 'darkfield', filetype = 'npy', dist_type = 'avg', dataset='1000'):
+def read_np_image_arrays(voltage_type = 'darkfield', filetype = 'npy', dist_type = 'avg'):
       dirname: str = os.path.dirname(p = __file__)
       safe_path: str = voltage_type[:4] + voltage_type[5:]
-      if dataset == '1000':
+      if dataset_type == '1000':
             full_path: str = f"{dirname}{SLASH}2026-06-15_numpy_image_arrays{SLASH}{voltage_type}{SLASH}{dist_type}_array_{safe_path}.{filetype}"
-      elif dataset == '20':
+            if filetype == 'png':
+                  return full_path
+            elif filetype == 'npy':
+                  return (np.load(file = full_path)).T
+      elif dataset_type == '20':
             full_path: str = f"{dirname}{SLASH}Numpy image arrays{SLASH}{voltage_type}{SLASH}{dist_type}_array_{safe_path}.{filetype}"
-      else:
-            assert dataset == '1000' or '20'
-
+            if filetype == 'png':
+                  return full_path
+            elif filetype == 'npy':
+                  return (np.load(file = full_path))
+      
             
-      if filetype == 'png':
-            return full_path
-      elif filetype == 'npy':
-            return np.load(file = full_path)

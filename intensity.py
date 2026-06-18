@@ -288,6 +288,6 @@ def ran_plot_Var_W_linear_fit(n):
         plot_Var_W_linear_fit(x = x, y = y)
 
 
-#ran_plot_I_W_linear_fit(n = 5)
+ran_plot_I_W_linear_fit(n = 5)
 #ran_plot_Var_W_linear_fit(n = 5)
 ran_plot_I_W(5)
