@@ -247,6 +247,9 @@ def plot_fit_map(fit_map, title, colorbar_label):
     plt.show()
 
 
+# the rest of the functions in this document are for 
+# visualizing the fitting process for a random pixel
+
 def random_pixel():
     darkfield_average_map: np.ndarray = read_np_image_arrays(voltage_type = 'darkfield', dist_type = 'avg')
     height: int = darkfield_average_map.shape[0]
@@ -434,3 +437,4 @@ def random_plot_variance_fitting_process(n):
 
 if __name__ == '__main__':
     random_plot_variance_fitting_process(n = 3)
+    r
