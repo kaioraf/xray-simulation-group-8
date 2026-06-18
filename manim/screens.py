@@ -3,6 +3,11 @@ from manim.utils.space_ops import rotation_matrix
 import numpy as np
 import random
 
+# random pixel colors
+def random_pixel_color():
+    tint: float = random.uniform(a = 0.25, b =  0.5)
+    return interpolate(BLACK, WHITE, tint)
+
 class Grid_of_Screens(ThreeDScene):
     def construct(self):
         cols = 4
@@ -13,7 +18,7 @@ class Grid_of_Screens(ThreeDScene):
         all_screens = VGroup()
         for _ in range(rows * cols):
             screen = Rectangle(fill_color = DARK_GRAY, fill_opacity = 1, height = 1.1, stroke_color = BLUE, width = 1.3)
-            pixel = Square(fill_color = random_color(), fill_opacity = 0, stroke_width = 0, side_length = pixel_length)
+            pixel = Square(fill_color = random_pixel_color(), fill_opacity = 0, stroke_width = 0, side_length = pixel_length)
             sensor = VGroup(screen, pixel)
             all_screens.add(sensor)
         
@@ -149,7 +154,7 @@ class Grid_of_Screens(ThreeDScene):
         
         # animating pixels
         self.play(
-            LaggedStart(*[pixel.animate.set_fill(random_bright_color(), opacity = 1) for pixel in all_pixels], lag_ratio = 0.1),
+            LaggedStart(*[pixel.animate.set_fill(random_pixel_color(), opacity = 1) for pixel in all_pixels], lag_ratio = 0.1),
             run_time = 1
         )
         self.wait(duration = 0.5)
@@ -184,7 +189,7 @@ class Grid_of_Screens(ThreeDScene):
         collapse_animations.append(
             last_screen.animate(run_time = distance_last / speed, rate_func = linear).shift(-distance_last * normal_vector)
         )
-        collapse_animations.append(target_screen[1].animate(run_time = distance_last / speed).set_fill(RED))
+        collapse_animations.append(target_screen[1].animate(run_time = distance_last / speed).set_fill(GRAY))
         
         # animating collapsing screens
         self.play(AnimationGroup(*collapse_animations, lag_ratio = 0), run_time = 1)
@@ -204,7 +209,7 @@ class Grid_of_Screens(ThreeDScene):
         width = 13
         grid_of_pixels = VGroup()
         for _ in range(height * width):
-            grid_pixel = Square(fill_color = random_color(), fill_opacity = 1, stroke_width = 1, side_length = pixel_length)
+            grid_pixel = Square(fill_color = random_pixel_color(), fill_opacity = 1, stroke_width = 0.25, side_length = pixel_length)
             grid_of_pixels.add(grid_pixel)
 
         grid_of_pixels.arrange_in_grid(buff = 0, cols = width, rows = height)
@@ -217,7 +222,7 @@ class Grid_of_Screens(ThreeDScene):
         # animating the pixel grid
         self.play(
             FadeOut(last_label, run_time = 0.1),
-            target_screen[1].animate.set_stroke(width = 1),
+            target_screen[1].animate.set_stroke(width = 0.25),
             LaggedStart(*[FadeIn(pixel) for pixel in pixel_list], lag_ratio = 0.01),
             label_average.animate.to_edge(UP, buff = 0.5).set_x(x = 0),
             FadeOut(target_screen[0]),
@@ -230,7 +235,7 @@ class Grid_of_Screens(ThreeDScene):
         for i in range(rows * cols):
             pixelated_screen = VGroup()
             for _ in range(height * width):
-                grid = Square(fill_color = random_color(), fill_opacity = 1, stroke_width = 1, side_length = 0.1)
+                grid = Square(fill_color = random_pixel_color(), fill_opacity = 1, stroke_width = 0.25, side_length = 0.1)
                 pixelated_screen.add(grid)
             pixelated_screen.arrange_in_grid(buff = 0, cols = width, rows = height)
             pixelated_screen.move_to(point_or_mobject = all_screens[i].get_center())
@@ -272,7 +277,7 @@ class Grid_of_Screens(ThreeDScene):
             pixels_list: list = list(pixel_group)
             random.shuffle(x = pixels_list)
             for pixel in pixels_list:
-                pixel.set_fill(color = random_color())
+                pixel.set_fill(color = random_pixel_color())
         grid_variance.shift(2 * shift_label * RIGHT)
         label_variance = MathTex("\\text{variance}", font_size = 40, color = WHITE)
         label_variance.to_edge(buff = 0.5, edge = DOWN).set_x(x = 0).shift(shift_label * zoom * RIGHT)
