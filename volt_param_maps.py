@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 from fileIO import *
+dataset_type = '1000' # of '20' als je de oude wilt doen
 
 # voltages en wattages lists with names in numpy image arrays to extract data
 voltages: list = ['30kV', '45kV', '60kV', '75kV', '90kV']
@@ -289,8 +290,8 @@ plot_fit_map(fit_map = a_maps[0, :, :], title = r'Quadratic map $a$ for $10$ W',
 #plot_fit_map(fit_map = c_maps[2, :, :], title = r'Constant map $c$ for $30$ W', colorbar_label = r'$c$')
 
 plot_fit_map(fit_map = a_maps[3, :, :], title = r'Quadratic map $a$ for $40$ W', colorbar_label = r'$a$')
-#plot_fit_map(fit_map = b_maps[3, :, :], title = r'Linear map $b$ for $40$ W', colorbar_label = r'$b$')
-#plot_fit_map(fit_map = c_maps[3, :, :], title = r'Constant map $c$ for $40$ W', colorbar_label = r'$c$')
+plot_fit_map(fit_map = b_maps[3, :, :], title = r'Linear map $b$ for $40$ W', colorbar_label = r'$b$')
+plot_fit_map(fit_map = c_maps[3, :, :], title = r'Constant map $c$ for $40$ W', colorbar_label = r'$c$')
 
 # example: check middle pixel
 #plot_I_kV_with_numpy_fit(x = x_mid, y = y_mid)

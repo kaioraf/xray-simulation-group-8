@@ -142,15 +142,28 @@ def create_folder_structure(parent_directory_name = "test"):
             
 def create_images_from_existing_arrays(parent_directory_name = "2026-06-15_numpy_image_arrays"):
       dirname: str = os.path.dirname(p = __file__)
-      for voltage in VOLTAGES:
-                  for wattage in WATTAGES:
-                        path: str = voltage + "kV" + SLASH + wattage + "W" 
-                        safe_path: str = path[:4] + path[5:]
+      path: str = 'darkfield'
+      safe_path: str = path[:4] + path[5:]
+      
+      full_path: str = f"{dirname}{SLASH}{parent_directory_name}{SLASH}{path}{SLASH}avg_array_{safe_path}.png"
+      avg = read_np_image_arrays(path, dist_type='avg')
+      create_image(image = avg, filename = full_path)
+      
+      full_path: str = f"{dirname}{SLASH}{parent_directory_name}{SLASH}{path}{SLASH}var_array_{safe_path}.png"
+      var = read_np_image_arrays(path, dist_type='var')
+      create_image(image = var, filename = full_path)             
+
+      # for voltage in VOLTAGES:
+      #             for wattage in WATTAGES:
+      #                   path: str = voltage + "kV" + SLASH + wattage + "W" 
+      #                   safe_path: str = path[:4] + path[5:]
                         
-                        full_path: str = f"{dirname}{SLASH}{parent_directory_name}{SLASH}{path}{SLASH}avg_array_{safe_path}.png"
-                        avg = read_np_image_arrays(path, dist_type='avg', dataset='1000')
-                        create_image(image = avg, filename = full_path)
+      #                   full_path: str = f"{dirname}{SLASH}{parent_directory_name}{SLASH}{path}{SLASH}avg_array_{safe_path}.png"
+      #                   avg = read_np_image_arrays(path, dist_type='avg', dataset='1000')
+      #                   create_image(image = avg, filename = full_path)
                         
-                        full_path: str = f"{dirname}{SLASH}{parent_directory_name}{SLASH}{path}{SLASH}var_array_{safe_path}.png"
-                        var = read_np_image_arrays(path, dist_type='var', dataset='1000')
-                        create_image(image = var, filename = full_path)             
+      #                   full_path: str = f"{dirname}{SLASH}{parent_directory_name}{SLASH}{path}{SLASH}var_array_{safe_path}.png"
+      #                   var = read_np_image_arrays(path, dist_type='var', dataset='1000')
+      #                   create_image(image = var, filename = full_path)             
+
+create_images_from_existing_arrays()

@@ -3,6 +3,8 @@ import platform
 
 import matplotlib.pyplot as plt
 import numpy as np
+from fileIO import *
+dataset_type = '1000' # of '20' als je de oude wilt doen
 
 
 if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
@@ -22,15 +24,15 @@ def load_array(*parts):
 
 
 def darkfield_avg_array():
-    return load_array('Numpy image arrays', 'darkfield', 'avg_array_darkield.npy')
+    return read_np_image_arrays(voltage_type='darkfield', filetype='npy', dist_type='avg')
 
 # for comparing generated var models at P = 0, V = 0 with darkfield var directly from data
 def darkfield_var_array():
-    return load_array('Numpy image arrays', 'darkfield', 'var_array_darkield.npy')
+    return read_np_image_arrays(voltage_type='darkfield', filetype='npy', dist_type='var')
 
 # for comparing generated var models at desired P, V with flatfield var directly from data
 def var_array(P, V):
-    return load_array('Numpy image arrays', f'{V}kV', f'{P}W', f'var_array_{V}kV{P}W.npy')
+    return read_np_image_arrays(voltage_type=f'{V}kV{slash}{P}W', filetype='npy', dist_type='var')
 
 
 # Mean intensity model:
