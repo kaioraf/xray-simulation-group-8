@@ -82,48 +82,59 @@ def var_eind_baas_per_pixel(P, V):
 
     return Var_I
 
-
-def color_map(array, title, colorbar_label):
-    vmin: float = np.nanpercentile(array, 1)
-    vmax: float = np.nanpercentile(array, 99)
+# color_map function that will be called by the functions below 
+# you can input bottom and top percentile of values that are taken as bounds for the color scale, standard is 25/75
+def color_map(array, title, colorbar_label, bottom_percentile = 25, top_percentile = 75):
+    vmin: float = np.nanpercentile(array, bottom_percentile)
+    vmax: float = np.nanpercentile(array, top_percentile)
+    colorbar_label_with_percentiles: str = (
+        f'{colorbar_label}\n'
+        f'{bottom_percentile}th-{top_percentile}th percentile'
+    )
 
     plt.figure()
     plt.imshow(X = array, vmin = vmin, vmax = vmax)
-    plt.colorbar(label = colorbar_label)
+    plt.colorbar(label = colorbar_label_with_percentiles)
     plt.title(label = title)
     plt.xlabel(xlabel = r'$y$ (pixel)')
     plt.ylabel(ylabel = r'$x$ (pixel)')
     plt.show()
 
 
-def color_map_eind_baas(P, V):
+def color_map_eind_baas(P, V, bottom_percentile = 25, top_percentile = 75):
     I: np.ndarray = eind_baas(P = P, V = V)
     color_map(
         array = I,
         title = f'Mean intensity map, generated, {V} kV, {P} W',
-        colorbar_label = r'mean intensity $I$'
+        colorbar_label = r'mean intensity $I$',
+        bottom_percentile = bottom_percentile,
+        top_percentile = top_percentile
     )
 
 
-def color_map_var_eind_baas(P, V):
+def color_map_var_eind_baas(P, V, bottom_percentile = 25, top_percentile = 75):
     Var_I: np.ndarray = var_eind_baas(P = P, V = V)
     color_map(
         array = Var_I,
         title = f'Variance map, generated global model, {V} kV, {P} W',
-        colorbar_label = r'variance $\mathrm{Var}(I)$'
+        colorbar_label = r'variance $\mathrm{Var}(I)$',
+        bottom_percentile = bottom_percentile,
+        top_percentile = top_percentile
     )
 
 
-def color_map_var_eindbaas_per_pixel(P, V):
+def color_map_var_eindbaas_per_pixel(P, V, bottom_percentile = 25, top_percentile = 75):
     Var_I: np.ndarray = var_eind_baas_per_pixel(P = P, V = V)
     color_map(
         array = Var_I,
         title = f'Variance map, generated per-pixel model, {V} kV, {P} W',
-        colorbar_label = r'variance $\mathrm{Var}(I)$'
+        colorbar_label = r'variance $\mathrm{Var}(I)$',
+        bottom_percentile = bottom_percentile,
+        top_percentile = top_percentile
     )
 
 
-def color_map_avg_array(P, V):
+def color_map_avg_array(P, V, bottom_percentile = 25, top_percentile = 75):
     avg_array: np.ndarray = load_array(
         'Numpy image arrays',
         f'{V}kV',
@@ -133,11 +144,13 @@ def color_map_avg_array(P, V):
     color_map(
         array = avg_array,
         title = f'Average intensity map, measured, {V} kV, {P} W',
-        colorbar_label = r'mean intensity $I$'
+        colorbar_label = r'mean intensity $I$',
+        bottom_percentile = bottom_percentile,
+        top_percentile = top_percentile
     )
 
 
-def color_map_var_array(P, V):
+def color_map_var_array(P, V, bottom_percentile = 25, top_percentile = 75):
     var_array: np.ndarray = load_array(
         'Numpy image arrays',
         f'{V}kV',
@@ -147,28 +160,35 @@ def color_map_var_array(P, V):
     color_map(
         array = var_array,
         title = f'Variance map, measured, {V} kV, {P} W',
-        colorbar_label = r'variance $\mathrm{Var}(I)$'
+        colorbar_label = r'variance $\mathrm{Var}(I)$',
+        bottom_percentile = bottom_percentile,
+        top_percentile = top_percentile
     )
 
 
-def color_dark_field_var():
+def color_dark_field_var(bottom_percentile = 25, top_percentile = 75):
     color_map(
         array = darkfield_var_array(),
         title = 'Variance map, measured darkfield',
-        colorbar_label = r'darkfield variance'
+        colorbar_label = r'darkfield variance',
+        bottom_percentile = bottom_percentile,
+        top_percentile = top_percentile
     )
 
-def color_var(P, V):
+def color_var(P, V, bottom_percentile = 25, top_percentile = 75):
     color_map(
         array = var_array(P, V),
         title = f'Variance map, measured at {P}W, {V}kV',
-        colorbar_label = r'darkfield variance'
+        colorbar_label = r'variance $\mathrm{Var}(I)$',
+        bottom_percentile = bottom_percentile,
+        top_percentile = top_percentile
     )
 
 
-
+# remember, standard percentiles taken as a color bounds are 25, 75
+# but e.g. input (bottom_percentile = 10, top_percentile = 90) if you want those bounds
 if __name__ == '__main__':
-    #color_map_var_eind_baas(P = 40, V = 90)
-    color_map_var_eindbaas_per_pixel(P = 10, V = 90)
+    color_map_var_eind_baas(P = 40, V = 90)
+    color_map_var_eindbaas_per_pixel(P = 40, V = 90)
     #color_dark_field_var()
-    color_var(P = 10, V = 90)
+    color_var(P = 40, V = 90)
