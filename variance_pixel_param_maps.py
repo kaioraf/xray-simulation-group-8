@@ -437,4 +437,4 @@ def random_plot_variance_fitting_process(n):
 
 if __name__ == '__main__':
     random_plot_variance_fitting_process(n = 3)
-    r
+    
