@@ -1,3 +1,4 @@
+# builds the scalar variance model by fitting one global k value for each voltage.
 import os
 import platform
 
@@ -7,7 +8,7 @@ import numpy as np
 from fileIO import read_np_image_arrays
 
 
-# This file creates the scalar voltage-dependent proportionality function for
+# this file creates the scalar voltage-dependent proportionality function for
 # the real x-ray signal, not for the darkfield offset:
 #
 # Var_real = k(V) * I_real

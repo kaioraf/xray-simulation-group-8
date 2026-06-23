@@ -1,3 +1,4 @@
+# manim scene sketching electron interactions and x-ray emission.
 from manim import *
 import numpy as np
 

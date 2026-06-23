@@ -1,3 +1,4 @@
+# manim scene showing detector screens across voltage and power settings.
 from manim import *
 from manim.utils.space_ops import rotation_matrix
 import numpy as np

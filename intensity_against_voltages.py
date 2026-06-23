@@ -1,4 +1,4 @@
-
+# plots and fits single-pixel mean intensity and variance against acceleration voltage.
 from fileIO import *
 import matplotlib.pyplot as plt
 import random

@@ -1,3 +1,5 @@
+# plots and fits single-pixel mean intensity and variance against tube power.
+# this is mostly for visual pruposes: to see how fits behave for a single pixel
 from fileIO import *
 import matplotlib.pyplot as plt
 import random

@@ -12,7 +12,7 @@ COUNTS = 20
 BIGCOUNTS = 512
 ONEOVERTENTWENTYFOUR = 1/20
 
-# take all the files within some folder e.g. 75kV/10W/, and then averages all their values into a single new image
+# take a 3D image stack, e.g. all scans from 75kV/10W/, and average it into one 2D image.
 def average_full_images(images, voltage_type = 'darkfield', save_file = False):
       # get the dimensions of the images
       height = int(images.shape[1])
@@ -78,7 +78,7 @@ def variance_full_images(images, voltage_type = 'darkfield', save_file = False):
 
       return np.transpose(var_array_xy)
 
-# take the stack of 20 images and average their values for a single pixel
+# take an image stack and average the values of one pixel across the stack.
 def average_single_pixel(images, x, y):
       return np.average(images[x, y])
       
@@ -113,7 +113,7 @@ def create_images(save_image = False, parent_directory_name = "Numpy image array
       for voltage in VOLTAGES:
             for wattage in WATTAGES:
                   print(f"\nDoing {voltage}kV at {wattage}W")
-                  path: str = voltage + "kV" + SLASH + wattage + "W" # linux/macos only, but this will only run once anyway
+                  path: str = voltage + "kV" + SLASH + wattage + "W"
                   images: np.ndarray = images_to_array(voltage_type = path)
                   avg: np.ndarray = average_full_images(images, voltage_type = path, save_file = True)
                   var: np.ndarray = variance_full_images(images, voltage_type = path, save_file = True)
@@ -166,4 +166,5 @@ def create_images_from_existing_arrays(parent_directory_name = "2026-06-15_numpy
       #                   var = read_np_image_arrays(path, dist_type='var', dataset='1000')
       #                   create_image(image = var, filename = full_path)             
 
-create_images_from_existing_arrays()
+# importing or running this file creates PNG previews from the existing saved arrays.
+# create_images_from_existing_arrays()

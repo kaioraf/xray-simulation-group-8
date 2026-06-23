@@ -1,3 +1,5 @@
+# builds per-pixel maps for the variance model 
+# by fitting real variance against real intensity.
 import os
 import platform
 import random
@@ -8,7 +10,7 @@ import numpy as np
 from fileIO import read_np_image_arrays
 
 
-# Per-pixel version of the corrected variance model:
+# per-pixel version of the corrected variance model:
 #
 # I_real = I_total - I_dark
 # Var_real = Var_total - Var_dark

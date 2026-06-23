@@ -1,3 +1,6 @@
+# fits mean intensity against acceleration voltage for every pixel 
+# and saves quadratic parameter maps.
+# file not used by final functions in final_func.py and image_generator.py
 import matplotlib.pyplot as plt
 from fileIO import *
 dataset_type = '1000' # of '20' als je de oude wilt doen

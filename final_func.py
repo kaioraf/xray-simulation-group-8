@@ -1,3 +1,4 @@
+# final mean, variance, plotting, and poster-metric functions built from the fitted parameter maps.
 import os
 import platform
 
@@ -34,10 +35,6 @@ def darkfield_avg_array():
 def darkfield_var_array():
     return read_np_image_arrays(voltage_type='darkfield', filetype='npy', dist_type='var')
 
-# for comparing generated var models at desired P, V with flatfield var directly from data
-def var_array(P, V):
-    return read_np_image_arrays(voltage_type=f'{V}kV{slash}{P}W', filetype='npy', dist_type='var')
-
 
 def relative_rmse(predicted_array, measured_array):
     mask: np.ndarray = (
@@ -52,6 +49,8 @@ def relative_rmse(predicted_array, measured_array):
 
 
 def relative_root_median_squared_error(predicted_array, measured_array):
+    # in addition to RMSE, use the median squared pixel error so a tiny
+    # number of bad pixels does not dominate the poster metric.
     mask: np.ndarray = (
         np.isfinite(predicted_array)
         & np.isfinite(measured_array)
@@ -241,7 +240,7 @@ def var_eind_baas_per_pixel(P, V):
 
 # color_map function that will be called by the functions below
 # you can input bottom and top percentile of values that are taken as bounds for the color scale, standard is 25/75
-def color_map(array, title, colorbar_label, bottom_percentile = 25, top_percentile = 75):
+def color_map(array, title, colorbar_label, bottom_percentile = 10, top_percentile = 90):
     vmin: float = np.nanpercentile(array, bottom_percentile)
     vmax: float = np.nanpercentile(array, top_percentile)
     colorbar_label_with_percentiles: str = (
@@ -258,7 +257,7 @@ def color_map(array, title, colorbar_label, bottom_percentile = 25, top_percenti
     plt.show()
 
 
-def color_map_eind_baas(P, V, bottom_percentile = 25, top_percentile = 75):
+def color_map_eind_baas(P, V, bottom_percentile = 10, top_percentile = 90):
     I: np.ndarray = eind_baas(P = P, V = V)
     color_map(
         array = I,
@@ -269,7 +268,7 @@ def color_map_eind_baas(P, V, bottom_percentile = 25, top_percentile = 75):
     )
 
 
-def color_map_var_eind_baas(P, V, bottom_percentile = 25, top_percentile = 75):
+def color_map_var_eind_baas(P, V, bottom_percentile = 10, top_percentile = 90):
     Var_I: np.ndarray = var_eind_baas(P = P, V = V)
     color_map(
         array = Var_I,
@@ -280,7 +279,7 @@ def color_map_var_eind_baas(P, V, bottom_percentile = 25, top_percentile = 75):
     )
 
 
-def color_map_var_eindbaas_per_pixel(P, V, bottom_percentile = 25, top_percentile = 75):
+def color_map_var_eindbaas_per_pixel(P, V, bottom_percentile = 10, top_percentile = 90):
     Var_I: np.ndarray = var_eind_baas_per_pixel(P = P, V = V)
     color_map(
         array = Var_I,
@@ -291,7 +290,7 @@ def color_map_var_eindbaas_per_pixel(P, V, bottom_percentile = 25, top_percentil
     )
 
 
-def color_map_avg_array(P, V, bottom_percentile = 25, top_percentile = 75):
+def color_map_avg_array(P, V, bottom_percentile = 10, top_percentile = 90):
     avg_array: np.ndarray = read_np_image_arrays(
         voltage_type = f'{V}kV{slash}{P}W',
         filetype = 'npy',
@@ -306,7 +305,7 @@ def color_map_avg_array(P, V, bottom_percentile = 25, top_percentile = 75):
     )
 
 
-def color_map_var_array(P, V, bottom_percentile = 25, top_percentile = 75):
+def color_map_var_array(P, V, bottom_percentile = 10, top_percentile = 90):
     variance_array: np.ndarray = read_np_image_arrays(
         voltage_type = f'{V}kV{slash}{P}W',
         filetype = 'npy',
@@ -321,7 +320,7 @@ def color_map_var_array(P, V, bottom_percentile = 25, top_percentile = 75):
     )
 
 
-def color_dark_field_var(bottom_percentile = 25, top_percentile = 75):
+def color_dark_field_var(bottom_percentile = 10, top_percentile = 90):
     color_map(
         array = darkfield_var_array(),
         title = 'Measured darkfield variance map',
@@ -330,15 +329,12 @@ def color_dark_field_var(bottom_percentile = 25, top_percentile = 75):
         top_percentile = top_percentile
     )
 
-def color_var(P, V, bottom_percentile = 25, top_percentile = 75):
-    color_map(
-        array = var_array(P, V),
-        title = f'Measured variance map, voltage = {V} kV, power = {P} W',
-        colorbar_label = r'measured variance $\mathrm{Var}(I)$',
-        bottom_percentile = bottom_percentile,
-        top_percentile = top_percentile
-    )
-
 
 if __name__ == '__main__':
     print_poster_map_errors()
+    #color_dark_field_var(bottom_percentile = 10, top_percentile = 90)
+    color_map_var_array(P = 40, V = 90, bottom_percentile = 10, top_percentile = 90)
+    color_map_avg_array(P = 40, V = 90, bottom_percentile = 10, top_percentile = 90)
+    color_map_var_eindbaas_per_pixel(P = 40, V = 90, bottom_percentile = 10, top_percentile = 90)
+    #color_map_var_eind_baas(P = 40, V = 90, bottom_percentile = 10, top_percentile = 90)
+    color_map_eind_baas(P = 40, V = 90, bottom_percentile = 10, top_percentile = 90)

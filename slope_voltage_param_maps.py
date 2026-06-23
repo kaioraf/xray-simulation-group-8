@@ -1,3 +1,4 @@
+# fits the power-slope maps against voltage to create alpha, beta, and gamma maps.
 import os
 import platform
 
@@ -5,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-# These maps describe how the power-slope changes with voltage:
+# these maps describe how the power-slope changes with voltage:
 # power_slope(V) = alpha * V**2 + beta * V + gamma
 voltages: list = ['30kV', '45kV', '60kV', '75kV', '90kV']
 kV: np.ndarray = np.array([30, 45, 60, 75, 90], dtype = float)

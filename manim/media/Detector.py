@@ -1,3 +1,4 @@
+# small unfinished manim detector scene.
 from manim import*
 import numpy as np
 

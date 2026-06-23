@@ -1,3 +1,4 @@
+# manim scene for a simple 3d overview of the x-ray setup.
 from manim import *
 import numpy as np
 import math
