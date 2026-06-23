@@ -1,11 +1,9 @@
-# manim scene sketching electron interactions and x-ray emission.
 from manim import *
 import numpy as np
 
 
-class Interactions(Scene):
+class Bremsstrahlung(Scene):
     def construct(self):
-        #set background color
         self.camera.background_color = BLACK
 
         # Helper: scene coordinates directly, no visible axes
@@ -19,10 +17,10 @@ class Interactions(Scene):
             fill_color=RED,
             fill_opacity=0.9,
         ).move_to(ORIGIN)
+
         nucleus_plus = Text("+", font_size=42, color=WHITE).move_to(nucleus)
         nucleus_set = VGroup(nucleus, nucleus_plus)
 
-        #function to create a electron and place it at given position
         def electron(position):
             circle = Circle(
                 radius=0.18,
@@ -40,7 +38,6 @@ class Interactions(Scene):
         ring_L = Circle(radius=1.8, color=WHITE)
         ring_M = Circle(radius=2.6, color=WHITE)
 
-        #Create electrons on each shell
         electron_K = VGroup(
             electron(ring_K.point_at_angle(0)),
             electron(ring_K.point_at_angle(PI)),
@@ -61,7 +58,6 @@ class Interactions(Scene):
         rings = VGroup(ring_K, ring_L, ring_M)
         bound_electrons = VGroup(electron_K, electron_L, electron_M)
 
-        #Create above atom on screen
         self.play(
             Create(nucleus_set, rate_func=rate_functions.rush_into, run_time=0.3),
             Create(rings, rate_func=smooth, run_time=0.3),
@@ -74,9 +70,9 @@ class Interactions(Scene):
         start_x = -7
         end_x = 7
 
-        h1 = 0.2 #horizontal position of the bend 
-        k1 = -0.9 #vertical position of the bend 
-        a1 = 0.15 #quadratic coefficient
+        h1 = 0.2
+        k1 = -0.9
+        a1 = 0.15
 
         inner_ring_radius = 1.1
 
@@ -84,7 +80,7 @@ class Interactions(Scene):
         def y1(x):
             return a1 * (x - h1) ** 2 + k1
 
-        # Find second crossing with inner K shell (wanted the bend here)
+        # Find second crossing with inner K shell
         x_samples = np.linspace(start_x, end_x, 4000)
         distance_samples = np.sqrt(x_samples**2 + y1(x_samples)**2)
 
@@ -122,7 +118,6 @@ class Interactions(Scene):
             for x in np.linspace(bend_x, end_x, 180)
         ]
 
-        #create path for electron to take
         electron_path = VMobject(
             color=BLUE_B,
             stroke_width=5,
@@ -132,7 +127,6 @@ class Interactions(Scene):
             *curve2_points,
         ])
 
-        #create electron to move along the path
         incoming_electron = Dot(
             point=curve1_points[0],
             radius=0.12,
@@ -174,9 +168,8 @@ class Interactions(Scene):
             )
 
         photon_start = bend_point
-        photon_end = bend_point + np.array([2, -4, 0]) #choose photon direction
+        photon_end = bend_point + np.array([2, -4, 0])
 
-        #make photon, choose own amplitude and wavelength
         photon_wave = make_wave(
             photon_start,
             photon_end,
@@ -215,7 +208,6 @@ class Interactions(Scene):
 
         incoming_minus.clear_updaters()
 
-        #group everything on screen to transform
         bremsstrahlung_objects = VGroup(
             nucleus_set,
             rings,
@@ -225,29 +217,24 @@ class Interactions(Scene):
             incoming_minus,
         )
 
-        #text for transformation
         bremsstrahlung_text = Text(
             "Bremsstrahlung",
             font_size=58,
             color=YELLOW,
         )
 
-        #transform atom to text
         self.play(
             ReplacementTransform(bremsstrahlung_objects, bremsstrahlung_text),
             run_time=1.2,
             rate_func=smooth,
         )
         self.wait(0.5)
-        #remove text
         self.play(FadeOut(bremsstrahlung_text), run_time=0.5)
 
         # Characteristic radiation:
         # An incoming electron knocks a K-shell electron out without passing
         # through another bound electron. Then L -> K and M -> L transitions
         # emit photons.
-
-        #create new atom set
         char_nucleus = Circle(
             radius=0.35,
             color=RED,
@@ -258,7 +245,6 @@ class Interactions(Scene):
         char_plus = Text("+", font_size=42, color=WHITE).move_to(char_nucleus)
         char_nucleus_set = VGroup(char_nucleus, char_plus)
 
-        
         char_ring_K = Circle(radius=1.1, color=WHITE)
         char_ring_L = Circle(radius=1.8, color=WHITE)
         char_ring_M = Circle(radius=2.6, color=WHITE)
@@ -286,14 +272,13 @@ class Interactions(Scene):
         )
         char_atom = VGroup(char_nucleus_set, char_rings, char_bound_electrons)
 
-        #place atom on screen
         self.play(
             Create(char_nucleus_set, rate_func=rate_functions.rush_into),
             Create(char_rings),
             Create(char_bound_electrons),
             run_time=0.8,
         )
-        #shoot electron at target electron in k shell
+
         incoming_start = np.array([-7, char_k_target.get_y(), 0])
         impact_point = char_k_target.get_center()
         incoming_characteristic = Dot(
@@ -316,23 +301,20 @@ class Interactions(Scene):
 
         # Ejected electron paths: change these endpoint offsets to redirect
         # the knocked-out K electron and the incoming electron after impact.
-
-        #path of ejected electron
         knocked_k_path = Line(
             impact_point,
-            impact_point + np.array([3.6, -1.5, 0]), #change ejection direction
+            impact_point + np.array([3.6, -1.5, 0]),
             color=BLUE_B,
             stroke_width=5,
         )
 
-        #path of incoming (and now deflected) electron
         incoming_after_hit_path = Line(
             impact_point,
-            impact_point + np.array([3.6, 1.5, 0]), #change deflection direction
+            impact_point + np.array([3.6, 1.5, 0]),
             color=BLUE_B,
             stroke_width=5,
         )
-        #play the collision
+
         self.play(
             Create(incoming_to_k_path),
             FadeIn(incoming_characteristic),
@@ -354,14 +336,13 @@ class Interactions(Scene):
             rate_func=linear,
         )
 
-        #Make the electrons from higher shells drop down a level in order and shoot a photon
         l_start = char_l_dropper.get_center()
         k_drop_target = char_ring_K.point_at_angle(PI / 2)
         l_to_k_path = Line(l_start, k_drop_target)
 
         l_photon = make_wave(
             k_drop_target,
-            k_drop_target + np.array([2.3, 1.3, 0]), #photon direction
+            k_drop_target + np.array([2.3, 1.3, 0]),
             amplitude=0.11,
             wavelength=0.5,
         )
@@ -383,7 +364,7 @@ class Interactions(Scene):
 
         m_photon = make_wave(
             l_drop_target,
-            l_drop_target + np.array([-2.1, 2, 0]), #photon 2 direction
+            l_drop_target + np.array([-2.1, 2, 0]),
             amplitude=0.11,
             wavelength=0.5,
         )
@@ -402,7 +383,6 @@ class Interactions(Scene):
 
         incoming_characteristic_minus.clear_updaters()
 
-        #group everything on screen
         characteristic_objects = VGroup(
             char_atom,
             incoming_characteristic,
@@ -411,27 +391,20 @@ class Interactions(Scene):
             knocked_k_path,
             incoming_after_hit_path,
         )
-        
-        #transformation text
+
         characteristic_text = Text(
             "Characteristic radiation",
             font_size=50,
             color=RED,
         )
 
-        #transform everything on screen to text
         self.play(
             ReplacementTransform(characteristic_objects, characteristic_text),
             run_time=1.4,
             rate_func=smooth,
         )
         self.wait(0.5)
-
-        #femove text
         self.play(FadeOut(characteristic_text), run_time=0.5)
-
-        #THIS PIECE OF CODE WAS MOSTLY GENERATED BY AI SO INFORMATION COULD BE WRONG
-        #BUT IT IS SUFFICIENT FOR DEMONSTRATIVE PURPOSES
 
         # Kramers-law spectrum for a 120 keV tungsten X-ray tube.
         E_max = 120.0
@@ -451,14 +424,12 @@ class Interactions(Scene):
             (67.2, 0.48, 0.45),  # W K-beta
         ]
 
-        #create peaks for characteristic radiation
         I_peaks = np.zeros_like(energies)
         for center, height, sigma in peaks:
             I_peaks += height * np.exp(
                 -0.5 * ((energies - center) / sigma) ** 2
             )
 
-        #Create axes and labels
         I_total = I_brems + I_peaks
         intensity_scale = np.max(I_total)
         I_total /= intensity_scale
@@ -495,7 +466,6 @@ class Interactions(Scene):
         y_label.rotate(90 * DEGREES)
         y_label.next_to(axes.y_axis, LEFT, buff=0.35)
 
-        #create graph
         spectrum_curve = VMobject(color=RED, stroke_width=3)
         spectrum_curve.set_points_as_corners([
             axes.c2p(0, 0),
@@ -505,14 +475,12 @@ class Interactions(Scene):
             ],
         ])
 
-        #title for top of screen
         title = Text(
             "Example: photon spectrum of tungsten at 120keV",
             font_size=32,
             color=WHITE,
         ).to_edge(UP, buff=0.35)
 
-        #label to point at spectrum generated by brems with arrows
         left_brems_label = Text(
             "Brems-\nstrahlung",
             font_size=21,
@@ -529,7 +497,6 @@ class Interactions(Scene):
             max_tip_length_to_length_ratio=0.18,
         )
 
-        #label to point at peaks generated by char. radiation with arrows
         characteristic_label = Text(
             "Characteristic\nradiation",
             font_size=20,
@@ -571,14 +538,12 @@ class Interactions(Scene):
             max_tip_length_to_length_ratio=0.18,
         )
 
-        #show that spectrum doesn't exceed max voltage
         cutoff_label = Text(
             "Emax = 120 keV",
             font_size=22,
             color=RED,
         ).next_to(axes.c2p(120, 0), UP, buff=0.25)
 
-        #group labels
         peak_labels = VGroup(
             characteristic_label,
             characteristic_arrow_alpha,
@@ -591,7 +556,6 @@ class Interactions(Scene):
             right_brems_arrow,
         )
 
-        #play entire scene
         self.play(Write(title), run_time=0.7)
         self.play(Create(axes), Write(x_label), Write(y_label), run_time=1)
         self.play(Create(spectrum_curve), run_time=2, rate_func=smooth)
@@ -603,7 +567,6 @@ class Interactions(Scene):
         )
         self.wait(2)
 
-        #group everything on screen to fade out
         everything = VGroup(
             title,
             axes,

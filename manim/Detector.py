@@ -371,7 +371,7 @@ class Detector(ThreeDScene):
         frame_center = np.array(self.camera.frame_center)
         ccd_back_point = ccd_center + np.array([ccd_depth / 2 + 0.08, 0, 0])
         final_image = (
-            ImageMobject("Anim_pictur.png")
+            ImageMobject("Animation_picture.png")
             .set_height(0.2)
             .move_to(ccd_back_point)
         )
