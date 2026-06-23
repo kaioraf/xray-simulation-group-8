@@ -246,6 +246,8 @@ def plot_fit_map(fit_map, title, colorbar_label):
     plt.ylabel(ylabel = r'$x$ (pixel)')
     plt.show()
 
+# the rest of the functions in this document are for 
+# visualizing the fitting process for a random pixel
 
 def random_pixel():
     darkfield_average_map: np.ndarray = read_np_image_arrays(voltage_type = 'darkfield', dist_type = 'avg')
@@ -437,7 +439,20 @@ if __name__ == '__main__':
 
 from final_func import color_map
 save_per_pixel_variance_model_maps()
-x, y, z = load_per_pixel_variance_model_maps()
-color_map(x, title="hallo", colorbar_label='y')
-color_map(y, title="hallo", colorbar_label='y')
-color_map(z, title="hallo", colorbar_label='y')
+k_q2_map, k_q1_map, k_q0_map = load_per_pixel_variance_model_maps()
+
+color_map(
+    array = k_q2_map,
+    title = r'Per-pixel variance model: quadratic coefficient $q_2$',
+    colorbar_label = r'$q_2$ in $k(V)=q_2V^2+q_1V+q_0$'
+)
+color_map(
+    array = k_q1_map,
+    title = r'Per-pixel variance model: linear coefficient $q_1$',
+    colorbar_label = r'$q_1$ in $k(V)=q_2V^2+q_1V+q_0$'
+)
+color_map(
+    array = k_q0_map,
+    title = r'Per-pixel variance model: constant coefficient $q_0$',
+    colorbar_label = r'$q_0$ in $k(V)=q_2V^2+q_1V+q_0$'
+)
