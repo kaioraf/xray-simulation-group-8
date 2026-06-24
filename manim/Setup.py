@@ -460,7 +460,7 @@ class Setup(ThreeDScene):
         self.move_camera(
             theta=90 * DEGREES,
             phi=80 * DEGREES,
-            run_time=8,
+            run_time=25,
             rate_func=linear,
             added_anims=[
                 *electron_anims,
