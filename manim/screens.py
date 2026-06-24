@@ -68,7 +68,7 @@ class Grid_of_Screens(ThreeDScene):
             ),
             run_time = 2
         )
-        self.wait(duration = 1)
+        self.wait(duration = 4)
         
         # zoom into screen
         target_screen: Group = all_screens[0]
@@ -77,15 +77,15 @@ class Grid_of_Screens(ThreeDScene):
             all_screens.animate.shift(translation),
             row_labels.animate.shift(translation),
             col_labels.animate.shift(translation),
-            run_time = 1
+            run_time = 0.5
         )
-        self.move_camera(zoom = 4, run_time = 1)
-        self.wait(duration = 0.5)
+        self.move_camera(zoom = 4, run_time = 0.5)
+        self.wait(duration = 0.2)
         
         # fade out other screens and labels
         other_screens = VGroup(*[all_screens[screen] for screen in range(1, len(all_screens))])
         self.play(FadeOut(other_screens, row_labels, col_labels), run_time = 0.5)
-        self.wait(duration = 0.5)
+        self.wait(duration = 0.3)
         
         # turn the screen
         self.play(
@@ -93,7 +93,7 @@ class Grid_of_Screens(ThreeDScene):
             .rotate(angle = -PI / 3, axis = UP)
             .rotate(angle = PI / 6, axis = RIGHT)
             .shift(0.05 * DOWN + 1.2 * LEFT),
-            run_time = 1
+            run_time = 0.3
         )
         
         # adding layers of screens
@@ -145,7 +145,7 @@ class Grid_of_Screens(ThreeDScene):
         # animating back layers
         self.play(screen_animations, run_time = 2)
         self.play(Write(vmobject = last_label), run_time = 1)
-        self.wait(duration = 0.5)
+        self.wait(duration = 0.3)
         
         # adding pixels
         front_pixel: Group = target_screen[1]
@@ -156,9 +156,9 @@ class Grid_of_Screens(ThreeDScene):
         # animating pixels
         self.play(
             LaggedStart(*[pixel.animate.set_fill(random_pixel_color(), opacity = 1) for pixel in all_pixels], lag_ratio = 0.1),
-            run_time = 1
+            run_time = 0.8
         )
-        self.wait(duration = 0.5)
+        self.wait(duration = 0.2)
         
         # moving labels
         self.play(last_label.animate.to_edge(UP, buff = 0.5), run_time = 1)
@@ -294,5 +294,5 @@ class Grid_of_Screens(ThreeDScene):
             Write(vmobject = label_variance),
             run_time = 2
         )
-        self.wait(duration = 1)
+        self.wait(duration = 4)
         
