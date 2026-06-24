@@ -294,5 +294,5 @@ class Grid_of_Screens(ThreeDScene):
             Write(vmobject = label_variance),
             run_time = 2
         )
-        self.wait(duration = 1)
+        self.wait(duration = 7)
         
