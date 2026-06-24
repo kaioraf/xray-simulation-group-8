@@ -1,4 +1,4 @@
-# Project group 8 - x-ray image simulation
+# xray-simulation-group-8
 
 This repository contains the analysis code for a project on empirical x-ray detector image simulation 
 by UvA bachelor students Physics and Astronomy.
