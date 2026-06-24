@@ -223,7 +223,7 @@ def plot_I_W_linear_fit(x, y):
 
         plt.plot(W_fit, I_fit, '-', color = colors[i])
 
-    plt.title(label = f'Pixel ({x}, {y})')
+    plt.title(label = f'Intensity against Wattage for multiple Voltages')
     plt.xlabel(xlabel = r'Power $P$ ($W$)')
     plt.ylabel(ylabel = r'Average Intensity $I$ (detector units)')
     plt.legend()
