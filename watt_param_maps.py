@@ -1,3 +1,4 @@
+# fits mean intensity against tube power for every pixel and saves the slope/intercept maps.
 import matplotlib.pyplot as plt
 from fileIO import *
 import platform

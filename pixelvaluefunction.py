@@ -1,3 +1,4 @@
+# tiny helper for reading one raw pixel value from the old tif stack.
 from fileIO import *
 
 def eerstepixelwaarde(volt, watt, count):

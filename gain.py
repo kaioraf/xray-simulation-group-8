@@ -1,13 +1,22 @@
+# calculates and plots the old variance-per-real-signal factor that this project called gain.
 from fileIO import read_np_image_arrays
 import matplotlib.pyplot as plt
 import platform
 import numpy as np
 from imageAnalysis import create_image
 
+# this file uses the word "gain" for
+# g = (Var_total - Var_dark) / (I_total - I_dark),
+# which is actually the inverse of gain lambda as used in
+# Andriiashen, V., van Liere, R., van Leeuwen, T. et al. 
+# X-Ray Image Generation as a Method of Performance Prediction for Real-Time Inspection: 
+# a Case Study. J Nondestruct Eval 43, 79 (2024). 
+# https://doi.org/10.1007/s10921-024-01091-8 
+
 if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
-      SLASH = '/'
+    SLASH = '/'
 else: # windows
-      SLASH = '\\'
+    SLASH = '\\'
             
 
 # Available settings
@@ -17,7 +26,7 @@ wattages = [10, 20, 30, 40]
 pixel_x = 0
 pixel_y=0
 
-# (hopefully) Efficient vectorized calculation for the gain for each pixel, stored into an array
+# Vectorized calculation of the variance-per-real-signal factor for each pixel.
 def full_image_gain(avg_image, var_image):
     avg_darkfield = read_np_image_arrays(dist_type='avg')
     var_darkfield = read_np_image_arrays(dist_type='var')

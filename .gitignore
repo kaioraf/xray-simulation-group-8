@@ -1,10 +1,11 @@
-.vscode\settings.json
-.vscode/settings.json
-__pycache__/fileIO.cpython-313.pyc
-__pycache__/imageAnalysis.cpython-313.pyc
-__pycache__/fileIO.cpython-313.pyc
-/manim/media/videos/screens/480p15/partial_movie_files
-/manim/__pycache__
-/manim/media/videos/screens
+.DS_Store
+__pycache__/
+*.pyc
 
-manim/media/videos/screens/480p15/partial_movie_files/Grid_of_Screens/partial_movie_file_list.txt
+.vscode/settings.json
+.vscode\settings.json
+
+manim/__pycache__/
+manim/media/videos/screens/
+manim/media/videos/screens/480p15/partial_movie_files/
+/manim/media

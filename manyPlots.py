@@ -1,3 +1,4 @@
+# quick plotting helpers for checking pixel averages and variances across settings.
 from fileIO import *
 from imageAnalysis import *
 import matplotlib.pyplot as plt
