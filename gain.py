@@ -14,9 +14,9 @@ from imageAnalysis import create_image
 # https://doi.org/10.1007/s10921-024-01091-8 
 
 if (platform.system() == 'Linux' or platform.system() == 'Darwin'): # darwin = macos
-      SLASH = '/'
+    SLASH = '/'
 else: # windows
-      SLASH = '\\'
+    SLASH = '\\'
             
 
 # Available settings
