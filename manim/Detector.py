@@ -314,20 +314,32 @@ class Detector(ThreeDScene):
         scintillator_front_x = scintillator_target[0] - scintillator_depth / 2
         ccd_front_x = ccd_center[0] - ccd_depth / 2
         entry_point = np.array([
-            scintillator_front_x - 0.01,
+            scintillator_front_x,
             scintillator_target[1] - 0.02,
             scintillator_target[2] + 0.12,
         ])
         incoming_tip = entry_point + np.array([-1.25, 0, 0.72])
 
-        def photon_wave(tip, direction, length=0.72):
+        # Photon wave controls. Packet length is wavelength * cycles.
+        incoming_wavelength = 0.1
+        incoming_amplitude = 0.05
+        incoming_cycles = 4
+
+        straight_wavelength = 0.25
+        straight_amplitude = 0.05
+        straight_cycles = 2
+
+        def photon_wave(tip, direction, wavelength, amplitude, cycles):
+            length = wavelength * cycles
             direction = direction / np.linalg.norm(direction)
             perpendicular = np.array([-direction[2], 0, direction[0]])
             return ParametricFunction(
                 lambda t: (
                     tip
                     + direction * t
-                    + perpendicular * 0.075 * np.sin(8 * PI * (t + length) / length)
+                    + perpendicular
+                    * amplitude
+                    * np.sin(TAU * (t + length) / wavelength)
                 ),
                 t_range=[-length, 0],
                 color=YELLOW,
@@ -335,7 +347,13 @@ class Detector(ThreeDScene):
             )
 
         incoming_direction = entry_point - incoming_tip
-        incoming_wave = photon_wave(incoming_tip, incoming_direction)
+        incoming_wave = photon_wave(
+            incoming_tip,
+            incoming_direction,
+            wavelength=incoming_wavelength,
+            amplitude=incoming_amplitude,
+            cycles=incoming_cycles,
+        )
 
         self.play(Create(incoming_wave), run_time=0.4)
         self.play(
@@ -344,10 +362,19 @@ class Detector(ThreeDScene):
             rate_func=linear,
         )
 
-        straight_wave = photon_wave(entry_point, RIGHT)
+        straight_wave_length = straight_wavelength * straight_cycles
+        straight_wave_tip = entry_point + RIGHT * straight_wave_length
+        straight_wave = photon_wave(
+            straight_wave_tip,
+            RIGHT,
+            wavelength=straight_wavelength,
+            amplitude=straight_amplitude,
+            cycles=straight_cycles,
+        )
 
         self.play(
-            ReplacementTransform(incoming_wave, straight_wave),
+            FadeOut(incoming_wave),
+            FadeIn(straight_wave),
             left_detector.animate.set_fill(WHITE, opacity=0.75),
             scintillator_grid.animate.set_fill(WHITE, opacity=1),
             run_time=0.2,
@@ -360,12 +387,16 @@ class Detector(ThreeDScene):
             entry_point[2],
         ])
         self.play(
-            straight_wave.animate.shift(ccd_surface - entry_point),
+            straight_wave.animate.shift(ccd_surface - straight_wave_tip),
             left_detector.animate.set_fill(GREEN, opacity=0.45),
             scintillator_grid.animate.set_fill(GREEN_A, opacity=0.9),
             run_time=1.3,
             rate_func=linear,
         )
+
+        self.play(FadeOut(straight_wave, run_time=0.5, rate_func=smooth))
+        
+        self.wait(1)
 
         final_scene = Group(*self.mobjects)
         frame_center = np.array(self.camera.frame_center)
@@ -384,8 +415,8 @@ class Detector(ThreeDScene):
             .set_opacity(1)
             .set_height(7)
             .move_to(frame_center),
-            run_time=1,
-            rate_func=linear,
+            run_time=1.5,
+            rate_func=smooth,
         )
 
         self.wait(4)
