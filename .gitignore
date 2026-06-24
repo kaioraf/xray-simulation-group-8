@@ -8,3 +8,4 @@ __pycache__/
 manim/__pycache__/
 manim/media/videos/screens/
 manim/media/videos/screens/480p15/partial_movie_files/
+/manim/media
