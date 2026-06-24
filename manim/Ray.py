@@ -62,9 +62,9 @@ class Interactions(Scene):
 
         #Create above atom on screen
         self.play(
-            Create(nucleus_set, rate_func=rate_functions.rush_into, run_time=0.3),
-            Create(rings, rate_func=smooth, run_time=0.3),
-            Create(bound_electrons, rate_func=smooth, run_time=0.3),
+            Create(nucleus_set, rate_func=rate_functions.rush_into, run_time=1),
+            Create(rings, rate_func=smooth, run_time=1),
+            Create(bound_electrons, rate_func=smooth, run_time=1),
         )
 
         # Incoming electron path:
@@ -183,7 +183,7 @@ class Interactions(Scene):
             wavelength=0.5,
         )
 
-        self.play(Create(electron_path), run_time=1)
+        self.play(Create(electron_path), run_time=2.5)
         self.add(incoming_electron, incoming_minus)
 
         # Move electron along first part
@@ -196,19 +196,19 @@ class Interactions(Scene):
 
         self.play(
             MoveAlongPath(incoming_electron, first_path),
-            run_time=0.5,
+            run_time=2,
             rate_func=rate_functions.slow_into,
         )
 
         self.play(
             ShowPassingFlash(
                 photon_wave,
-                time_width=0.45,
-                run_time=0.4,
+                time_width=0.75,
+                run_time=0.7,
                 rate_func=rate_functions.smooth,
             ),
             MoveAlongPath(incoming_electron, second_path),
-            run_time=2,
+            run_time=3,
             rate_func=linear,
         )
 
@@ -230,7 +230,7 @@ class Interactions(Scene):
             font_size=58,
             color=YELLOW,
         )
-
+        self.wait(3.3)
         #transform atom to text
         self.play(
             ReplacementTransform(bremsstrahlung_objects, bremsstrahlung_text),
@@ -290,7 +290,7 @@ class Interactions(Scene):
             Create(char_nucleus_set, rate_func=rate_functions.rush_into),
             Create(char_rings),
             Create(char_bound_electrons),
-            run_time=0.8,
+            run_time=1,
         )
         #shoot electron at target electron in k shell
         incoming_start = np.array([-7, char_k_target.get_y(), 0])
@@ -333,7 +333,9 @@ class Interactions(Scene):
         )
         #play the collision
         self.play(
-            Create(incoming_to_k_path),
+            Create(incoming_to_k_path))
+        self.wait(0.6)
+        self.play(
             FadeIn(incoming_characteristic),
             FadeIn(incoming_characteristic_minus),
             run_time=0.5,
@@ -364,16 +366,16 @@ class Interactions(Scene):
             amplitude=0.11,
             wavelength=0.5,
         )
-
+        self.wait(0.5)
         self.play(
             MoveAlongPath(char_l_dropper, l_to_k_path),
             ShowPassingFlash(
                 l_photon,
                 time_width=0.45,
-                run_time=0.8,
+                run_time=1,
                 rate_func=smooth,
             ),
-            run_time=1.2,
+            run_time=1.5,
             rate_func=smooth,
         )
 
@@ -417,6 +419,7 @@ class Interactions(Scene):
             font_size=50,
             color=RED,
         )
+        self.wait(2)
 
         #transform everything on screen to text
         self.play(
@@ -424,7 +427,7 @@ class Interactions(Scene):
             run_time=1.4,
             rate_func=smooth,
         )
-        self.wait(0.5)
+        self.wait(2.5)
 
         #femove text
         self.play(FadeOut(characteristic_text), run_time=0.5)
@@ -600,7 +603,7 @@ class Interactions(Scene):
             Write(cutoff_label),
             run_time=1.5,
         )
-        self.wait(2)
+        self.wait(8)
 
         #group everything on screen to fade out
         everything = VGroup(

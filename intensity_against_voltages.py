@@ -242,7 +242,7 @@ def plot_I_kV_quadratic_fit(x, y):
 
         plt.plot(kV_fit, I_fit, '-', color = colors[i])
 
-    plt.title(label = f'Pixel ({x}, {y})')
+    plt.title(label = f'Intensity against Voltage for multiple Wattages')
     plt.xlabel(xlabel = r'Voltage $U$ ($kV$)')
     plt.ylabel(ylabel = r'Average Intensity $I$ (detector units)')
     plt.legend()
