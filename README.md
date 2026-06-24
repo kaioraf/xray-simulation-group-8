@@ -45,6 +45,10 @@ The `manim/` folder contains optional animation code and requires `manim` if use
 
 The Manim animation code in `manim/` was created by Charlie Mauer and Jaemin Lin.
 
+## Acknowledgements
+
+This project was supervised by Computational Imaging group and FleX-ray Lab at Centrum Wiskunde & Informatica (CWI) and detector data was collected using their X-ray machine.
+
 ## Reproducing results on poster
 
 A poster was created with the results, which used:
@@ -63,3 +67,7 @@ Later code was added in the same file that can estimate a blur value from residu
 ## Notes
 
 The project has one historical orientation convention: some arrays were originally loaded transposed, and the code was built around that. `fileIO.py` documents this and keeps the existing behaviour so older maps and fits still work.
+
+## License
+
+This repository is released under the MIT License. See `LICENSE`.
