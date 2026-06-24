@@ -24,7 +24,11 @@ DEFAULT_BLUR_SIGMA: float = POSTER_BLUR_SIGMA
 
 # outline:
 # take the predicted mean image, then add spatially correlated Gaussian noise
-# using the predicted standard deviation for every pixel individually.
+# Vlad et al. (2024) blurred the entire image, but in our model, the means are already correlated,
+# but we must still account for correlation in variance, because adding variance randomly for each pixel
+# according to normal distribution would throw away correlation
+# this is first done with an arbitrary Gaussian blur factor of 1.0, 
+# which somehow turns out to be close to the best possible value (for low squared errors).
 
 
 def standard_deviation_from_variance(variance_array):
