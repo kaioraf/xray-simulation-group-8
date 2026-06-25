@@ -106,7 +106,7 @@ class Credits(Scene):
         center_group.move_to(point_or_mobject = 1.2 * UP)
 
         # right column
-        right_title = Text(text = "Special Thanks to Supervisors", font_size = 35, color = WHITE)
+        right_title = Text(text = "Special Thanks\n to Supervisors", font_size = 35, color = WHITE)
         right_names = Paragraph(
             "Tristan van Leeuwen",
             "Alexander Skorikov",
@@ -120,13 +120,13 @@ class Credits(Scene):
 
         right_group = VGroup(right_title, right_credits)
         right_group.arrange(direction = DOWN, buff = 0.4)
-        right_group.move_to(point_or_mobject = 5 * RIGHT + 1.9 * UP)
+        right_group.move_to(point_or_mobject = 5 * RIGHT + 1.7 * UP)
 
         # lower right column
         lower_right_title = Text(text = "Supported by", font_size = 35, color = WHITE)
         lower_right_names = Paragraph(
-            "University of Amsterdam",
-            "Vrije Universiteit Amsterdam",
+            "UvA",
+            "VU Amsterdam",
             "CWI",
             alignment = "center",
             font = "Helvetica",
