@@ -84,17 +84,15 @@ class Credits(Scene):
             "Editor",
             "Script\n",
             "Voice Over",
-            "Music",
             alignment = "right",
             font = "Helvetica",
             font_size = 20,
             line_spacing = 1.2
         )
         center_names = Paragraph(
-            "Kaoi Hermes",
+            "Kaio Hermes",
             "Marijn van de Beek\n & Thijmen Sombroek",
             "Kaio Hermes",
-            "Wii music",
             alignment = "left",
             font = "Helvetica",
             font_size = 20,
@@ -108,7 +106,7 @@ class Credits(Scene):
         center_group.move_to(point_or_mobject = 1.2 * UP)
 
         # right column
-        right_title = Text(text = "Special Thanks to", font_size = 35, color = WHITE)
+        right_title = Text(text = "Special Thanks to Supervisors", font_size = 35, color = WHITE)
         right_names = Paragraph(
             "Tristan van Leeuwen",
             "Alexander Skorikov",
