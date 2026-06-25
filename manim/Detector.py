@@ -104,12 +104,12 @@ class Detector(ThreeDScene):
             beam
         )
         self.play(
-            FadeOut(trash, rate_func=smooth, run_time=1)
+            FadeOut(trash, rate_func=smooth, run_time=4)
         )
 
         self.move_camera(theta=-180 * DEGREES,
                          zoom=2,
-                        run_time=0.5)
+                        run_time=1)
 
         
         split_detector_gap = 0.2
@@ -134,7 +134,7 @@ class Detector(ThreeDScene):
         ).move_to(detector.get_center() + np.array([0, -split_offset, 0]))
 
         split_detector = VGroup(left_detector, right_detector)
-        self.play(ReplacementTransform(detector, split_detector), run_time=1, rate_func=smooth)
+        self.play(ReplacementTransform(detector, split_detector), run_time=2, rate_func=smooth)
 
         def surface_grid(target, depth, color):
             grid = VGroup()
@@ -254,7 +254,7 @@ class Detector(ThreeDScene):
             FadeIn(ccd_grid),
             Write(scintillator_label),
             Write(ccd_label),
-            run_time=0.5,
+            run_time=1,
             rate_func=smooth,
         )
 
@@ -275,7 +275,7 @@ class Detector(ThreeDScene):
                 color=GREEN_A,
                 scale_factor=1.08,
             ),
-            run_time=1,
+            run_time=1.5,
         )
         self.play(
             Indicate(
@@ -283,7 +283,7 @@ class Detector(ThreeDScene):
                 color=BLUE_B,
                 scale_factor=1.08,
             ),
-            run_time=1,
+            run_time=1.5,
         )
 
         layer_gap = 0.02
@@ -419,4 +419,4 @@ class Detector(ThreeDScene):
             rate_func=smooth,
         )
 
-        self.wait(7.3)
+        self.wait(4)
