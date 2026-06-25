@@ -48,7 +48,7 @@ class Credits(Scene):
         logos.move_to(point_or_mobject = top_bar.get_center())
 
         # left column
-        left_title = Tex(r"\texttt{manimations}", font_size = 30, color = WHITE)
+        left_title = Tex(r"\texttt{manimations}", font_size = 35, color = WHITE)
         left_roles = Paragraph(
             "Setup.py",
             "Ray.py",
@@ -56,6 +56,7 @@ class Credits(Scene):
             "screens.py",
             "credits.py",
             alignment = "right",
+            font = "Helvetica",
             font_size = 20,
             line_spacing = 1.2
         )
@@ -66,6 +67,7 @@ class Credits(Scene):
             "Jeamin Lin",
             "Jeamin Lin",
             alignment = "left",
+            font = "Helvetica",
             font_size = 20,
             line_spacing = 1.2
         )
@@ -77,13 +79,14 @@ class Credits(Scene):
         left_group.move_to(point_or_mobject = 5 * LEFT + 1.2 * UP)
 
         # center column
-        center_title = Text(text = "Film Credits", font_size = 30, color = WHITE)
+        center_title = Text(text = "Video Credits", font_size = 35, color = WHITE)
         center_roles = Paragraph(
             "Editor",
             "Script\n",
             "Voice Over",
             "Music",
             alignment = "right",
+            font = "Helvetica",
             font_size = 20,
             line_spacing = 1.2
         )
@@ -93,6 +96,7 @@ class Credits(Scene):
             "Kaio Hermes",
             "Wii music",
             alignment = "left",
+            font = "Helvetica",
             font_size = 20,
             line_spacing = 1.2
         )
@@ -104,11 +108,12 @@ class Credits(Scene):
         center_group.move_to(point_or_mobject = 1.2 * UP)
 
         # right column
-        right_title = Text(text = "Special Thanks to", font_size = 30, color = WHITE)
+        right_title = Text(text = "Special Thanks to", font_size = 35, color = WHITE)
         right_names = Paragraph(
             "Tristan van Leeuwen",
             "Alexander Skorikov",
             alignment = "center",
+            font = "Helvetica",
             font_size = 20,
             line_spacing = 1.2
         )
@@ -120,12 +125,13 @@ class Credits(Scene):
         right_group.move_to(point_or_mobject = 5 * RIGHT + 1.9 * UP)
 
         # lower right column
-        lower_right_title = Text(text = "Supported by", font_size = 30, color = WHITE)
+        lower_right_title = Text(text = "Supported by", font_size = 35, color = WHITE)
         lower_right_names = Paragraph(
             "University of Amsterdam",
             "Vrije Universiteit Amsterdam",
             "CWI",
             alignment = "center",
+            font = "Helvetica",
             font_size = 20,
             line_spacing = 1.2
         )
@@ -137,16 +143,17 @@ class Credits(Scene):
         lower_right_group.move_to(point_or_mobject = 5 * RIGHT + 2 * DOWN)
         
         # animate
+        self.wait(duration = 0.5)
         self.play(
             LaggedStart(
-                LaggedStart(*[FadeIn(logo) for logo in logos], lag_ratio = 0.5, run_time = 1),
+                LaggedStart(*[FadeIn(logo) for logo in logos], lag_ratio = 0.5),
                 Write(vmobject = left_group),
                 Write(vmobject = center_group),
                 Write(vmobject = right_group),
                 Write(vmobject = lower_right_group),
                 lag_ratio = 0.2,
-                run_time = 3,
+                run_time = 3.5,
             )
         )
-        self.wait(duration = 2)
+        self.wait(duration = 1.5)
         
